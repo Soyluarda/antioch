@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+
+    <div id="topbar">
+      <div class="container">
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="text-light"><a href="#intro" class="scrollto"><span>Özlem Kumaş</span></a></h1>
+        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#intro">Ana Sayfa</a></li>
+          <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+          <li><a href="{% url 'products' %}">Ürünler</a></li>
+          <li><a href="{% url 'contact' %}">İletişim</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+
+    </div>
+  </header><!-- #header -->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>Rapid Solutions<br>for Your <span>Business!</span></h2>
+          <div>
+            <a href="#about" class="btn-get-started scrollto">Online Alışveriş </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="img/intro-img.svg" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+
+{% endblock %}
