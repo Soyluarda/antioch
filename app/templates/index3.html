@@ -62,8 +62,8 @@
           <div class="span12">
             <div class="headnav">
               <ul>
-                <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> Sign up</a></li>
-                <li><a href="#mySignin" data-toggle="modal">Sign in</a></li>
+                <li><a href="{% url 'signup' %}" data-toggle="modal"><i class="icon-user"></i> Sign up</a></li>
+                <li><a href="{% url 'login' %}" data-toggle="modal">Sign in</a></li>
               </ul>
             </div>
             <!-- Signup Modal -->
@@ -168,7 +168,7 @@
           <div class="span4">
             <div class="logo">
               <a href="index.html"><img src="img/logo.png" alt="" class="logo" /></a>
-              <h1>Özlem Kumaş - Slogan</h1>
+              <img src="{% static 'img/logo-2.jpg' %}" alt="">
             </div>
           </div>
           <div class="span8">
@@ -176,10 +176,12 @@
               <div class="navigation">
                 <nav>
                   <ul class="nav topnav">
-          <li class="active"><a href="#intro">Ana Sayfa</a></li>
+         <li class="active"><a href="{% url 'index' %}">Ana Sayfa</a></li>
           <li><a href="{% url 'about' %}">Hakkımızda</a></li>
           <li><a href="{% url 'products' %}">Ürünler</a></li>
-          <li><a href="{% url 'contact' %}">İletişim</a></li>
+          <li><a href="{% url 'upholstery' %}">Döşemelik</a></li>
+          <li><a href="{% url 'stock_service' %}">Stok Servis</a></li>
+          <li><a href="{% url 'contact' %}">İLETİŞİM</a></li>
                   </ul>
                 </nav>
               </div>
@@ -197,10 +199,6 @@
         <div class="nivo-slider">
           <!-- Slide #1 image -->
           <img src="{% static 'static/img/slides/nivo/bg-1.jpg' %}" alt="" title="#caption-1" />
-          <!-- Slide #2 image -->
-          <img src="{% static 'static/img/slides/nivo/bg-2.jpg' %}" alt="" title="#caption-2" />
-          <!-- Slide #3 image -->
-          <img src="{% static 'static/img/slides/nivo/bg-3.jpg' %}" alt="" title="#caption-3" />
         </div>
         <div class="container">
           <div class="row">
@@ -212,29 +210,10 @@
                   <p>
                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
                   </p>
-                  <a href="#" class="btn btn-theme">Read More</a>
                 </div>
               </div>
               <!-- Slide #2 caption -->
-              <div class="nivo-caption" id="caption-2">
-                <div>
-                  <h2>Özlem Kumaş <strong>İçerik</strong></h2>
-                  <p>
-                    Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
-                  </p>
-                  <a href="#" class="btn btn-theme">Read More</a>
-                </div>
-              </div>
               <!-- Slide #3 caption -->
-              <div class="nivo-caption" id="caption-3">
-                <div>
-                  <h2>Tekstil  <strong>ve daha fazlası</strong></h2>
-                  <p>
-                    Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
-                  </p>
-                  <a href="#" class="btn btn-theme">Read More</a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -250,7 +229,7 @@
                 <h3>Yılda  <span class="highlight"><strong>5000 üzerinde</strong></span> ürün piyasaya sürüyoruz!</h3>
               </div>
               <div class="cta floatright">
-                <a class="btn btn-large btn-theme btn-rounded" href="#">Request a quote</a>
+                <a class="btn btn-large btn-theme btn-rounded" href="#">Online Alışveriş için tıklayın!</a>
               </div>
             </div>
           </div>

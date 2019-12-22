@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+
+<section id="about" class="section-bg">
+      <div class="container">
+        <div class="row">
+
+    <div class="col-sm-8 col-sm-offset-2">
+        {% if empty %}
+
+        <h1>{{emptymessage}}</h1>
+
+
+        {% elif message %}
+
+
+        <h1>{{message}}</h1>
+
+        {% else %}
+        <table class="table">
+            <thead>
+                <th>Ürün</th>
+                <th>Fiyat</th>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td>
+                    </td>
+                    <td>Toplam:{{cart.total}}</td>
+                    <td><form action="" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Sipariş ver </button></form></td>
+                </tr>
+            </tfoot>
+            {% for item in cart.products.all %}
+
+            <tr>
+                <td>{{item}}
+                </td>
+                <td>{{item.price}}</td>
+                <td><a href="{% url 'update_carts_2' item.id %}" class="btn btn-primary">Sepetten çıkar </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+
+        </div></div></section>
+
+{% endif %}
+{% endblock %}

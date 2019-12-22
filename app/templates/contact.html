@@ -6,38 +6,48 @@
 {% block body %}
   <section id="about" class="section-bg">
       <div class="container">
+        <div class="row">
+         <div class="col-lg-6">
 
+             <br>
+             <div class="social-links">
+                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                  <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+             </div>
+           <address>
+              <br>
+              Tekstil Kent Koza Plaza B blok<br>
+              Kat:31 Esenler <br>
+              İstanbul/Türkiye <br>
+              <abbr title="Phone">Tel:</abbr> +90 212 438 5 438
+              <abbr title="Phone">Faks:</abbr> +90 212 438 5 444
+            </address>
+            <address>
+              <strong>E-posta:</strong><br>
+              <a href="mailto:#">info@ozlemkumas.com</a>
+            </address>
+
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6775.802484070662!2d28.86431700000001!3d41.069292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab001de7c8789%3A0x92a1fbf853b84c6!2sOru%C3%A7reis%2C%20Tekstilkent%20Cd%2C%2034235%20Esenler%2F%C4%B0stanbul%2C%20T%C3%BCrkiye!5e1!3m2!1str!2sus!4v1576525281869!5m2!1str!2sus"  width="360" height="280" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+         </div>
+
+            <div class="col-lg-6">
+                    <br><br><br><br>
             <div class="form">
-
+                <h2>Bize ulaşın</h2>
               <p></p>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
+              <form  method="post" >
+                       {% csrf_token %}
+                    {{form.as_p}}
 
-                <div id="sendmessage">İletişime geçmek için formu doldurun.</div>
-                <div id="errormessage"></div>
-
-                <div class="text-center"><button type="submit" title="Send Message">Gönder</button></div>
+              <button type="submit" class="btn pull-right  btn-lg lang" style="background-color:#d97340 !important; color:white;" id="sendMessageButton" key="sendbutton" >Gönder</button>
               </form>
             </div>
 
           </div>
 
-
+ </div>
 
   </section><!-- #footer -->
 {% endblock %}

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=1024">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
@@ -36,12 +36,7 @@
 
     <div id="topbar">
       <div class="container">
-        <div class="social-links">
-          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-        </div>
+
       </div>
     </div>
 
@@ -49,17 +44,28 @@
 
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <h1 class="text-light"><a href="#intro" class="scrollto"><span>Özlem Kumaş</span></a></h1>
+              <img src="{% static 'img/logo-2.jpg' %}" style="width:200px; height:200px;" alt="">
         <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#intro">Ana Sayfa</a></li>
+          <li class="active"><a href="{% url 'index' %}">Ana Sayfa</a></li>
           <li><a href="{% url 'about' %}">Hakkımızda</a></li>
           <li><a href="{% url 'products' %}">Ürünler</a></li>
-          <li><a href="{% url 'contact' %}">İletişim</a></li>
+          <li><a href="{% url 'upholstery' %}">Döşemelik</a></li>
+          <li><a href="{% url 'stock_service' %}">Stok Servis</a></li>
+          <li><a href="{% url 'contact' %}">İLETİŞİM</a></li>
+          {% if  user.is_authenticated %}
+
+          <li><a href="{% url 'carts' %}">Sepet <span class="badge"> {% if not request.session.items_total %} 0 {% else %} {{request.session.items_total }} {% endif %}</span> </a></li>
+          {% endif %}
+          {% if not user.is_authenticated %}
+          <li><a href="{% url 'login' %}">GİRİŞ yap</a></li>
+          <li><a href="{% url 'signup' %}">Kayıt Ol</a></li>
+          {% endif %}
         </ul>
+
       </nav><!-- .main-nav -->
 
     </div>

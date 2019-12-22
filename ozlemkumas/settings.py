@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django.contrib.request',
     'app',
+    'product',
+    'cart',
 
 ]
 
@@ -73,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -148,5 +152,9 @@ LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ardasoylu39@gmail.com'
-EMAIL_HOST_PASSWORD = 'Kayra2016    '
+EMAIL_HOST_PASSWORD = 'Kayra2016'
 EMAIL_PORT = 587
+
+AUTH_USER_MODEL = 'app.ExtendedUser'
+MEDIA_URL = 'static/img/products/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/img/products/')
