@@ -65,10 +65,6 @@
           <li><a href="{% url 'upholstery' %}">Döşemelik</a></li>
           <li><a href="{% url 'stock_service' %}">Stok Servis</a></li>
           <li><a href="{% url 'contact' %}">İLETİŞİM</a></li>
-          {% if not user.is_authenticated %}
-          <li><a href="{% url 'login' %}"> GİRİŞ yap</a></li>
-          <li><a href="{% url 'signup' %}">Kayıt Ol</a></li>
-          {% endif %}
         </ul>
 
       </nav><!-- .main-nav -->
