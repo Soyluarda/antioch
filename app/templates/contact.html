@@ -4,12 +4,12 @@
 {% endblock %}
 
 {% block body %}
-  <section id="about" class="section-bg">
+  <section id="about" class="section-bg" style="background-color:white;">
       <div class="container">
         <div class="row">
          <div class="col-lg-6">
-
              <br>
+             <br><br>
              <div class="social-links">
                   <a href="#" class="twitter"><i class="fa fa-twitter"> &nbsp;&nbsp;</i></a>
                   <a href="#" class="facebook"><i class="fa fa-facebook"> &nbsp;&nbsp;</i></a>
@@ -33,14 +33,12 @@
          </div>
 
             <div class="col-lg-6">
-                    <br><br><br><br>
+                    <br><br>
             <div class="form">
                 <h2>Bize ulaşın</h2>
-              <p></p>
               <form  method="post" >
                        {% csrf_token %}
                     {{form.as_p}}
-
               <button type="submit" class="btn pull-right  btn-lg lang" style="background-color:#d97340 !important; color:white;" id="sendMessageButton" key="sendbutton" >Gönder</button>
               </form>
             </div>

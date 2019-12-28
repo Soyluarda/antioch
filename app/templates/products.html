@@ -902,7 +902,7 @@ div.sku strong{
 {% endblock %}
 
 {% block body %}
-<body id="page-top" style="background-color:#f5f8fd;">
+<body id="page-top" style="background-color:white;">
 
     <div id="topbar">
       <div class="container">
@@ -910,9 +910,8 @@ div.sku strong{
     <div class="container">
 
     </div>
-  </header><!-- #header -->
 
-<section id="about" class="section-bg">
+<section id="about" class="section-bg" style="background-color:white;">
 
 <div class="cart-icon-bottom">
     <label style="font-size:20px; margin-left:25px; margin-top:-5px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
@@ -920,13 +919,18 @@ div.sku strong{
 
 
 <div class="container">
-                {% if not user.is_authenticated %}
+
+                    {% if not user.is_authenticated %}
+    <br><br><br><br><br>
                     <div class="alert alert-info" role="alert">
                         Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
                     </div>
 
                 {% endif %}
         <div class="row">
+
+
+
              {% for x in products %}
             <div class="product">
     <div class="info-large">
