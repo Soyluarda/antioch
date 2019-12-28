@@ -148,6 +148,15 @@ LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
     'register',
     'change_password'
 ]
+AUTH_PASSWORD_VALIDATORS = [
+
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+
+]
+
+
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

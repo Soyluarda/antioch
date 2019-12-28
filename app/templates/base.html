@@ -39,6 +39,15 @@
 
       </div>
     </div>
+    {% if not user.is_authenticated %}
+
+        <div class="row nomargin" style="margin-left:75%;">
+              <ul>
+                  <a href="{% url 'signup' %}" > Kayıt ol<i class="fa fa-user"></i>&nbsp;&nbsp;</a>
+                <a href="{% url 'login' %}" >Giriş Yap<i class="fa fa-sign-in"></i></a>
+              </ul>
+        </div>
+              {% endif %}
 
     <div class="container">
 
@@ -57,7 +66,7 @@
           <li><a href="{% url 'stock_service' %}">Stok Servis</a></li>
           <li><a href="{% url 'contact' %}">İLETİŞİM</a></li>
           {% if not user.is_authenticated %}
-          <li><a href="{% url 'login' %}"> Giriş yap</a></li>
+          <li><a href="{% url 'login' %}"> GİRİŞ yap</a></li>
           <li><a href="{% url 'signup' %}">Kayıt Ol</a></li>
           {% endif %}
         </ul>

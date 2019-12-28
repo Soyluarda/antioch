@@ -915,17 +915,18 @@ div.sku strong{
 <section id="about" class="section-bg">
 
 <div class="cart-icon-bottom">
-    <label style="font-size:20px; margin-left:25px; margin-top:-5px;"> {% if not request.session.items_total %} 0 {% else %} {{request.session.items_total }} {% endif %}</label>
+    <label style="font-size:20px; margin-left:25px; margin-top:-5px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
 </div>
 
 
 <div class="container">
-    <div class="row">
+                {% if not user.is_authenticated %}
+                    <div class="alert alert-info" role="alert">
+                        Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
+                    </div>
 
-
-            {% if not user.is_authenticated %}
-                    arda burada
-            {% endif %}
+                {% endif %}
+        <div class="row">
              {% for x in products %}
             <div class="product">
     <div class="info-large">
