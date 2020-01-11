@@ -915,22 +915,99 @@ div.sku strong{
 
 <div class="cart-icon-bottom">
     <label style="font-size:20px; margin-left:25px; margin-top:-5px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
+
 </div>
 
 
 <div class="container">
-
+ <br><br><br><br><br>
                     {% if not user.is_authenticated %}
-    <br><br><br><br><br>
+
                     <div class="alert alert-info" role="alert">
                         Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
                     </div>
 
                 {% endif %}
+    <form action="{% url 'products' %}" method="post">
         <div class="row">
+                {% csrf_token %}
+                 <div class="form-group" style="width:15%;">
+                    <select class="form-control" name="desen" id="exampleFormControlSelect1">
+                      <option selected disabled>Desen</option>
+                      <option>ekose</option>
+                      <option>Etnik</option>
+                      <option>Geometrik</option>
+                      <option>Baliksirti</option>
+                      <option>Kazayagi</option>
+                      <option>Duz</option>
+                      <option>Cizgi</option>
+                      <option>Tweed</option>
+                    </select>
+                </div>
+              <div class="form-group" style="width:15%;">
+                    <select class="form-control" name="renk" id="exampleFormControlSelect2">
+                      <option selected disabled>Renk</option>
+                      <option>Bej</option>
+                      <option>Siyah</option>
+                      <option>Beyaz</option>
+                      <option>mavi</option>
+                      <option>Lacivert</option>
+                      <option>Kahverengi</option>
+                      <option>Camel</option>
+                      <option>Tesil</option>
+                      <option>Haki</option>
+                      <option>Turuncu</option>
+                      <option>Pembe</option>
+                      <option>kirmizi</option>
+                      <option>Bordo</option>
+                      <option>Mor</option>
+                      <option>Sari</option>
+                      <option>Gri</option>
+                      <option>Antrasit</option>
+                      <option>Multicolor</option>
+                    </select>
+                </div>
+                <div class="form-group" style="width:15%;">
+                    <select class="form-control" name="karisim" id="exampleFormControlSelect3">
+                      <option selected disabled>Karisim</option>
+                                           <option>Akrilik</option>
+                      <option>Alpaka</option>
+                      <option>Angora</option>
+                      <option>Kasmir</option>
+                      <option>Pamuk</option>
+                      <option>Elastan</option>
+                      <option>Keten</option>
+                      <option>Polyamid</option>
+                      <option>Polyester</option>
+                      <option>Ipek</option>
+                      <option>Moher</option>
+                      <option>Yun</option>
+                      <option>Viskon</option>
+                    </select>
+                </div>
+                   <div class="form-group" style="width:15%;">
+                    <select class="form-control" name="agirlik" id="exampleFormControlSelect4">
+                      <option selected disabled>Ağırlık</option>
+                      <option>0-200 g/mtul</option>
+                      <option>201-400g/mtul</option>
+                      <option>401-600g/mtul</option>
+                      <option>600+ g/mtul</option>
+                    </select>
+                </div>
+                   <div class="form-group" style="width:10%;">
+                    <select class="form-control" name="siparis" id="exampleFormControlSelect5">
+                      <option selected disabled>Min. Sipariş</option>
+                      <option>1-100</option>
+                      <option>101-300</option>
+                      <option>301-500</option>
+                      <option>500+</option>
+                    </select>
+                </div>
+                <input type="submit" value="Filtrele" class="btn btn-info" style="height:50%;">
+        </div>
+    </form>
 
-
-
+    <div class="row">
              {% for x in products %}
             <div class="product">
     <div class="info-large">

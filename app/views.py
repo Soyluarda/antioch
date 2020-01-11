@@ -88,8 +88,25 @@ def products(request):
             cart_list.append(x.id)
         context = {'cart':cart}
 
-
+    query = request.POST
     products = Product.objects.all()
+
+    if query:
+        product = Product.objects.all()
+        if request.POST.get('desen'):
+            product = product.filter(desen=query['desen'])
+        if request.POST.get('renk'):
+            product = product.filter(renk=query['renk'])
+        if request.POST.get('agirlik'):
+            product = product.filter(agirlik=query['agirlik'])
+        if request.POST.get('karisim'):
+            product = product.filter(karisim=query['karisim'])
+        if request.POST.get('siparis'):
+            product = product.filter(karisim=query['siparis'])
+
+
+        products = product
+
     return render(request,'products.html',{'products':products,'cart':cart_list})
 
 
