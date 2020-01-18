@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-
 {% endblock %}
 
 {% block body %}
-
-
 
 
 <section id="about" class="section-bg">
@@ -37,7 +33,7 @@
                 <tr>
 
                     <td colspan="10"><strong>Toplam:{{cart.total}}</strong></td>
-                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparişi Tamamla </button></form></td>
+                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparisi Tamamla </button></form></td>
                 </tr>
             </tfoot>
             {% for item in cart.products.all %}
@@ -46,9 +42,9 @@
                 <td colspan="2">{% for x in details.values %} {% if x.id == item.id %}
                  <strong>Desen:</strong>{{x.desen}}<br>
                 <strong>Renk:</strong>{{x.renk}}<br>
-                <strong>Karışım:</strong>{{x.karisim}}<br>
-                <strong>Ağırlık:</strong>{{x.agirlik}}<br>
-                <strong>Sipariş miktarı:</strong>{{x.siparis}}<br>
+                <strong>Karisim:</strong>{{x.karisim}}<br>
+                <strong>Agirlik:</strong>{{x.agirlik}}<br>
+                <strong>Siparis miktarı:</strong>{{x.siparis}}<br>
                 {% endif %}
 
                     {% endfor %}</td>
@@ -115,7 +111,7 @@
                 </div>
                    <div class="form-group" style="width:18%;">
                     <select class="form-control" name="agirlik" id="exampleFormControlSelect4">
-                      <option selected disabled>Ağırlık</option>
+                      <option selected disabled>Agirlik</option>
                       <option>0-200 g/mtul</option>
                       <option>201-400g/mtul</option>
                       <option>401-600g/mtul</option>
@@ -124,7 +120,7 @@
                 </div>
                    <div class="form-group" style="width:27%;">
                     <select class="form-control" name="siparis" id="exampleFormControlSelect5">
-                      <option selected disabled>Min. Sipariş</option>
+                      <option selected disabled>Min. Siparis</option>
                       <option>1-100</option>
                       <option>101-300</option>
                       <option>301-500</option>
@@ -133,11 +129,11 @@
                 </div>
         </div>
     </td>
-                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Siparişi Onayla</button></td>
+                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Siparisi Onayla</button></td>
 
                     </form>
 
-                <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">Sepetten çıkar </a></td>
+                <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">Sepetten cikar </a></td>
             </tr>
 
             {% endfor %}
