@@ -36,10 +36,10 @@
                     <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparisi Tamamla </button></form></td>
                 </tr>
             </tfoot>
-            {% for item in cart.products.all %}
+            {% for item in cart.products.all|safe %}
             <tr>
                 <td colspan="1">{{item}}
-                <td colspan="2">{% for x in details.values %} {% if x.id == item.id %}
+                <td colspan="2">{% for x in details.values|safe %} {% if x.id == item.id %}
                  <strong>Desen:</strong>{{x.desen}}<br>
                 <strong>Renk:</strong>{{x.renk}}<br>
                 <strong>Karisim:</strong>{{x.karisim}}<br>
