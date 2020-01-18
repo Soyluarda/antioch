@@ -1,3 +1,13 @@
 merhaba <strong>{{ kişi }}</strong> size bir mesaj iletti <br>
 istenen ürünler listesi: <strong>{{ürün }}</strong><br>
 
+
+
+{% for y in siparis.values %}
+{{y.desen}}
+{{y.renk}}
+{{y.agirlik}}
+{{y.siparis}}
+{{y.karisim}}
+{% endfor %}
+

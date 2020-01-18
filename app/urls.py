@@ -13,6 +13,7 @@ urlpatterns = [
     path('sepet', carts,name='carts'),
     re_path('sepet/(?P<slug>[\w-]+)/$', update_carts,name='update_carts'),
     re_path('sepet2/(?P<slug>[\w-]+)/$', update_carts_2,name='update_carts_2'),
+    re_path('sepet3/$', update_carts_3, name='update_carts_3'),
     path('upholstery', upholstery,name='upholstery'),
     path('stok', stock_service,name='stock_service'),
     path('iletisim', contact, name='contact'),

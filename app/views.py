@@ -112,7 +112,6 @@ def products(request):
 
 
 def carts(request):
-
     template = 'cart.html'
     try:
         the_id = request.session['cart_id']
@@ -120,16 +119,19 @@ def carts(request):
         the_id = None
     if the_id:
         cart = Cart.objects.get(id=the_id)
-        context = {'cart':cart}
+        context = {'cart':cart, 'details':json.loads(cart.details)}
+        print("arda")
+
         if request.method == "POST":
-            istekler = []
+            istekler = {}
             for x in cart.products.all():
-                istekler.append(x.name)
+                istekler[int(x.id)] = x.name
             user = ExtendedUser.objects.filter(email=request.user.email).all()
 
-            msg_plain = render_to_string('email.txt', {'ürün': "arda"})
-            msg_html = render_to_string('email.html', {'ürün': istekler, 'kişi': user[0].username})
-            msg_html2 = render_to_string('email2.html', {'ürün': istekler, 'kişi': user[0].username})
+            print(istekler)
+
+            msg_html = render_to_string('email.html', {'ürün': istekler, 'kişi': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html2 = render_to_string('email2.html', {'ürün': istekler, 'kişi': user[0].username, 'siparis':json.loads(cart.details)})
             send_mail("Yeni bir sipariş var ",
                       "Sipariş!",
                       "ardasoylu39@gmail.com",
@@ -142,7 +144,7 @@ def carts(request):
                       [user[0].email],
                       html_message=msg_html2,
                       )
-           # cart.products.all().delete()
+
             message = "siparişiniz mailiniz gönderildi"
             return render(request,template,{'message':message})
 
@@ -150,15 +152,12 @@ def carts(request):
         message = "Alışveriş listeniz boş"
         context = {"empty":True,"emptymessage":message}
 
-
-
-
     return render(request,template,context)
 
 
 
 def update_carts(request,slug):
-    request.session.set_expiry(900)
+    request.session.set_expiry(9000)
     try:
         the_id = request.session['cart_id']
     except:
@@ -194,7 +193,7 @@ def update_carts(request,slug):
 
 
 def update_carts_2(request,slug):
-    request.session.set_expiry(900)
+    request.session.set_expiry(9000)
     try:
         the_id = request.session['cart_id']
     except:
@@ -224,6 +223,34 @@ def update_carts_2(request,slug):
 
     request.session['items_total'] = cart.products.count()
     cart.total = new_total
+    cart.save()
+    return HttpResponseRedirect(reverse('products'))
+
+import json
+
+def update_carts_3(request):
+    request.session.set_expiry(9000)
+    try:
+        the_id = request.session['cart_id']
+    except:
+        new_cart = Cart()
+        new_cart.save()
+        request.session['cart_id'] = new_cart.id
+        the_id = new_cart.id
+    cart = Cart.objects.get(id=the_id)
+
+    if request.method == "POST":
+        cart = Cart.objects.filter(id=the_id).all()
+        for x in cart:
+            details = json.loads(str(x.details))
+            if request.POST.get('urun_id') in details.keys():
+                details[int(Product.objects.filter(id=request.POST.get('urun_id'))[0].id)] = {"id":int(request.POST.get('urun_id')), "desen":request.POST.get('desen'),"renk": request.POST.get('renk'),"karisim": request.POST.get('karisim'), "agirlik": request.POST.get('agirlik'),"siparis": request.POST.get('siparis')}
+            else:
+                details[int(Product.objects.filter(id=request.POST.get('urun_id'))[0].id)] = {"id":int(request.POST.get('urun_id')),"desen":request.POST.get('desen'),"renk": request.POST.get('renk'),"karisim": request.POST.get('karisim'), "agirlik": request.POST.get('agirlik'),"siparis": request.POST.get('siparis')}
+
+            cart.update(details=json.dumps(details))
+        return HttpResponseRedirect(reverse('carts'))
+
     cart.save()
     return HttpResponseRedirect(reverse('carts'))
 

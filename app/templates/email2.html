@@ -1,5 +1,30 @@
 merhaba <strong>{{ kişi }}</strong> yeni bir sipariş verdiniz <br>
-istenen ürünler listesi: <strong>{{ürün }}</strong><br>
+istenen ürünler listesi:<br>
+
+
+<br>
+ istenen ürünler sırasıyla;
+<br><br>
+
+{% for z in ürün.values %}
+ {{z}}, <br>
+{% endfor %}
+<br><br>
+
+Detaylar ürün sırasına göre listelenmiştir. <br><br>
+
+{% for x in ürün %}
+{% for y in siparis.values %}
+{% if y.id == x %}
+Desen:{{y.desen}},
+Renk:{{y.renk}} ,
+Ağırlık:{{y.agirlik}} ,
+Sipariş:{{y.siparis}} ,
+Karışım:{{y.karisim}} <br>
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+<br><br>
 
 Eğer siparişi siz vermediyseniz ya da iptal etmek istiyorsanız lütfen iletişime geçin.
-

@@ -13,7 +13,7 @@
       <div class="container">
         <div class="row">
 
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-12">
         {% if empty %}
 
         <h1>{{emptymessage}}</h1>
@@ -28,24 +28,117 @@
         <table class="table">
             <thead>
                 <th>Ürün</th>
+                <th colspan="2">Detay</th>
                 <th>Fiyat</th>
+                <th>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Seçim</th>
             </thead>
             <tfoot>
                 <tr>
-                    <td>
-                    </td>
-                    <td>Toplam:{{cart.total}}</td>
-                    <td><form action="" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Sipariş ver </button></form></td>
+
+                    <td colspan="10"><strong>Toplam:{{cart.total}}</strong></td>
+                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparişi Tamamla </button></form></td>
                 </tr>
             </tfoot>
             {% for item in cart.products.all %}
-
             <tr>
-                <td>{{item}}
+                <td colspan="1">{{item}}
+                <td colspan="2">{% for x in details.values %} {% if x.id == item.id %}
+                 <strong>Desen:</strong>{{x.desen}}<br>
+                <strong>Renk:</strong>{{x.renk}}<br>
+                <strong>Karışım:</strong>{{x.karisim}}<br>
+                <strong>Ağırlık:</strong>{{x.agirlik}}<br>
+                <strong>Sipariş miktarı:</strong>{{x.siparis}}<br>
+                {% endif %}
+
+                    {% endfor %}</td>
                 </td>
-                <td>{{item.price}}</td>
-                <td><a href="{% url 'update_carts_2' item.id %}" class="btn btn-primary">Sepetten çıkar </a></td>
+                <td>{{item.price}} TL</td>
+                <td>
+                    <form action="{% url 'update_carts_3' %}" method="post">
+                <div class="row">
+                {% csrf_token %}
+                 <div class="form-group" style="width:18%;">
+                    <select class="form-control" name="desen" id="exampleFormControlSelect1">
+                      <option selected disabled>Desen</option>
+                      <option>ekose</option>
+                      <option>Etnik</option>
+                      <option>Geometrik</option>
+                      <option>Baliksirti</option>
+                      <option>Kazayagi</option>
+                      <option>Duz</option>
+                      <option>Cizgi</option>
+                      <option>Tweed</option>
+                    </select>
+                </div>
+
+              <div class="form-group" style="width:15%;">
+                    <select class="form-control" name="renk" id="exampleFormControlSelect2">
+                      <option selected disabled>Renk</option>
+                      <option>Bej</option>
+                      <option>Siyah</option>
+                      <option>Beyaz</option>
+                      <option>mavi</option>
+                      <option>Lacivert</option>
+                      <option>Kahverengi</option>
+                      <option>Camel</option>
+                      <option>Tesil</option>
+                      <option>Haki</option>
+                      <option>Turuncu</option>
+                      <option>Pembe</option>
+                      <option>kirmizi</option>
+                      <option>Bordo</option>
+                      <option>Mor</option>
+                      <option>Sari</option>
+                      <option>Gri</option>
+                      <option>Antrasit</option>
+                      <option>Multicolor</option>
+                    </select>
+                </div>
+                <div class="form-group" style="width:20%;">
+                    <select class="form-control" name="karisim" id="exampleFormControlSelect3">
+                      <option selected disabled>Karisim</option>
+                                           <option>Akrilik</option>
+                      <option>Alpaka</option>
+                      <option>Angora</option>
+                      <option>Kasmir</option>
+                      <option>Pamuk</option>
+                      <option>Elastan</option>
+                      <option>Keten</option>
+                      <option>Polyamid</option>
+                      <option>Polyester</option>
+                      <option>Ipek</option>
+                      <option>Moher</option>
+                      <option>Yun</option>
+                      <option>Viskon</option>
+                    </select>
+                </div>
+                   <div class="form-group" style="width:18%;">
+                    <select class="form-control" name="agirlik" id="exampleFormControlSelect4">
+                      <option selected disabled>Ağırlık</option>
+                      <option>0-200 g/mtul</option>
+                      <option>201-400g/mtul</option>
+                      <option>401-600g/mtul</option>
+                      <option>600+ g/mtul</option>
+                    </select>
+                </div>
+                   <div class="form-group" style="width:27%;">
+                    <select class="form-control" name="siparis" id="exampleFormControlSelect5">
+                      <option selected disabled>Min. Sipariş</option>
+                      <option>1-100</option>
+                      <option>101-300</option>
+                      <option>301-500</option>
+                      <option>500+</option>
+                    </select>
+                </div>
+        </div>
+    </td>
+                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Siparişi Onayla</button></td>
+
+                    </form>
+
+                <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">Sepetten çıkar </a></td>
             </tr>
+
             {% endfor %}
         </table>
 
