@@ -120,7 +120,6 @@ def carts(request):
     if the_id:
         cart = Cart.objects.get(id=the_id)
         context = {'cart':cart, 'details':json.loads(cart.details)}
-        print("arda")
 
         if request.method == "POST":
             istekler = {}
@@ -130,26 +129,26 @@ def carts(request):
 
             print(istekler)
 
-            msg_html = render_to_string('email.html', {'ürün': istekler, 'kişi': user[0].username, 'siparis':json.loads(cart.details)})
-            msg_html2 = render_to_string('email2.html', {'ürün': istekler, 'kişi': user[0].username, 'siparis':json.loads(cart.details)})
-            send_mail("Yeni bir sipariş var ",
-                      "Sipariş!",
+            msg_html = render_to_string('email.html', {'urun': istekler, 'kisi': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html2 = render_to_string('email2.html', {'urun': istekler, 'kisi': user[0].username, 'siparis':json.loads(cart.details)})
+            send_mail("Yeni bir siparis var ",
+                      "Siparis!",
                       "ardasoylu39@gmail.com",
                       ["ardasoylu39@gmail.com"],
                       html_message=msg_html,
                       )
-            send_mail("Yeni bir sipariş verdiniz ",
-                      "Sipariş!",
+            send_mail("Yeni bir siparis verdiniz ",
+                      "Siparis!",
                       "ardasoylu39@gmail.com",
                       [user[0].email],
                       html_message=msg_html2,
                       )
 
-            message = "siparişiniz mailiniz gönderildi"
+            message = "Siparisiniz mailiniz gonderildi."
             return render(request,template,{'message':message})
 
     else:
-        message = "Alışveriş listeniz boş"
+        message = "Alisveris listeniz bos"
         context = {"empty":True,"emptymessage":message}
 
     return render(request,template,context)
