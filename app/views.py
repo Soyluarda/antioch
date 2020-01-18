@@ -119,7 +119,7 @@ def carts(request):
         the_id = None
     if the_id:
         cart = Cart.objects.get(id=the_id)
-        context = {'cart':cart, 'details':json.loads(cart.details).decode('utf-8')}
+        context = {'cart':cart, 'details':json.loads(cart.details).unicode('utf-8')}
 
         if request.method == "POST":
             istekler = {}
