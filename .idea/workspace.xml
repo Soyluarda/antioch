@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/cart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+            <state relative-caret-position="668">
+              <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
               <folding>
                 <element signature="e#536#542#0" expanded="true" />
                 <element signature="e#542#548#0" expanded="true" />
@@ -41,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="125" column="41" lean-forward="true" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="41" />
+            <state relative-caret-position="589">
+              <caret line="121" column="74" selection-start-line="121" selection-start-column="74" selection-end-line="121" selection-end-column="74" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
               </folding>
@@ -169,10 +169,10 @@
       <find>logo</find>
       <find>sipariş ver</find>
       <find>update_carts_3</find>
-      <find>900</find>
       <find>ğ</find>
       <find>ş</find>
       <find>ı</find>
+      <find>900</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -219,8 +219,8 @@
         <option value="$PROJECT_DIR$/cart/models.py" />
         <option value="$PROJECT_DIR$/app/templates/email.html" />
         <option value="$PROJECT_DIR$/app/templates/email2.html" />
-        <option value="$PROJECT_DIR$/app/views.py" />
         <option value="$PROJECT_DIR$/app/templates/cart.html" />
+        <option value="$PROJECT_DIR$/app/views.py" />
       </list>
     </option>
   </component>
@@ -651,8 +651,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="125" column="41" lean-forward="true" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="41" />
+        <state relative-caret-position="589">
+          <caret line="121" column="74" selection-start-line="121" selection-start-column="74" selection-end-line="121" selection-end-column="74" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
@@ -661,8 +661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/cart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+        <state relative-caret-position="668">
+          <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
           <folding>
             <element signature="e#536#542#0" expanded="true" />
             <element signature="e#542#548#0" expanded="true" />

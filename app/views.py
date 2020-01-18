@@ -17,7 +17,9 @@ from product.models import Product
 from django.urls import reverse
 
 from cart.models import Cart
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 def index(request):
