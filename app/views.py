@@ -18,9 +18,6 @@ from product.models import Product
 from django.urls import reverse
 
 from cart.models import Cart
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 
 def index(request):
@@ -122,7 +119,9 @@ def carts(request):
         the_id = None
     if the_id:
         cart = Cart.objects.get(id=the_id)
-        context = {'cart':cart, 'details':json.loads(cart.details).unicode('utf-8')}
+        context = {'cart':cart, 'details':cart.details}
+
+        print(context)
 
         if request.method == "POST":
             istekler = {}
