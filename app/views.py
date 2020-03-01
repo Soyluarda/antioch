@@ -67,7 +67,6 @@ def contact(request):
 
 
 def upholstery(request):
-    print("inside.")
     cart_list = []
     try:
         the_id = request.session['cart_id']
