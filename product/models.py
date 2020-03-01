@@ -22,7 +22,7 @@ class Product(models.Model):
         ('Lacivert', 'Lacivert'),
         ('Kahverengi', 'Kahverengi'),
         ('Camel', 'Camel'),
-        ('Tesil', 'Tesil'),
+        ('Yesil', 'Yesil'),
         ('Haki', 'Haki'),
         ('Turuncu', 'Turuncu'),
         ('Pembe', 'Pembe'),
@@ -78,3 +78,30 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Upholstery(models.Model):
+    RENK = [
+        ('Bej', 'Bej'),
+        ('Siyah', 'Siyah'),
+        ('Beyaz', 'Beyaz'),
+        ('Mavi', 'Mavi'),
+        ('Lacivert', 'Lacivert'),
+        ('Kahverengi', 'Kahverengi'),
+        ('Camel', 'Camel'),
+        ('Yesil', 'Yesil'),
+        ('Haki', 'Haki'),
+        ('Turuncu', 'Turuncu'),
+        ('Pembe', 'Pembe'),
+        ('Kirmizi', 'Kirmizi'),
+        ('Bordo', 'Bordo'),
+        ('Mor', 'Mor'),
+        ('Sari', 'Sari'),
+        ('Gri', 'Gri'),
+        ('Antrasit', 'Antrasit'),
+        ('Multicolor', 'Multicolor'),
+    ]
+    name = models.CharField(max_length=100)
+    img = models.ImageField()
+    renk = models.CharField(max_length=100, null=True, choices=RENK, blank=True)
+
+    def __str__(self):
+        return self.name

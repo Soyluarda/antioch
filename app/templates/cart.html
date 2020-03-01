@@ -9,7 +9,6 @@
 
 {% block body %}
 
-
 <section id="about" class="section-bg">
       <div class="container">
         <div class="row">
@@ -28,6 +27,7 @@
         {% else %}
         <table class="table">
             <thead>
+                <th></th>
                 <th>Ürün</th>
                 <th colspan="2">Detay</th>
                 <th>Fiyat</th>
@@ -37,14 +37,15 @@
                 <tr>
 
                     <td colspan="10"><strong>Toplam:{{cart.total}}</strong></td>
-                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparisi Tamamla </button></form></td>
+                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparisi Tamamla</button></form></td>
                 </tr>
             </tfoot>
             {% for item in cart.products.all %}
             <tr>
+                <td><img src="{{item.img.url}}" alt=""  style="width:75px; heigh:75px;"/></td>
                 <td colspan="1">{{item}}
-                <td colspan="2">{% for x in details.values %} {% if x.id == item.id %}
-                 <strong>Desen:</strong>{{x.desen}}<br>
+                <td colspan="2">{% for x in details.values %} {{item.id}} {% if x.id == item.id %}
+                <strong>Desen:</strong>{{x.desen}}<br>
                 <strong>Renk:</strong>{{x.renk}}<br>
                 <strong>Karisim:</strong>{{x.karisim}}<br>
                 <strong>Agirlik:</strong>{{x.agirlik}}<br>
@@ -58,7 +59,7 @@
                     <form action="{% url 'update_carts_3' %}" method="post">
                 <div class="row">
                 {% csrf_token %}
-                 <div class="form-group" style="width:18%;">
+                 <div class="form-group" style="width:150px;">
                     <select class="form-control" name="desen" id="exampleFormControlSelect1">
                       <option selected disabled>Desen</option>
                       <option>ekose</option>
@@ -70,9 +71,11 @@
                       <option>Cizgi</option>
                       <option>Tweed</option>
                     </select>
-                </div>
+                 </div></div>
 
-              <div class="form-group" style="width:15%;">
+                        <div class="row">
+
+              <div class="form-group" style="width:150px;">
                     <select class="form-control" name="renk" id="exampleFormControlSelect2">
                       <option selected disabled>Renk</option>
                       <option>Bej</option>
@@ -95,10 +98,12 @@
                       <option>Multicolor</option>
                     </select>
                 </div>
-                <div class="form-group" style="width:20%;">
+                        </div>
+                        <div class="row">
+                <div class="form-group" style="width:150px;">
                     <select class="form-control" name="karisim" id="exampleFormControlSelect3">
                       <option selected disabled>Karisim</option>
-                                           <option>Akrilik</option>
+                      <option>Akrilik</option>
                       <option>Alpaka</option>
                       <option>Angora</option>
                       <option>Kasmir</option>
@@ -113,7 +118,9 @@
                       <option>Viskon</option>
                     </select>
                 </div>
-                   <div class="form-group" style="width:18%;">
+                            </div>
+                        <div class="row">
+                   <div class="form-group" style="width:150px;">
                     <select class="form-control" name="agirlik" id="exampleFormControlSelect4">
                       <option selected disabled>Agirlik</option>
                       <option>0-200 g/mtul</option>
@@ -122,7 +129,9 @@
                       <option>600+ g/mtul</option>
                     </select>
                 </div>
-                   <div class="form-group" style="width:27%;">
+                            </div>
+                        <div class="row">
+                   <div class="form-group" style="width:150px;">
                     <select class="form-control" name="siparis" id="exampleFormControlSelect5">
                       <option selected disabled>Min. Siparis</option>
                       <option>1-100</option>
@@ -131,13 +140,35 @@
                       <option>500+</option>
                     </select>
                 </div>
+                            </div>
         </div>
     </td>
-                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Siparisi Onayla</button></td>
+                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Onayla</button></td>
 
                     </form>
 
-                <td colspan="8"><a href="   " class="btn btn-danger">Sepetten cikar </a></td>
+                <td colspan="8"><a href="" class="btn btn-danger">Sil</a></td>
+            </tr>
+
+            {% endfor %}
+             {% for item in cart.upholsteries.all %}
+            <tr>
+                <td><img src="{{item.img.url}}" alt=""  style="width:75px; heigh:75px;"/></td>
+                <td colspan="1">{{item}}
+                <td colspan="2"></td>
+                </td>
+                <td>{{item.price}} TL</td>
+                <td>
+                    <form action="{% url 'update_carts_3' %}" method="post">
+                <div class="row">
+                {% csrf_token %}
+                </div>
+    </td>
+                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Onayla</button></td>
+
+                    </form>
+
+                <td colspan="8"><a href="" class="btn btn-danger">Sil</a></td>
             </tr>
 
             {% endfor %}

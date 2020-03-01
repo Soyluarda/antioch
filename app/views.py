@@ -13,7 +13,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from app.models import ExtendedUser
 from django.core.mail import EmailMessage,send_mail
-from product.models import Product
+from product.models import Product, Upholstery
 # Create your views here.
 from django.urls import reverse
 
@@ -66,11 +66,27 @@ def contact(request):
     return render(request,'contact.html',context)
 
 
-def products(request):
-    return render(request,'products.html')
-
 def upholstery(request):
-    return render(request,'upholstery.html')
+    print("inside.")
+    cart_list = []
+    try:
+        the_id = request.session['cart_id']
+    except:
+        the_id = None
+    if the_id:
+        cart = Cart.objects.get(id=the_id)
+        for x in cart.upholsteries.all():
+            cart_list.append(x.id)
+        context = {'cart': cart}
+
+    query = request.GET
+    upholsteries = Upholstery.objects.all()
+
+    if query:
+        if query['renk'] != "Hepsi":
+            upholsteries = Upholstery.objects.filter(renk=query['renk']).all()
+
+    return render(request, 'upholstery.html', {'upholstery': upholsteries, 'cart': cart_list})
 
 def stock_service(request):
     return render(request,'stock_service.html')
@@ -186,7 +202,7 @@ def update_carts(request,slug):
         new_total += float(item.price)
 
 
-    request.session['items_total'] = cart.products.count()
+    request.session['items_total'] = cart.upholsteries.count() + cart.products.count()
 
     cart.total = new_total
     cart.save()
@@ -222,7 +238,7 @@ def update_carts_2(request,slug):
         new_total += float(item.price)
 
 
-    request.session['items_total'] = cart.products.count()
+    request.session['items_total'] = cart.upholsteries.count() + cart.products.count()
     cart.total = new_total
     cart.save()
     return HttpResponseRedirect(reverse('products'))
@@ -255,6 +271,67 @@ def update_carts_3(request):
     cart.save()
     return HttpResponseRedirect(reverse('carts'))
 
+
+
+
+
+def update_carts_up(request,slug):
+    request.session.set_expiry(9000)
+    try:
+        the_id = request.session['cart_id']
+    except:
+        new_cart = Cart()
+        new_cart.save()
+        request.session['cart_id'] = new_cart.id
+        the_id = new_cart.id
+
+
+    cart = Cart.objects.get(id=the_id)
+    try:
+        upholsteries = Upholstery.objects.get(id=slug)
+    except Upholstery.DoesNotExist:
+        pass
+    except:
+        pass
+    if not upholsteries in cart.upholsteries.all():
+        cart.upholsteries.add(upholsteries)
+    else:
+        cart.upholsteries.remove(upholsteries)
+
+
+
+    request.session['items_total'] = cart.upholsteries.count() + cart.products.count()
+
+    cart.save()
+    return HttpResponseRedirect(reverse('upholstery'))
+
+
+def update_carts_up_2(request,slug):
+    request.session.set_expiry(9000)
+    try:
+        the_id = request.session['cart_id']
+    except:
+        new_cart = Cart()
+        new_cart.save()
+        request.session['cart_id'] = new_cart.id
+        the_id = new_cart.id
+
+
+    cart = Cart.objects.get(id=the_id)
+    try:
+        upholsteries = Upholstery.objects.get(id=slug)
+    except Product.DoesNotExist:
+        pass
+    except:
+        pass
+    if not upholsteries in cart.upholsteries.all():
+        cart.upholsteries.add(upholsteries)
+    else:
+        cart.upholsteries.remove(upholsteries)
+
+    request.session['items_total'] = cart.upholsteries.count() + cart.products.count()
+    cart.save()
+    return HttpResponseRedirect(reverse('upholstery'))
 
 
 
