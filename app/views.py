@@ -16,6 +16,8 @@ from django.core.mail import EmailMessage,send_mail
 from product.models import Product, Upholstery
 # Create your views here.
 from django.urls import reverse
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from cart.models import Cart
 
@@ -125,7 +127,7 @@ def products(request):
     return render(request,'products.html',{'products':products,'cart':cart_list})
 
 
-
+@login_required
 def carts(request):
     template = 'cart.html'
     try:
@@ -146,8 +148,8 @@ def carts(request):
 
             print(istekler)
 
-            msg_html = render_to_string('email.html', {'urun': istekler, 'kisi': user[0].username, 'siparis':json.loads(cart.details)})
-            msg_html2 = render_to_string('email2.html', {'urun': istekler, 'kisi': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html = render_to_string('email.html', {'urun': istekler, 'alıcı': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html2 = render_to_string('email2.html', {'urun': istekler, 'alıcı': user[0].username, 'siparis':json.loads(cart.details)})
             send_mail("Yeni bir siparis var ",
                       "Siparis!",
                       "ardasoylu39@gmail.com",
@@ -161,11 +163,12 @@ def carts(request):
                       html_message=msg_html2,
                       )
 
-            message = "Siparisiniz mailiniz gonderildi."
-            return render(request,template,{'message':message})
+            messages.add_message(request, messages.SUCCESS, 'Siparişiniz mail adresinize gönderildi.')
+
+            return redirect('products')
 
     else:
-        message = "Alisveris listeniz bos"
+        message = "Alışveriş listeniz boş"
         context = {"empty":True,"emptymessage":message}
 
     return render(request,template,context)
@@ -342,7 +345,7 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate your blog account.'
+            mail_subject = 'Hesabınızı aktifleştirin.'
             message = render_to_string('registration/activate_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -355,7 +358,7 @@ def signup(request):
             )
             email.send()
 
-            return HttpResponse('Please confirm your email address to complete the registration')
+            return HttpResponse('Hesabınızı etkinleştirmek için lütfen mail adresinizi onaylayın.')
     else:
         form = SignupForm()
     return render(request, 'registration/register.html', {'form': form})
@@ -366,10 +369,10 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, 'Şifreniz başarıyla güncellendi.')
             return redirect('change_password')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Lütfen hatalara dikkat edin!')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'registration/accounts/password_change_form.html', {
@@ -388,4 +391,4 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('login')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return HttpResponse('Aktivasyon linki geçerli değil')

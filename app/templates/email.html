@@ -1,13 +1,20 @@
-merhaba <strong>{{ kişi }}</strong> size bir mesaj iletti <br>
-istenen ürünler listesi: <strong>{{ürün }}</strong><br>
+merhaba <strong>{{ alıcı }}</strong> size bir mesaj iletti <br>
+istenen ürünler listesi: <strong>{{ urun }}</strong><br>
 
 
 
 {% for y in siparis.values %}
+- Desen:
 {{y.desen}}
+Renk:
 {{y.renk}}
+Ağırlık:
 {{y.agirlik}}
+Sipariş:
 {{y.siparis}}
+Karışım:
 {{y.karisim}}
+-
+<br>
 {% endfor %}
 

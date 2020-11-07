@@ -995,14 +995,13 @@ img {
 
 
 <div class="container">
- <br><br><br><br><br>
-                    {% if not user.is_authenticated %}
+    {% if not user.is_authenticated %}
 
-                    <div class="alert alert-info" role="alert">
-                        Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
-                    </div>
+        <div class="alert alert-info" role="alert">
+            Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
+        </div>
 
-                {% endif %}
+    {% endif %}
 
      <div class="row">
       <form class="col-lg-12">

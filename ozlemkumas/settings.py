@@ -167,3 +167,4 @@ EMAIL_PORT = 587
 AUTH_USER_MODEL = 'app.ExtendedUser'
 MEDIA_URL = 'static/img/products/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/img/products/')
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
