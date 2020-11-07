@@ -136,20 +136,21 @@ def carts(request):
         the_id = None
     if the_id:
         cart = Cart.objects.get(id=the_id)
-        context = {'cart':cart, 'details':cart.details}
-
-        print(context)
-
+        det_ins = list(cart.products.all().values_list('id', flat=True))
+        det = json.loads(cart.details)
+        det_keys = map(int, list(det.keys()))
+        status = False
+        if set(det_ins).issubset(det_keys):
+            status = True
+        context = {'cart': cart, 'details': json.loads(cart.details), "status": status}
         if request.method == "POST":
             istekler = {}
             for x in cart.products.all():
                 istekler[int(x.id)] = x.name
             user = ExtendedUser.objects.filter(email=request.user.email).all()
 
-            print(istekler)
-
-            msg_html = render_to_string('email.html', {'urun': istekler, 'alıcı': user[0].username, 'siparis':json.loads(cart.details)})
-            msg_html2 = render_to_string('email2.html', {'urun': istekler, 'alıcı': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html = render_to_string('email.html', {'urun': istekler, 'alici': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html2 = render_to_string('email2.html', {'urun': istekler, 'alici': user[0].username, 'siparis':json.loads(cart.details)})
             send_mail("Yeni bir siparis var ",
                       "Siparis!",
                       "ardasoylu39@gmail.com",
@@ -164,12 +165,11 @@ def carts(request):
                       )
 
             messages.add_message(request, messages.SUCCESS, 'Siparişiniz mail adresinize gönderildi.')
-
             return redirect('products')
 
     else:
         message = "Alışveriş listeniz boş"
-        context = {"empty":True,"emptymessage":message}
+        context = {"empty": True, "emptymessage": message}
 
     return render(request,template,context)
 
@@ -272,9 +272,6 @@ def update_carts_3(request):
 
     cart.save()
     return HttpResponseRedirect(reverse('carts'))
-
-
-
 
 
 def update_carts_up(request,slug):

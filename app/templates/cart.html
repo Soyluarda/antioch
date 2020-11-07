@@ -3,8 +3,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-9">
-<META HTTP-EQUIV="Content-language" CONTENT="tr">
 {% endblock %}
 
 {% block body %}
@@ -31,20 +29,21 @@
                 <th>Ürün</th>
                 <th colspan="2">Detay</th>
                 <th>Fiyat</th>
-                <th>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Secim</th>
+                <th>Seçim</th>
             </thead>
             <tfoot>
                 <tr>
 
                     <td colspan="10"><strong>Toplam:{{cart.total}}</strong></td>
-                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit" class="btn btn-primary">Siparisi Tamamla</button></form></td>
+                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit"  class="btn btn-primary" {% if status == False %} disabled  {% endif %}>Siparişi Tamamla</button></form></td>
+
                 </tr>
             </tfoot>
             {% for item in cart.products.all %}
             <tr>
                 <td><img src="{{item.img.url}}" alt=""  style="width:75px; heigh:75px;"/></td>
                 <td colspan="1">{{item}}
-                <td colspan="2">{% for x in details.values %} {{item.id}} {% if x.id == item.id %}
+                <td colspan="2">{% for x in details.values %} {% if x.id == item.id %}
                 <strong>Desen:</strong>{{x.desen}}<br>
                 <strong>Renk:</strong>{{x.renk}}<br>
                 <strong>Karisim:</strong>{{x.karisim}}<br>
@@ -144,10 +143,8 @@
         </div>
     </td>
                 <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Onayla</button></td>
-
                     </form>
-
-                <td colspan="8"><a href="" class="btn btn-danger">Sil</a></td>
+                <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">Sil</a></td>
             </tr>
 
             {% endfor %}
@@ -155,20 +152,18 @@
             <tr>
                 <td><img src="{{item.img.url}}" alt=""  style="width:75px; heigh:75px;"/></td>
                 <td colspan="1">{{item}}
-                <td colspan="2"></td>
-                </td>
-                <td>{{item.price}} TL</td>
-                <td>
+                <td colspan="2">Standart</td>
+
+                <td colspan="">{{item.price}} TL</td>
+                <td colspan="2">Standart</td>
                     <form action="{% url 'update_carts_3' %}" method="post">
                 <div class="row">
                 {% csrf_token %}
                 </div>
     </td>
-                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Onayla</button></td>
-
                     </form>
 
-                <td colspan="8"><a href="" class="btn btn-danger">Sil</a></td>
+                <td colspan="8"><a href="{% url 'update_carts_up_2' item.id %}" class="btn btn-danger">Sil</a></td>
             </tr>
 
             {% endfor %}
@@ -177,7 +172,10 @@
 
     </div>
 
-        </div></div></section>
+        </div>
+    <label>* Siparişi tamamlamak için seçimli ürünleri onaylamanız gerekir.</label>
+    </div>
+</section>
 
 {% endif %}
 {% endblock %}
