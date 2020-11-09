@@ -136,15 +136,23 @@ def carts(request):
     if the_id:
         cart = Cart.objects.get(id=the_id)
         det_ins = list(cart.products.all().values_list('id', flat=True))
-        det = json.loads(cart.details)
+        if type(cart.details) != dict:
+            det = json.loads(cart.details)
+        else:
+            det = cart.details
+
+        if type(cart.details) != dict:
+            siparisler = json.loads(cart.details)
+        else:
+            siparisler = cart.details
+
         det_keys = map(int, list(det.keys()))
         status = False
         if set(det_ins).issubset(det_keys):
             status = True
-        context = {'cart': cart, 'details': json.loads(cart.details), "status": status}
+        context = {'cart': cart, 'details': siparisler, "status": status}
         if request.method == "POST":
             istekler = []
-            siparisler = json.loads(cart.details)
             dosemelik = []
             for x in cart.products.all():
                 istekler.append(x.name)
@@ -153,7 +161,7 @@ def carts(request):
                 dosemelik.append(y.name)
             user = ExtendedUser.objects.filter(email=request.user.email).all()
 
-            msg_html = render_to_string('email.html', {'urunler': istekler, 'alici': user[0].username, 'urunler': siparisler, 'dosemelik': dosemelik })
+            msg_html = render_to_string('email.html', {'urunler': istekler, 'alici': user[0].username, 'siparis': siparisler, 'dosemelik': dosemelik })
             msg_html2 = render_to_string('email2.html', {'urunler': istekler, 'alici': user[0].username, 'siparis': siparisler, 'dosemelik': dosemelik  })
             send_mail("Yeni bir siparis var ",
                       "Siparis!",
@@ -266,7 +274,12 @@ def update_carts_3(request):
     if request.method == "POST":
         cart = Cart.objects.filter(id=the_id).all()
         for x in cart:
-            details = json.loads(str(x.details))
+
+            if type(x.details) != dict:
+                details = json.loads(x.details)
+            else:
+                details = x.details
+
             if request.POST.get('urun_id') in details.keys():
                 details[int(Product.objects.filter(id=request.POST.get('urun_id'))[0].id)] = {"id":int(request.POST.get('urun_id')), "desen":request.POST.get('desen'),"renk": request.POST.get('renk'),"karisim": request.POST.get('karisim'), "agirlik": request.POST.get('agirlik'),"siparis": request.POST.get('siparis')}
             else:
