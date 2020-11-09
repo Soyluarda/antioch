@@ -25,7 +25,7 @@ SECRET_KEY = 'sbl%#4ix@sp7c3+77$_m182j%hu8%y4s@z@)am^3q6ezk8(h32'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -133,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 #LOGOUT_REDIRECT_URL = '/'
