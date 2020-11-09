@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
-#LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 LOGIN_REQUIRED_IGNORE_PATHS = [
     r'accounts/logout/$',
     r'accounts/signup/$',
