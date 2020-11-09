@@ -1,6 +1,5 @@
 merhaba <strong>{{ alici }}</strong> size bir mesaj iletti <br>
-istenen ürünler listesi: <strong>{{ urun }}</strong><br>
-
+istenen ürünler listesi:  {% for urun in urunler %} <strong>{{ urun }} </strong> {% endfor %}<br>
 
 
 {% for y in siparis.values %}
@@ -16,5 +15,13 @@ Karışım:
 {{y.karisim}}
 -
 <br>
+
+{% if dosemelik %}
+
+Döşemelik için istenen ürün kodları: {% for dose in dosemelik %} <strong>{{ dose }}</strong> {% endfor %}
+
+
+{% endif %}
+
 {% endfor %}
 

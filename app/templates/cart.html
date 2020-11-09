@@ -6,7 +6,23 @@
 {% endblock %}
 
 {% block body %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function checkrules(id){
+           var desen = $( "#desen-"+id ).val();
+           var renk = $( "#renk-"+id ).val();
+           var karisim = $( "#karisim-"+id ).val();
+           var siparis = $( "#siparis-"+id ).val();
+           var agirlik = $( "#agirlik-"+id ).val();
 
+           if (  desen == null || renk == null || karisim == null || siparis == null || agirlik == null  ){
+            alert("Lütfen bütün seçimleri tamamlayın");
+            event.preventDefault();
+           }
+
+        }
+
+</script>
 <section id="about" class="section-bg">
       <div class="container">
         <div class="row">
@@ -59,7 +75,7 @@
                 <div class="row">
                 {% csrf_token %}
                  <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="desen" id="exampleFormControlSelect1">
+                    <select class="form-control" name="desen" id="desen-{{item.id}}">
                       <option selected disabled>Desen</option>
                       <option>ekose</option>
                       <option>Etnik</option>
@@ -75,7 +91,7 @@
                         <div class="row">
 
               <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="renk" id="exampleFormControlSelect2">
+                    <select class="form-control" name="renk" id="renk-{{item.id}}">
                       <option selected disabled>Renk</option>
                       <option>Bej</option>
                       <option>Siyah</option>
@@ -100,7 +116,7 @@
                         </div>
                         <div class="row">
                 <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="karisim" id="exampleFormControlSelect3">
+                    <select class="form-control" name="karisim" id="karisim-{{item.id}}">
                       <option selected disabled>Karisim</option>
                       <option>Akrilik</option>
                       <option>Alpaka</option>
@@ -120,7 +136,7 @@
                             </div>
                         <div class="row">
                    <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="agirlik" id="exampleFormControlSelect4">
+                    <select class="form-control" name="agirlik" id="agirlik-{{item.id}}">
                       <option selected disabled>Agirlik</option>
                       <option>0-200 g/mtul</option>
                       <option>201-400g/mtul</option>
@@ -131,7 +147,7 @@
                             </div>
                         <div class="row">
                    <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="siparis" id="exampleFormControlSelect5">
+                    <select class="form-control" name="siparis" id="siparis-{{item.id}}">
                       <option selected disabled>Min. Siparis</option>
                       <option>1-100</option>
                       <option>101-300</option>
@@ -142,8 +158,10 @@
                             </div>
         </div>
     </td>
-                <td><button class="btn btn-primary" name="urun_id" value="{{item.id}}">Onayla</button></td>
-                    </form>
+
+
+            <td><button class="btn btn-primary" name="urun_id" onClick="checkrules({{item.id}})" value="{{item.id}}">Onayla</button></td>
+             </form>
                 <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">Sil</a></td>
             </tr>
 

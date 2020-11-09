@@ -43,7 +43,6 @@ def contact(request):
     }
 
     if request.method == "POST":
-        print(request.POST)
         my_form = ContactForm(request.POST)
         if my_form.is_valid():
             print(my_form.cleaned_data)
@@ -144,13 +143,18 @@ def carts(request):
             status = True
         context = {'cart': cart, 'details': json.loads(cart.details), "status": status}
         if request.method == "POST":
-            istekler = {}
+            istekler = []
+            siparisler = json.loads(cart.details)
+            dosemelik = []
             for x in cart.products.all():
-                istekler[int(x.id)] = x.name
+                istekler.append(x.name)
+            for y in cart.upholsteries.all():
+                istekler.append(y.name)
+                dosemelik.append(y.name)
             user = ExtendedUser.objects.filter(email=request.user.email).all()
 
-            msg_html = render_to_string('email.html', {'urun': istekler, 'alici': user[0].username, 'siparis':json.loads(cart.details)})
-            msg_html2 = render_to_string('email2.html', {'urun': istekler, 'alici': user[0].username, 'siparis':json.loads(cart.details)})
+            msg_html = render_to_string('email.html', {'urunler': istekler, 'alici': user[0].username, 'urunler': siparisler, 'dosemelik': dosemelik })
+            msg_html2 = render_to_string('email2.html', {'urunler': istekler, 'alici': user[0].username, 'siparis': siparisler, 'dosemelik': dosemelik  })
             send_mail("Yeni bir siparis var ",
                       "Siparis!",
                       "ardasoylu39@gmail.com",
@@ -189,7 +193,6 @@ def update_carts(request,slug):
     cart = Cart.objects.get(id=the_id)
     try:
         products = Product.objects.get(id=slug)
-        print(products)
     except Product.DoesNotExist:
         pass
     except:
@@ -225,7 +228,6 @@ def update_carts_2(request,slug):
     cart = Cart.objects.get(id=the_id)
     try:
         products = Product.objects.get(id=slug)
-        print(products)
     except Product.DoesNotExist:
         pass
     except:
@@ -234,6 +236,9 @@ def update_carts_2(request,slug):
         cart.products.add(products)
     else:
         cart.products.remove(products)
+        new_details = json.loads(cart.details)
+        del new_details[slug]
+        cart.details = new_details
 
     new_total = 0.00
     for item in cart.products.all():
@@ -296,8 +301,6 @@ def update_carts_up(request,slug):
         cart.upholsteries.add(upholsteries)
     else:
         cart.upholsteries.remove(upholsteries)
-
-
 
     request.session['items_total'] = cart.upholsteries.count() + cart.products.count()
 
