@@ -36,6 +36,14 @@ def about(request):
     return render(request,'about.html')
 
 
+def agents(request):
+    return render(request, 'agents.html')
+
+
+def fairs(request):
+    return render(request, 'fairs.html')
+
+
 def contact(request):
     form = ContactForm()
     context = {
