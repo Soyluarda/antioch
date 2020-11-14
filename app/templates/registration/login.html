@@ -311,11 +311,11 @@ input[type=password]:placeholder {
 
     <!-- Login Form -->
     {% if form.errors %}
-    <p> There is something wrong with what you entered!</p>
+    <p> Kullanıcı adı veya şifreniz yanlış lütfen tekrar girin.</p>
     {% endif %}
 
     {% if next %}
-    <p> hey you cant access the page</p>
+    <p> Sayfaya erişemezsiniz.</p>
     {% endif %}
 
 
@@ -333,7 +333,7 @@ input[type=password]:placeholder {
         </div>
     </div><br>
 
-        <br> <input type="submit" value="login">
+        <br> <input type="submit" value="GİRİŞ yap">
         <input type="hidden" name="next" value="{{ next }}">
 
     </form>
