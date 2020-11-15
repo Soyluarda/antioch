@@ -102,14 +102,29 @@
 		<div class="row">
              {% for x in upholstery %}
             <div class="col-2 col-half-offset">
-                <a class="thumbnail" href="" data-image-id="" data-toggle="modal" data-title=""
+                <p align="center">{{x.name}}</p>
+                <a href="" data-image-id="" data-toggle="modal" data-title=""
                    data-target="#{{x.name}}">
                     <img class="img-thumbnail"
                          src="{{x.img.url}}"
                          alt="Another alt text" style="width:150px; height:150px;">
-                    <p align="center">{{x.name}}</p>
+                    <div align="center">
+
+                         {% if user.is_authenticated %}
+                            {% if x.id not in cart %}
+                            <p>{{x.name}}</p>
+                            <a href="{% url 'update_carts_up' x.id %}">
+                            Sepete Ekle <i class="fas fa-plus"></i></a>
+                            {% else %}
+                            <p>{{x.name}}</p>
+                                <a href="{% url 'update_carts_up_2' x.id %}">
+                                Sepetten Çıkar <i class="fas fa-minus-circle" style="color:red;"></i></a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
                 </a>
             </div>
+
             <div class="modal fade" id="{{x.name}}"  role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -125,6 +140,7 @@
                     </div>
                 </div>
             </div>
+
             {% endfor %}
          </div>
 	</div>

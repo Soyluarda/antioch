@@ -24,38 +24,31 @@
         {% endif %}
     <div class="row">
              {% for x in products %}
-            <div class="product">
-    <div class="info-large">
-        	<h4>{{ x.name }}</h4>
-        </div>
-        <div class="make3D">
-            <div class="product-front">
-                <div class="shadow"></div>
-                <img src="{{x.img.url}}" alt="" />
-                <div class="image_overlay"></div>
-                 {% if user.is_authenticated %}
-                    {% if x.id not in cart %}
-                        <a href="{% url 'update_carts' x.id %}">
-                <div class="add_to_cart">Sepete Ekle</div></a>
-                    {% else %}
-                        <a href="{% url 'update_carts_2' x.id %}">
-                        <div class="add_to_cart">Sepetten Çıkar</div></a>
-                {% endif %}
-                {% endif %}
-                <div class="stats">
-                    <div class="stats-container">
-                        <span class="product_price">{{x.price}}</span>
-                        <span class="product_name">{{x.name}}</span>
-                        <p>{{x.detail}}</p>
-                        <div class="product-options">
-                    </div>
-                    </div>
+            <div class="product" style="width:250px; height:250px;">
+                <div class="info-large">
+                <h4>{{ x.name }}</h4>
+            </div>
+            <div class="make3D" style="width:250px; height:250px;">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img src="{{x.img.url}}" alt="" />
+                    <div class="image_overlay"></div>
+                     {% if user.is_authenticated %}
+                        {% if x.id not in cart %}
+                            <a href="{% url 'update_carts' x.id %}">
+                    <div class="add_to_cart">Sepete Ekle</div></a>
+                        {% else %}
+                            <a href="{% url 'update_carts_2' x.id %}">
+                            <div class="add_to_cart">Sepetten Çıkar</div></a>
+                    {% endif %}
+                    {% endif %}
+
                 </div>
             </div>
+                <p>aaaaa</p>
         </div>
-    </div>
             {% endfor %}
-</div>
+    </div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
