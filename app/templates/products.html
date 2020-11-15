@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block body %}
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -32,7 +33,7 @@
              {% for x in products %}
              <div class="col-3 col-half-offset">
                 <a href="" data-image-id="" data-toggle="modal" data-title=""
-                   data-target="#{{x.name}}">
+                   data-target="#{{x.id}}">
                     <img class="img-thumbnail"
                          src="{{x.img.url}}"
                          alt="Another alt text" style="width:150px; height:150px;">
@@ -49,17 +50,15 @@
                                 <a href="{% url 'update_carts_2' x.id %}">
                                 Sepetten Çıkar <i class="fas fa-minus-circle" style="color:red;"></i></a>
                             {% endif %}
-                            <p></p>
                         {% endif %}
                     </div>
                 </a>
             </div>
 
-            <div class="modal fade" id="{{x.name}}"  role="dialog">
+            <div class="modal fade" id="{{x.id}}"  role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-
                             <h4 class="modal-title" id="image-gallery-title">{{x.name}}</h4>
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
                             </button>
@@ -72,10 +71,5 @@
             </div>
             {% endfor %}
     </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="menu.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 {% endblock %}

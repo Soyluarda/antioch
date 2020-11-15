@@ -165,7 +165,6 @@ def carts(request):
             for x in cart.products.all():
                 istekler.append(x.name)
             for y in cart.upholsteries.all():
-                istekler.append(y.name)
                 dosemelik.append(y.name)
             user = ExtendedUser.objects.filter(email=request.user.email).all()
 
@@ -251,10 +250,9 @@ def update_carts_2(request,slug):
     if not products in cart.products.all():
         cart.products.add(products)
     else:
+        print(cart)
         cart.products.remove(products)
-        new_details = json.loads(cart.details)
-        del new_details[slug]
-        cart.details = new_details
+        #cart.details = new_details
 
     new_total = 0.00
     for item in cart.products.all():

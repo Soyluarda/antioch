@@ -15,13 +15,11 @@ Karışım:
 {{y.karisim}}
 -
 <br>
+{% endfor %}
 
 {% if dosemelik %}
 
-Döşemelik için istenen ürün kodları: {% for dose in dosemelik %} <strong>{{ dose }}</strong> {% endfor %}
-
+Döşemelik için istenen ürün kodları: {% for dose in dosemelik %} <strong>{{ dose }}</strong> {% endfor %} <br>
 
 {% endif %}
-
-{% endfor %}
 
