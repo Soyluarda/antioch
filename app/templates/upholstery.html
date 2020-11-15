@@ -2,13 +2,51 @@
 {% load static %}
 {% block head %}
 
-
 {% endblock %}
 
 {% block body %}
-<body id="page-top" style="background-color:white;">
+<style>
+    img.zoom {
+    width: 100%;
+    height: 200px;
+    border-radius:5px;
+    object-fit:cover;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+}
 
-    <div id="topbar">
+.transition {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+    .modal-header {
+
+     border-bottom: none;
+}
+    .modal-title {
+        color:#000;
+    }
+    .modal-footer{
+      display:none;
+    }
+.col-2{
+    color:#FFF;
+}
+.col-half-offset{
+    margin-left:1.56666667%
+}
+</style>
+<body id="page-top" style="background-color:white;">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<div id="topbar">
       <div class="container">
       </div>
     <div class="container">
@@ -29,76 +67,73 @@
             Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
         </div>
     {% endif %}
-     <div class="row">
-      <form class="col-lg-12">
-                <div class="row">
-                    <select class="form-control" name="renk" style="width:10%;" id="exampleFormControlSelect2">
-                      <option selected>Hepsi</option>
-                      <option value="Bej">Bej</option>
-                      <option value="Siyah">Siyah</option>
-                      <option value="Beyaz">Beyaz</option>
-                      <option value="Mavi">Mavi</option>
-                      <option value="Lacivert">Lacivert</option>
-                      <option value="Kahverengi">Kahverengi</option>
-                      <option value="Camel">Camel</option>
-                      <option value="Yesil">Yesil</option>
-                      <option value="Haki">Haki</option>
-                      <option value="Turuncu">Turuncu</option>
-                      <option value="Pembe">Pembe</option>
-                      <option value="Kirmizi">Kırmızı</option>
-                      <option value="Bordo">Bordo</option>
-                      <option value="Mor">Mor</option>
-                      <option value="Sari">Sarı</option>
-                      <option value="Gri">Gri</option>
-                      <option value="Antrasit">Antrasit</option>
-                      <option value="Multicolor">Multicolor</option>
-                    </select>
-                        <input type="submit" value="Select">
-                </div>
+   <h1><u>FURNILANA</u> </h1>
+    <div class="row">
+    <div class="col-6">
+        <p> Karışım :%80 Yün %20 Polyamid </p>
+
+        <p> Sürdürülebilirlik: %100 Geri dönüştürülebilir </p>
+
+        <p> En: 140 cm minimum </p>
+
+        <p> Ağırlık: 460gram/metrekare </p>
+
+        <p> Temizlik : Profesyonel kuru temizleme veya nemli bezle silinebilir. </p>
+
+        <p> Abrazyon Değeri : 50.000 Martindale turu (ISO 12947-2:1998) </p>
+
+    </div>
+    <div class="col-6">
+
+        <p> Pilling Değeri: 4/5 (ISO 12945-2:2000) </p>
+
+        <p> Renk Haslığı: Kuru :4/5 Islak:4/5 (BS EN ISO 105 X12:2002) </p>
+
+        <p> Işık Haslığı: 5 (BS EN ISO 105 B02:1999) </p>
+
+        <p> Sigara ve Kibrit Alev Almazlık Testleri Başarıyla Sonuçlanmıştır. </p>
+
+        <p> (BS EN 1021-1:2006 Cigarette) (BS EN 1021-2:2006 Match) </p>
+
+    </div>
+        </div>
+
+    <div class="container">
+		<div class="row">
              {% for x in upholstery %}
-            <div class="product {{x.renk}}">
-        <div class="make3D {{x.renk}}">
-            <div class="product-front">
-                <div class="shadow"></div>
-                <img src="{{x.img.url}}" alt="" />
-                <div class="image_overlay"></div>
-                 {% if user.is_authenticated %}
-                    {% if x.id not in cart %}
-                        <a href="{% url 'update_carts_up' x.id %}">
-                <div class="add_to_cart">Sepete Ekle</div></a>
-                    {% else %}
-                        <a href="{% url 'update_carts_up_2' x.id %}">
-                        <div class="add_to_cart">Sepetten Çıkar</div></a>
-                {% endif %}
-                    <a href="{{x.img.url}}">
-                        <div class="view_gallery">İncele</div></a>
-                {% endif %}
-                <div class="stats">
-                    <div class="stats-container">
-                        <span class="product_price">{{x.price}}</span>
-                        <span class="product_name">{{x.name}}</span>
-                        <p>{{x.detail}}</p>
-                        <div class="product-options">
-                    </div>
+            <div class="col-2 col-half-offset">
+                <a class="thumbnail" href="" data-image-id="" data-toggle="modal" data-title=""
+                   data-target="#{{x.name}}">
+                    <img class="img-thumbnail"
+                         src="{{x.img.url}}"
+                         alt="Another alt text" style="width:150px; height:150px;">
+                    <p align="center">{{x.name}}</p>
+                </a>
+            </div>
+            <div class="modal fade" id="{{x.name}}"  role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title" id="image-gallery-title">{{x.name}}</h4>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{{x.img.url}}">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
             {% endfor %}
-      </form>
-     </div>
-
+         </div>
+	</div>
           <hr>
-
         <div class="row1">
        <a href="static/FURNILANA_TR_TestRaporu.pdf">Furnila Test Raporu Türkçe</a> <br>
        <a href="static/FURNILANA_ENG_TestReport.pdf">Furnila Test Raporu İngilizce</a>
         </div>
-
-
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
