@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+  <section id="intro" class="clearfix">
+    <br><br><br>
+    <br><br><br>
+    <div class="container d-flex">
+            <div class="carousel-inner"  align="center">
+              <div class="carousel-item active" >
+                <img class="d-block w-100" src="{% static 'img/logo.jpg' %}">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>En uygun <span>hizmet</span></h2>
+          <div>
+            <a href="{% url 'products' %}" class="btn-get-started scrollto">ONLİNE ALIŞVERİŞE GİT! </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="img/intro-img.svg" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+
+{% endblock %}

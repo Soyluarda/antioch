@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<body id="page-top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<div id="topbar">
+      <div class="container">
+      </div>
+    <div class="container">
+
+    </div>
+
+<section id="about" class="section-bg" style="background-color:white;">
+
+<div class="cart-icon-bottom">
+    <label style="font-size:20px; margin-left:25px; margin-top:-5px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
+
+</div>
+
+
+<div class="container">
+    {% if not user.is_authenticated %}
+        <div class="alert alert-info" role="alert">
+            Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-10">
+             <h1 align="center"><u>FURNILANA</u> </h1>
+        </div>
+    <div class="col-6" style="text-align:center;">
+        <div style="display: inline-block; text-align: left;">
+            <p> <b>Karışım </b><br> %80 Yün %20 Polyamid </p>
+
+            <p> <b>Sürdürülebilirlik</b> <br> %100 Geri dönüştürülebilir </p>
+
+            <p> <b> En</b><br> 140 cm minimum </p>
+
+            <p> <b>Ağırlık</b><br> 460gram/metrekare </p>
+
+            <p> <b>Temizlik</b><br> Profesyonel kuru temizleme veya nemli bezle silinebilir. </p>
+
+
+        </div>
+    </div>
+    <div class="col-6" align="center">
+        <div style="display: inline-block; text-align: left;">
+            <p> <b>Abrazyon Değeri</b><br> 50.000 Martindale turu (ISO 12947-2:1998) </p>
+            <p> <b>Pilling Değeri:</b><br> 4/5 (ISO 12945-2:2000) </p>
+
+            <p> <b>Renk Haslığı</b> <br>
+                <b>Kuru:</b> 4/5 <br>
+                <b>Islak:</b> 4/5 (BS EN ISO 105 X12:2002) </p>
+
+            <p> <b>Işık Haslığı</b><br> 5 (BS EN ISO 105 B02:1999) </p>
+
+            <p> <b>Sigara ve Kibrit Alev Almazlık Testleri Başarıyla Sonuçlanmıştır.</b> </p>
+
+            <p> (BS EN 1021-1:2006 Cigarette) (BS EN 1021-2:2006 Match) </p>
+        </div>
+    </div>
+        </div>
+
+    <div class="container">
+		<div class="row">
+             {% for x in upholstery %}
+            <div class="col-2 col-half-offset">
+                <a href="" data-image-id="" data-toggle="modal" data-title=""
+                   data-target="#{{x.name}}">
+                    <img class="img-thumbnail"
+                         src="{{x.img.url}}"
+                         alt="Another alt text" style="width:150px; height:150px;">
+                    <div align="center">
+
+                         {% if user.is_authenticated %}
+                            {% if x.id not in cart %}
+                            {{x.name}}<br>
+                            <a href="{% url 'update_carts_up' x.id %}">
+                            Sepete Ekle <i class="fas fa-plus"></i></a>
+                            {% else %}
+                            {{x.name}}<br>
+                                <a href="{% url 'update_carts_up_2' x.id %}">
+                                Sepetten Çıkar <i class="fas fa-minus-circle" style="color:red;"></i></a>
+                            {% endif %}
+                        {% endif %}
+                        <p></p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="modal fade" id="{{x.name}}" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title" id="image-gallery-title">{{x.name}}</h4>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{{x.img.url}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+         </div>
+	</div>
+          <hr>
+        <div class="row1">
+       <a href="static/FURNILANA_TR_TestRaporu.pdf">Furnila Test Raporu Türkçe</a> <br>
+       <a href="static/FURNILANA_ENG_TestReport.pdf">Furnila Test Raporu İngilizce</a>
+        </div>
+</div>
+{% endblock %}
