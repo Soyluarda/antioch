@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <section id="about" class="section-bg" style="background-color:white;">
       <div class="container">
 
@@ -16,11 +17,15 @@
                     <h4 class="text-uppercase m-0">Adres</h4>
                     <hr class="my-4">
                     <div class="small text-black-50">
-                        <address>
-                           Adres:
-                          Tekstil Kent Koza Plaza B blok<br>
-                          Kat:31 No:119 Esenler 34235 <br>
-                          İstanbul/Türkiye <br>
+                        <address style="font-size:15px;">
+                          Tekstilkent Koza Plaza B Blok<br>
+                          Kat:31 No:119 Esenler 34235<br>
+                          İstanbul Türkiye <br>
+                        </address>
+                        <abbr style="font-size:15px;">Tel: +90 212 438 5 438</abbr><br><br>
+                         <address>
+                          <strong style="font-size:15px;">E-posta:</strong><br>
+                          <a href="mailto:#" style="font-size:15px;">info@ozlemkumas.com</a>
                         </address>
                     </div>
                 </div>
@@ -29,19 +34,12 @@
 
         <div class="col-md-4 mb-3 mb-md-0">
             <div class="card py-4 h-100">
-                <div class="card-body text-center">
-                Sosyal Medyada bizi takip edin!
-         <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"> &nbsp;&nbsp;</i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"> &nbsp;&nbsp;</i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin">&nbsp;&nbsp;</i></a>
-              <a href="https://www.instagram.com/ozlem_fabric/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-         </div>
+
+         <div id="social">
+              <script src="{% static 'elfsight.js' %}" defer></script>
+             <div class="elfsight-app-a2d4f8a0-5fc1-49b5-b4c3-6caf01e7950e"></div>
         <br>
-        <address>
-          <strong>E-posta:</strong><br>
-          <a href="mailto:#">info@ozlemkumas.com</a>
-        </address>
+
      </div>
             </div>
         </div>
