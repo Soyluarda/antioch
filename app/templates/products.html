@@ -36,11 +36,12 @@
                    data-target="#{{x.id}}">
                     <img class="img-thumbnail"
                          src="{{x.img.url}}"
-                         alt="Another alt text" style="width:150px; height:150px;">
+                         alt="Another alt text" style="width:200px; height:200px;">
                         <div>
+                            <b>{{x.name}}</b>
                          {% if user.is_authenticated %}
                             {% if x.id not in cart %}
-                            <b>{{x.name}}</b>
+
                             <p style="font-size:11px;">{{x.detail}}</p>
                             <a href="{% url 'update_carts' x.id %}">
                             Sepete Ekle <i class="fas fa-plus"></i></a>
