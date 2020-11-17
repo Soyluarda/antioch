@@ -6,8 +6,9 @@ from django.contrib.auth import get_user_model
 
 
 class ExtendedUser(AbstractUser):
+    isim = models.CharField(max_length=100,null=True)
+    soyisim = models.CharField(max_length=100,null=True)
     email = models.EmailField(null=False, unique=True)
-    firma_bilgisi = models.CharField(max_length=100,null=True)
     address = models.CharField(max_length=100,null=True)
     telefon = models.CharField(max_length=100,null=True)
     firma_adi = models.CharField(max_length=100,null=True)
@@ -16,4 +17,4 @@ class ExtendedUser(AbstractUser):
         return self.email
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['firma_adi']
