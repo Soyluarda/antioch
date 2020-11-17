@@ -29,7 +29,6 @@
 
 </div>
 
-
 <div class="container">
     {% if not user.is_authenticated %}
         <div class="alert alert-info" role="alert">
@@ -38,9 +37,9 @@
     {% endif %}
     <div class="row">
         <div class="col-10">
-             <h1 align="center"><u>FURNILANA</u> </h1>
+             <h1>FURNILANA</h1>
         </div>
-    <div class="col-6" style="text-align:center;">
+    <div class="col-6">
         <div style="display: inline-block; text-align: left;">
             <p> <b>Karışım </b><br> %80 Yün %20 Polyamid </p>
 
@@ -51,17 +50,15 @@
             <p> <b>Ağırlık</b><br> 460gram/metrekare </p>
 
             <p> <b>Temizlik</b><br> Profesyonel kuru temizleme veya nemli bezle silinebilir. </p>
-
-
         </div>
     </div>
-    <div class="col-6" align="center">
+    <div class="col-6">
         <div style="display: inline-block; text-align: left;">
             <p> <b>Abrazyon Değeri</b><br> 50.000 Martindale turu (ISO 12947-2:1998) </p>
             <p> <b>Pilling Değeri:</b><br> 4/5 (ISO 12945-2:2000) </p>
 
             <p> <b>Renk Haslığı</b> <br>
-                <b>Kuru:</b> 4/5 <br>
+                <b>Kuru:</b> 4/5
                 <b>Islak:</b> 4/5 (BS EN ISO 105 X12:2002) </p>
 
             <p> <b>Işık Haslığı</b><br> 5 (BS EN ISO 105 B02:1999) </p>
@@ -83,10 +80,10 @@
                          src="{{x.img.url}}"
                          alt="Another alt text" style="width:150px; height:150px;">
                     <div align="center">
-
+                        {{x.name}}<br>
                          {% if user.is_authenticated %}
                             {% if x.id not in cart %}
-                            {{x.name}}<br>
+
                             <a href="{% url 'update_carts_up' x.id %}">
                             Sepete Ekle <i class="fas fa-plus"></i></a>
                             {% else %}
@@ -121,8 +118,8 @@
 	</div>
           <hr>
         <div class="row1">
-       <a href="static/FURNILANA_TR_TestRaporu.pdf">Furnila Test Raporu Türkçe</a> <br>
-       <a href="static/FURNILANA_ENG_TestReport.pdf">Furnila Test Raporu İngilizce</a>
+       <a href="static/FURNILANA_TR_TestRaporu.pdf" target="_blank">Furnila Test Raporu Türkçe</a> <br>
+       <a href="static/FURNILANA_ENG_TestReport.pdf" target="_blank">Furnila Test Raporu İngilizce</a>
         </div>
 </div>
 {% endblock %}
