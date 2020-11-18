@@ -377,7 +377,8 @@ def signup(request):
             )
             email.send()
 
-            return HttpResponse('Hesabınızı etkinleştirmek için lütfen mail adresinizi onaylayın.')
+            messages.success(request, 'Şifreniz başarıyla güncellendi.')
+            return redirect('index')
     else:
         form = SignupForm()
     return render(request, 'registration/register.html', {'form': form})

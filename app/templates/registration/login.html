@@ -334,7 +334,8 @@ input[type=password]:placeholder {
     </div><br>
 
         <br> <input type="submit" value="GİRİŞ yap">
-        <input type="hidden" name="next" value="{{ next }}">
+        <input type="hidden" name="next" value="{{ next }}"> <br>
+        <a href="{% url 'password_reset' %}">Şifremi unuttum</a>
 
     </form>
     <!-- Remind Passowrd -->
