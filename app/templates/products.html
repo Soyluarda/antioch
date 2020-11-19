@@ -58,12 +58,13 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="image-gallery-title">{{x.name}}</h4>
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                            </button>
+                            <h6 class="modal-title" id="image-gallery-title">{{x.name}}</h6>
                         </div>
                         <div class="modal-body">
                             <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{{x.img.url}}">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
