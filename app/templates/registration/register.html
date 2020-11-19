@@ -527,7 +527,7 @@ input[type=password2]:placeholder {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<script></script>
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -536,7 +536,9 @@ input[type=password2]:placeholder {
 
     <!-- Login Form -->
     {% if form.errors %}
-    <p> {{ form.errors }}</p>
+      {% for key,value in form.errors.items %}
+      <p>{{ value|escape }}</p>
+        {% endfor %}
     {% endif %}
 
     {% if next %}
@@ -551,47 +553,47 @@ input[type=password2]:placeholder {
 
      <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="text" id="isim" name="isim"  placeholder="Ad">
+            <input class="form-control" type="text" id="isim" name="isim"  placeholder="Ad" required>
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="text" name="soyisim" id="soyisim" placeholder="Soyad">
+            <input class="form-control" type="text" name="soyisim" id="soyisim" placeholder="Soyad" required>
         </div>
     </div>
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+            <input class="form-control" type="email" name="email" id="email" placeholder="Email"  required>
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="address" name="address" id="address" placeholder="Adres">
+            <input class="form-control" type="address" name="address" id="address" placeholder="Adres" required>
         </div>
     </div>
 
 
      <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="telefon" id="telefon" name="telefon"  placeholder="Telefon">
+            <input class="form-control" type="telefon" id="telefon" name="telefon"  placeholder="Telefon" required>
         </div>
     </div>
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="firma_adi" name="firma_adi" id="firma_adi" placeholder="Firma Adı">
+            <input class="form-control" type="firma_adi" name="firma_adi" id="firma_adi" placeholder="Firma Adı" required>
         </div>
     </div>
 
            <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="password" id="password1" name="password1"  placeholder="Parola ">
+            <input class="form-control" type="password" id="password1" name="password1"  placeholder="Parola " required>
         </div>
     </div>
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="password" name="password2" id="password2" placeholder="Parola Tekrar">
+            <input class="form-control" type="password" name="password2" id="password2" placeholder="Parola Tekrar" required>
         </div>
     </div>
 
