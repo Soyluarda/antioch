@@ -1,22 +1,21 @@
 from django.urls import path,re_path
 from .views import *
 from django.contrib.auth import views as auth_views
+from django.views.decorators.cache import cache_page
 
 
 urlpatterns = [
-    path('', index,name='index'),
-    path('index2/', index2,name='index2'),
-    path('Anasayfa2/', index3,name='index3'),
+    path('', cache_page(60 * 15)(index),name='index'),
     path('giris/', auth_views.LoginView.as_view(template_name='registration/login.html'),name='login'),
     path('kayit-ol/', signup, name='signup'),
-    path('urunler', products,name='products'),
+    path('urunler', cache_page(60 * 15)(products),name='products'),
     path('sepet', carts,name='carts'),
     re_path('sepet/(?P<slug>[\w-]+)/$', update_carts,name='update_carts'),
     re_path('sepet2/(?P<slug>[\w-]+)/$', update_carts_2,name='update_carts_2'),
     re_path('sepet4/(?P<slug>[\w-]+)/$', update_carts_up, name='update_carts_up'),
     re_path('sepet5/(?P<slug>[\w-]+)/$', update_carts_up_2, name='update_carts_up_2'),
     re_path('sepet3/$', update_carts_3, name='update_carts_3'),
-    path('upholstery', upholstery,name='upholstery'),
+    path('upholstery', cache_page(60 * 15)(upholstery),name='upholstery'),
     path('agents', agents, name='agents'),
     path('fairs', fairs, name='fairs'),
     path('stok', stock_service,name='stock_service'),
