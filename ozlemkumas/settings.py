@@ -151,11 +151,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ardasoylu39@gmail.com'
-EMAIL_HOST_PASSWORD = 'Kayra2016'
-EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'order@ozlemkumas.com'
+EMAIL_HOST_PASSWORD = '34To4563'
+EMAIL_PORT = 465
 #DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
 

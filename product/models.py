@@ -78,6 +78,9 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'ürünler'
+
 class Upholstery(models.Model):
     RENK = [
         ('Bej', 'Bej'),
@@ -105,3 +108,6 @@ class Upholstery(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Döşemelikler'

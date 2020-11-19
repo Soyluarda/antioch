@@ -173,7 +173,7 @@ def carts(request):
             send_mail("Yeni bir siparis var ",
                       "Siparis!",
                       "order@ozlemkumas.com",
-                      [user[0].email],
+                      ["order@ozlemkumas.com"],
                       html_message=msg_html,
                       )
             send_mail("Yeni bir siparis verdiniz ",

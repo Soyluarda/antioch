@@ -18,3 +18,5 @@ class ExtendedUser(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['firma_adi']
+    class Meta:
+        verbose_name_plural = 'Kullanıcılar'

@@ -14,3 +14,7 @@ class Cart(models.Model):
 
     def __unicode__(self):
         return "Cart id: %s" %(self.id )
+
+    class Meta:
+        verbose_name = 'Sepet'
+        verbose_name_plural = 'My images'
