@@ -9,7 +9,7 @@ class ExtendedUser(AbstractUser):
     isim = models.CharField(max_length=100)
     soyisim = models.CharField(max_length=100)
     email = models.EmailField(null=False, unique=True)
-    address = models.CharField(max_length=100,null=True)
+    address = models.CharField(max_length=100,null=True, verbose_name="adres")
     telefon = models.CharField(max_length=100,null=True)
     firma_adi = models.CharField(max_length=100)
 

@@ -64,10 +64,10 @@ class Product(models.Model):
         ('500+', '500+'),
     ]
 
-    name = models.CharField(max_length=100)
-    price = models.IntegerField()
-    detail = models.CharField(max_length=200)
-    img = models.ImageField()
+    name = models.CharField(max_length=100, verbose_name="isim")
+    price = models.IntegerField(verbose_name="fiyat")
+    detail = models.CharField(max_length=200, verbose_name="detay")
+    img = models.ImageField(verbose_name="resim")
     desen = models.CharField(max_length=100,null=True,choices=DESEN,blank=True)
     renk = models.CharField(max_length=100,null=True,choices=RENK,blank=True)
     karisim = models.CharField(max_length=100,null=True,choices=KARISIM,blank=True)
@@ -102,8 +102,8 @@ class Upholstery(models.Model):
         ('Antrasit', 'Antrasit'),
         ('Multicolor', 'Multicolor'),
     ]
-    name = models.CharField(max_length=100)
-    img = models.ImageField()
+    name = models.CharField(max_length=100, verbose_name="isim")
+    img = models.ImageField(verbose_name="resim")
     renk = models.CharField(max_length=100, null=True, choices=RENK, blank=True)
 
     def __str__(self):
