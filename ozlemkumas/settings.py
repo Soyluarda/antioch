@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app',
     'product',
     'cart',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -58,16 +59,14 @@ MIDDLEWARE_CLASSES = (
     'app.middleware.AuthRequiredMiddleware',
 )
 
-
-
-
-
 ROOT_URLCONF = 'ozlemkumas.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ozlemkumas.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -93,7 +91,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -113,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -126,7 +122,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -155,15 +150,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ]
 
-
-
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'order@ozlemkumas.com'
-EMAIL_HOST_PASSWORD = '34To4563'
+EMAIL_HOST_USER = 'ardasoylu39@gmail.com'
+EMAIL_HOST_PASSWORD = 'Kayra2016'
 EMAIL_PORT = 587
+#DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+
 
 AUTH_USER_MODEL = 'app.ExtendedUser'
 MEDIA_URL = 'static/img/products/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/img/products/')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
