@@ -7,7 +7,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <section id="about" class="section-bg" style="background-color:white;">
       <div class="container">
+          {% if messages %}
 
+              {% for message in messages %}
+                <div class="alert alert-primary" role="alert">
+                {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+                </div>
+            {% endfor %}
+
+             {% endif %}
           <div class="row">
 
          <div class="col-md-4 mb-3 mb-md-0">

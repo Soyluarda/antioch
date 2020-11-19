@@ -375,10 +375,15 @@ def signup(request):
             email = EmailMessage(
                         mail_subject, message, to=[to_email]
             )
-            email.send()
+            send_mail(mail_subject,
+                      "Hesabınızı aktifleştirin!",
+                      "order@ozlemkumas.com",
+                      [user.email],
+                      html_message=message,
+                      )
 
-            messages.success(request, 'Şifreniz başarıyla güncellendi.')
-            return redirect('index')
+            messages.success(request, 'Hesabınız başarıyla oluşturuldu, lütfen mailinize gelen aktivasyon kodunu onaylayın.')
+            return redirect('contact')
     else:
         form = SignupForm()
     return render(request, 'registration/register.html', {'form': form})
