@@ -931,7 +931,7 @@ div.sku strong{
 <body id="page-top" >
   <nav class="navbar fixed-top navbar-light bg-light" style="background-color: white !important;">
     <div class="container">
-      <div class="col-2">
+      <div class="col-2 ">
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
         <a href="{% url 'index' %}"><img src="{% static 'img/ozlem_logo_2.jpg' %}" style="width:100%; height:100%;" alt=""></a>
@@ -941,26 +941,26 @@ div.sku strong{
       <div class="col-10">
         <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="{% url 'about' %}">Hakkımızda</a></li>
-          <li><a href="{% url 'products' %}">ÜRÜNLER</a></li>
-          <li><a href="{% url 'upholstery' %}">DÖŞEMELİK</a></li>
-          <li><a href="{% url 'fairs' %}">FUARLAR</a></li>
-          <li><a href="{% url 'agents' %}">ACENTALAR</a></li>
+          <li><a href="{% url 'about' %}" style="font-size:13px;">Hakkımızda</a></li>
+          <li><a href="{% url 'products' %}" style="font-size:13px;">ÜRÜNLER</a></li>
+          <li><a href="{% url 'upholstery' %}" style="font-size:13px;">DÖŞEMELİK</a></li>
+          <li><a href="{% url 'fairs' %}" style="font-size:13px;">FUARLAR</a></li>
+          <li><a href="{% url 'agents' %}" style="font-size:13px;">ACENTALAR</a></li>
           <!--<li><a href="{% url 'stock_service' %}">Stok Servis</a></li> -->
           {% if request.user.is_authenticated %}
           <li>
               <label>
-                {% if not request.session.items_total %} <a> SEPETİM 0 </a> {% else %}
-                   <a href="{% url 'carts' %}"> SEPETİM {{request.session.items_total }}</a>
+                {% if not request.session.items_total %} <a> SEPET 0 </a> {% else %}
+                   <a href="{% url 'carts' %}" style="font-size:13px;"> SEPET {{request.session.items_total }}</a>
                    {% endif %}
               </label>
             </i>
           </li>
           {% endif %}
-          <li><a href="{% url 'contact' %}">İLETİŞİM</a></li>
+          <li><a href="{% url 'contact' %}" style="font-size:13px;">İLETİŞİM</a></li>
           {% if not user.is_authenticated %}
             <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GİRİŞ yap </a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:13px;">GİRİŞ yap </a>
 			<ul id="login-dp" class="dropdown-menu">
                 <!--<li> <a href="{% url 'login' %}" >Giriş yap <i class="fa fa-sign-in"></i></a> </li> -->
 				<li>
