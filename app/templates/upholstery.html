@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
+{% load thumbnail %}
 
 {% endblock %}
 
@@ -16,6 +17,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/lazysizes.min.js' %}" async=""></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -76,7 +79,7 @@
                 <a href="" data-image-id="" data-toggle="modal" data-title=""
                    data-target="#{{x.name}}">
                     <img class="img-thumbnail"
-                         src="{{x.img.url}}"
+                         src="{% thumbnail x.img '200x200' crop='center' as im %}{{ im.url }}{% endthumbnail %}"
                          alt="Another alt text" style="width:150px; height:150px;">
                     <div align="center">
                         {{x.name}}<br>
@@ -102,7 +105,7 @@
                            <h6 class="modal-title" align="center">{{x.name}}</h6>
                        </div>
                         <div class="modal-body">
-                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{{x.img.url}}">
+                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{% thumbnail x.img '500x500' crop='center' as im %}{{ im.url }}{% endthumbnail %}">
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Kapat</button>
