@@ -24,7 +24,7 @@
   <section id="about" class="section-bg" style="background-color:white;">
 
 
-<div class="cart-icon-bottom">
+<div class="cart-icon-bottom" style="margin-top:-25px;">
     <label style="font-size:20px; margin-left:25px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
 </div>
 
