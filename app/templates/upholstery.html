@@ -12,25 +12,20 @@
 </style>
 <body id="page-top">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=1024">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<div id="topbar">
-      <div class="container">
-      </div>
-    <div class="container">
 
-    </div>
 
-<section id="about" class="section-bg" style="background-color:white;">
+  <section id="about" class="section-bg" style="background-color:white;">
+
 
 <div class="cart-icon-bottom">
-    <label style="font-size:20px; margin-left:25px; margin-top:-5px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
-
+    <label style="font-size:20px; margin-left:25px;"> {% if not request.session.items_total %} 0 {% else %}<a href="{% url 'carts' %}">{{request.session.items_total }}</a> {% endif %}</label>
 </div>
 
 <div class="container">
@@ -125,4 +120,5 @@
        <a href="static/FURNILANA_ENG_TestReport.pdf" target="_blank">Furnila Test Raporu İngilizce</a>
         </div>
 </div>
+  </section>
 {% endblock %}
