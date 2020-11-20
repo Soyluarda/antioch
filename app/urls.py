@@ -2,6 +2,8 @@ from django.urls import path,re_path
 from .views import *
 from django.contrib.auth import views as auth_views
 from django.views.decorators.cache import cache_page
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -28,4 +30,4 @@ urlpatterns = [
     re_path('^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         auth_views.PasswordResetConfirmView.as_view(template_name='admin/registration/password_reset_confirm.html'), name='password_reset_confirm'),
     path('^reset/done/$', auth_views.PasswordResetCompleteView.as_view(template_name='admin/registration/password_reset_complete.html'), name='password_reset_complete'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
