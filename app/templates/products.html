@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
+{% load thumbnail %}
 
 {% endblock %}
 
@@ -36,7 +37,7 @@
                 <a href="" data-image-id="" data-toggle="modal" data-title=""
                    data-target="#{{x.id}}">
                     <img class="img-thumbnail"
-                         src="{{x.img.url}}"
+                         src="{% thumbnail x.img '200x200' as im %}{{ im.url }}{% endthumbnail %}"
                          alt="Another alt text" >
                         <div>
                             <p align="center">{{x.name}}</p>
@@ -62,7 +63,7 @@
                             <h6 class="modal-title" id="image-gallery-title">{{x.name}}</h6>
                         </div>
                         <div class="modal-body">
-                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{{x.img.url}}">
+                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{% thumbnail x.img '500x500'  as im %}{{ im.url }}{% endthumbnail %}">
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Kapat</button>
