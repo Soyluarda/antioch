@@ -80,6 +80,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        super(Product, self).save(*args, **kwargs)
+        os.system("python3 manage.py collectstatic --no-input")
+
     class Meta:
         verbose_name_plural = 'ürünler'
 
@@ -115,3 +119,7 @@ class Upholstery(models.Model):
 
     class Meta:
         verbose_name_plural = 'Döşemelikler'
+
+    def save(self, *args, **kwargs):
+        super(Upholstery, self).save(*args, **kwargs)
+        os.system("python3 manage.py collectstatic --no-input")
