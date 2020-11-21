@@ -22,7 +22,7 @@
 
              <div class="card py-4 h-100">
                 <div class="card-body text-center">
-                    <h4 class="text-uppercase m-0">Adres</h4>
+                    <h4 class="text-uppercase m-0">{% if LANGUAGE_CODE == "tr" %} adres {% elif LANGUAGE_CODE == "en" %} address {% elif LANGUAGE_CODE == "ru" %} АДРЕС {% endif %}</h4>
                     <hr class="my-4">
                     <div class="small text-black-50">
                         <address style="font-size:15px;">
@@ -30,9 +30,9 @@
                           Kat:31 No:119 Esenler 34235<br>
                           İstanbul Türkiye <br>
                         </address>
-                        <abbr style="font-size:15px;">Tel: +90 212 438 5 438</abbr><br><br>
+                        <abbr style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} tel {% elif LANGUAGE_CODE == "en" %} phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}: +90 212 438 5 438</abbr><br><br>
                          <address>
-                          <strong style="font-size:15px;">E-posta:</strong><br>
+                          <strong style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} E-posta {% elif LANGUAGE_CODE == "en" %} E-mail {% elif LANGUAGE_CODE == "ru" %} е-мейл {% endif %}:</strong><br>
                           <a href="mailto:#" style="font-size:15px;">info@ozlemkumas.com</a>
                         </address>
                     </div>
@@ -60,30 +60,30 @@
          </div></div></div>
 
  </div>
-                <h2 align="center">Bize ulaşın</h2>
+                <h2 align="center">{% if LANGUAGE_CODE == "tr" %} Bize ulaşın {% elif LANGUAGE_CODE == "en" %} Contact us {% elif LANGUAGE_CODE == "ru" %} свяжитесь с нами {% endif %}</h2>
               <form  method="post" >
                        {% csrf_token %}
                   <div class="row align-items-stretch mb-5">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <p class="help-block">İsim</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} İsim {% elif LANGUAGE_CODE == "en" %} Name {% elif LANGUAGE_CODE == "ru" %} название {% endif %}</p>
                             {{form.name}}
                           </div>
                           <div class="form-group">
-                              <p class="help-block">E-mail</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Soy isim {% elif LANGUAGE_CODE == "en" %} Surname {% elif LANGUAGE_CODE == "ru" %} фамилия {% endif %}</p>
                             {{form.email}}
                           </div>
                           <div class="form-group">
-                              <p class="help-block">Telefon</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} tel {% elif LANGUAGE_CODE == "en" %} phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}</p>
                             {{form.phone}}
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <p class="help-block">Mesajınız:</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Mesajınız {% elif LANGUAGE_CODE == "en" %} message {% elif LANGUAGE_CODE == "ru" %} сообщение {% endif %}:</p>
                             {{form.content}}
                           </div>
-                          <button type="submit" class="btn pull-right  btn-lg lang" style="background-color:#d97340 !important; color:white;" id="sendMessageButton" key="sendbutton" >Gönder</button>
+                          <button type="submit" class="btn pull-right  btn-lg lang" style="background-color:#d97340 !important; color:white;" id="sendMessageButton" key="sendbutton" >{% if LANGUAGE_CODE == "tr" %} Gönder {% elif LANGUAGE_CODE == "en" %} Submit {% elif LANGUAGE_CODE == "ru" %} представить {% endif %}</button>
                       </div>
                     </div>
               </form>

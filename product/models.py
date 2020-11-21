@@ -64,7 +64,9 @@ class Product(models.Model):
         ('500+', '500+'),
     ]
 
-    name = models.CharField(max_length=100, verbose_name="isim")
+    name = models.CharField(max_length=100, verbose_name="başlık")
+    name_en = models.CharField(max_length=100, verbose_name="ingilizce başlık", blank=True)
+    name_ru = models.CharField(max_length=100, verbose_name="rusça başlık", blank=True)
     price = models.IntegerField(verbose_name="fiyat")
     detail = models.CharField(max_length=200, verbose_name="detay")
     img = ImageField(upload_to='urunler', verbose_name="resim")
@@ -102,7 +104,9 @@ class Upholstery(models.Model):
         ('Antrasit', 'Antrasit'),
         ('Multicolor', 'Multicolor'),
     ]
-    name = models.CharField(max_length=100, verbose_name="isim")
+    name = models.CharField(max_length=100, verbose_name="başlık")
+    name_en = models.CharField(max_length=100, verbose_name="ingilizce başlık", blank=True)
+    name_ru = models.CharField(max_length=100, verbose_name="rusça başlık", blank=True)
     img = ImageField(upload_to="dosemelik", verbose_name="resim")
     renk = models.CharField(max_length=100, null=True, choices=RENK, blank=True)
 

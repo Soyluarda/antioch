@@ -1,12 +1,15 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=1024">
   <meta content="" name="keywords">
   <meta content="" name="description">
-
   <!-- Favicons -->
   <link href="{% static 'img/logo-3.jpg' %}" rel="icon">
   <link href="{% static 'img/logo-3.jpg' %}" rel="apple-touch-icon">
@@ -940,26 +943,50 @@ div.sku strong{
       <div class="col-10">
         <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="{% url 'about' %}" style="font-size:13px;">Hakkımızda</a></li>
-          <li><a href="{% url 'products' %}" style="font-size:13px;">ÜRÜNLER</a></li>
-          <li><a href="{% url 'upholstery' %}" style="font-size:13px;">DÖŞEMELİK</a></li>
-          <li><a href="{% url 'fairs' %}" style="font-size:13px;">FUARLAR</a></li>
-          <li><a href="{% url 'agents' %}" style="font-size:13px;">ACENTALAR</a></li>
+          <li><a href="{% url 'about' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Hakkımızda {% elif LANGUAGE_CODE == "en" %} About {% elif LANGUAGE_CODE == "ru" %} дом {% endif %}</a></li>
+          <li><a href="{% url 'products' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Ürünler {% elif LANGUAGE_CODE == "en" %} Products {% elif LANGUAGE_CODE == "ru" %} товары {% endif %}</a></li>
+          <li><a href="{% url 'upholstery' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Döşemelik {% elif LANGUAGE_CODE == "en" %} upholsteries {% elif LANGUAGE_CODE == "ru" %} обивка {% endif %}</a></li>
+          <li><a href="{% url 'fairs' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Fuarlar {% elif LANGUAGE_CODE == "en" %} fairs {% elif LANGUAGE_CODE == "ru" %} ярмарки {% endif %}</a></li>
+          <li><a href="{% url 'agents' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Acentalar {% elif LANGUAGE_CODE == "en" %} agents {% elif LANGUAGE_CODE == "ru" %} агенты {% endif %}</a></li>
           <!--<li><a href="{% url 'stock_service' %}">Stok Servis</a></li> -->
+             <li><a href="{% url 'contact' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} iletişim {% elif LANGUAGE_CODE == "en" %} contact {% elif LANGUAGE_CODE == "ru" %} контакт {% endif %}</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px;"><span class="glyphicon glyphicon-globe"
+                                          aria-hidden="true"></span></a>
+                <ul class="dropdown-menu">
+                    <!--<li> <a href="{% url 'login' %}" >Giriş yap <i class="fa fa-sign-in"></i></a> </li> -->
+                    <li>
+                          <div class="col-md-12">
+                            <div style="padding-left:0;">
+                                <form action="{% url 'set_language' %}" method="POST"
+                                  id="js-language-switch-form">{% csrf_token %}
+                                        <input id="js-new-language" type="hidden" name="language" value=""/>
+                                        {% for language in languages %}
+                                                <a style="font-size:11px;" href="javascript:void(0);" onclick="$('#js-new-language').val('{{ language.code }}'); $('#js-language-switch-form').submit();">
+                                                    {{ language.name_local }}
+                                                </a>
+                                            {% if not forloop.last %}
+                                            {% endif %}
+                                        {% endfor %}
+                                </form>
+                            </div>
+                         </div>
+                    </li>
+            </ul>
+            </li>
           {% if request.user.is_authenticated %}
           <li>
               <label>
-                {% if not request.session.items_total %} <a> SEPET <i class="fas fa-shopping-cart"></i> 0 </a> {% else %}
-                   <a href="{% url 'carts' %}" style="font-size:13px;"> SEPET <i class="fas fa-shopping-cart"></i> {{request.session.items_total }}</a>
+                {% if not request.session.items_total %} <a style="font-size:12px;"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} тележка {% endif %} <i class="fas fa-shopping-cart"></i> 0 </a> {% else %}
+                   <a href="{% url 'carts' %}" style="font-size:11px;"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} тележка {% endif %} <i class="fas fa-shopping-cart"></i> {{request.session.items_total }}</a>
                    {% endif %}
               </label>
             </i>
           </li>
           {% endif %}
-          <li><a href="{% url 'contact' %}" style="font-size:13px;">İLETİŞİM</a></li>
           {% if not user.is_authenticated %}
             <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:13px;">GİRİŞ yap </a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Giriş {% elif LANGUAGE_CODE == "en" %} login {% elif LANGUAGE_CODE == "ru" %} логин {% endif %} </a>
 			<ul id="login-dp" class="dropdown-menu">
                 <!--<li> <a href="{% url 'login' %}" >Giriş yap <i class="fa fa-sign-in"></i></a> </li> -->
 				<li>
@@ -980,12 +1007,12 @@ div.sku strong{
                                 <input type="submit" class="btn btn-primary btn-block" value="Giriş">
                                 <input type="hidden" name="next" value="{{ next }}">
                             </form>
-                                  <div class="help-block text-right"><a href="{% url 'signup' %}">Üye Ol</a></div>
+                                  <div class="help-block text-right"><a style="font-size:11px;" href="{% url 'signup' %}">Üye Ol</a></div>
 					 </div>
 				</li>
           {% else %}
 
-          <li><a href="{% url 'logout' %}" > ÇIKIŞ <i class="fa fa-user"></i>&nbsp;&nbsp;</a> </li>
+          <li><a href="{% url 'logout' %}" style="font-size:11px;" > {% if LANGUAGE_CODE == "tr" %} çıkış {% elif LANGUAGE_CODE == "en" %} logout {% elif LANGUAGE_CODE == "ru" %} выйти {% endif %} <i class="fa fa-user"></i>&nbsp;&nbsp;</a> </li>
 
           {% endif %}
 

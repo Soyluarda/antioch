@@ -17,13 +17,37 @@
           </div>
           <div class="col-lg-7 col-md-6">
             <div class="about-content">
-              <h2>Hakkımızda</h2>
+                {% if LANGUAGE_CODE == "tr" %}
+                <h2>Hakkımızda</h2>
                 <p> 1969 yılında kurulan Özlem Kumaş, bugün Avustralya’dan Amerika’ya, Güney Kore’den Avrupa’da birçok ülkeye ürün ihraç etmektedir. Özlem Kumaş, sürdürülebilirliği ilke edinerek, insan sağlığına ve doğaya zararsız üretim gerçekleştirmektedir. Üretim sürecinde kullanılan rejenere elyaflar ile geri dönüşüme katkı sağlamaktadır.
 
                 Trendler doğrultusunda geliştirilen yeni koleksiyonlar Paris , Londra , Moskova şehirlerinde fuarlarda sergilenmekte ayrıca Dünya’nın birçok farklı noktasındaki acentalarımız ile müşterilerimize birebir sunulmaktadır.
 
                 Müşterilerimizin özel taleplerini, üretim esnekliği ve tecrübemiz ile birlikte renk , desen, hammadde fark etmeksizin gerçekleştirebilmekteyiz. Tesisimizde yün, pamuk, polyester, viskon, polyamid elyafları işlenmektedir.
                 </p>
+                {% elif LANGUAGE_CODE == "en" %}
+                 <h2>About Us</h2>
+                <p>
+                    Founded in 1969, Özlem Kumaş exports products from Australia to America, from South Korea to many countries in Europe. Özlem Kumaş makes production harmless to human health and nature by adopting the principle of sustainability. It contributes to recycling with regenerated fibers used in the production process.
+
+                The new collections developed in line with the trends are exhibited in fairs in Paris, London and Moscow and are presented to our customers with our agencies in many different parts of the world.
+
+                We are able to fulfill the special demands of our customers with our production flexibility and experience, regardless of color, pattern, raw material. Wool, cotton, polyester, viscose, polyamide fibers are processed in our facility.
+                </p>
+
+                {% elif LANGUAGE_CODE == "ru" %}
+                <h2>насчет нас</h2>
+                <p>
+
+                    Компания Özlem Kumaş, основанная в 1969 году, экспортирует продукцию из Австралии в Америку, из Южной Кореи во многие страны Европы. Özlem Kumaş делает производство безвредным для здоровья человека и природы, руководствуясь принципом устойчивости. Он способствует переработке регенерированных волокон, используемых в производственном процессе.
+
+                Новые коллекции, разработанные в соответствии с тенденциями, выставляются на ярмарках в Париже, Лондоне и Москве и представляются нашим клиентам через наши агентства во многих разных частях мира.
+
+                Благодаря нашей производственной гибкости и опыту мы способны удовлетворить особые требования наших клиентов, независимо от цвета, рисунка и сырья. На нашем предприятии перерабатываются шерсть, хлопок, полиэстер, вискоза, полиамидные волокна.
+                </p>
+
+                {% endif %}
+
             </div>
             <br><br><br>
              <div class="about-img" style="width:75%; height:20%;">

@@ -21,14 +21,16 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-
-
   <section id="about" class="section-bg" style="background-color:white;">
 <div class="container">
     {% if not user.is_authenticated %}
-        <div class="alert alert-info" role="alert" style="margin-left:5px;">
-            Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir. <a href="{% url 'signup' %}">Üye olun</a>
-        </div>
+            {% if LANGUAGE_CODE == "tr" %}
+                Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir.<a href="{% url 'signup' %}">Üye olun</a>
+            {% elif LANGUAGE_CODE == "en" %}
+                You must be a member to add products to your cart and place an order.<a href="{% url 'signup' %}">Become a member</a>
+            {% elif LANGUAGE_CODE == "ru" %}
+                Вы должны быть участником, чтобы добавлять товары в корзину и размещать заказ. <a href="{% url 'signup' %}">стать членом</a>
+            {% endif %}
     {% endif %}
     <div class="row">
         <div class="col-10" style="margin-left:20px;">
@@ -75,7 +77,7 @@
                          src="{% thumbnail x.img '200x200' as im %}{{ im.url }}{% endthumbnail %}"
                          alt="Another alt text" style="width:150px; height:150px;">
                     <div align="center">
-                        {{x.name}}<br>
+                        {% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}<br>
                          {% if user.is_authenticated %}
                             {% if x.id not in cart %}
 
@@ -95,13 +97,13 @@
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                        <div class="modal-header">
-                           <h6 class="modal-title" align="center">{{x.name}}</h6>
+                           <h6 class="modal-title" align="center">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</h6>
                        </div>
                         <div class="modal-body">
                             <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{% thumbnail x.img '500x500' as im %}{{ im.url }}{% endthumbnail %}">
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Kapat</button>
+                          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{% if LANGUAGE_CODE == "tr" %} Kapat {% elif LANGUAGE_CODE == "en" %} Close {% elif LANGUAGE_CODE == "ru" %} близко {% endif %}</button>
                         </div>
                     </div>
                 </div>

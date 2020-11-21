@@ -54,6 +54,7 @@ MIDDLEWARE = [
   #  'login_required.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -76,9 +77,16 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
             ],
         },
     },
+]
+
+LANGUAGES = [
+  ('tr', 'Turkish'),
+  ('en', 'English'),
+  ('ru', 'русский')
 ]
 
 WSGI_APPLICATION = 'ozlemkumas.wsgi.application'
@@ -114,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'
 
 TIME_ZONE = 'UTC'
 

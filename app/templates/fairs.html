@@ -83,8 +83,18 @@
 <section class="page-section">
         <div class="centered" style="margin-top: 10%;">
             <div class="mb-5">
-                <h1 class="text-center">Fuarlarımız</h1>
-                <h4 class="text-center mb-4">Dünya’nın önde gelen fuarlarında ürünlerimizi sergilemekten mutluluk duyuyoruz.</h4>
+                {% if LANGUAGE_CODE == "tr" %}
+                    <h1 class="text-center">Fuarlarımız</h1>
+                    <h4 class="text-center mb-4">Dünya’nın önde gelen fuarlarında ürünlerimizi sergilemekten mutluluk duyuyoruz.</h4>
+                {% elif LANGUAGE_CODE == "en" %}
+                     <h1 class="text-center">Fairs</h1>
+                    <h4 class="text-center mb-4">We are happy to exhibit our products at the world's leading fairs.</h4>
+                {% elif LANGUAGE_CODE == "ru" %}
+
+                     <h1 class="text-center">Ярмарки</h1>
+                    <h4 class="text-center mb-4">Мы рады представить нашу продукцию на ведущих мировых выставках.</h4>
+                {% endif %}
+
             </div>
 
             <div class="row text-align-center">
@@ -95,7 +105,13 @@
                         </div>
                         <div class="card-title-content">
                             <div class="mb-3">
-                                Tekstilin bir numaralı fuarı Premiere Vision Paris ana fuarımızdır.
+                                {% if LANGUAGE_CODE == "tr" %}
+                                   Tekstilin bir numaralı fuarı Premiere Vision Paris ana fuarımızdır.
+                                {% elif LANGUAGE_CODE == "en" %}
+                                     A fair number of textile our main fair Premiere Vision in Paris.
+                                {% elif LANGUAGE_CODE == "ru" %}
+                                     Изрядное количество текстиля - наша главная выставка Premiere Vision в Париже.
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -108,7 +124,13 @@
                         </div>
                         <div class="card-title-content">
                             <div class="mb-3">
-                                Rusya Moskova’daki fuarımız Interfabric
+                                {% if LANGUAGE_CODE == "tr" %}
+                                   Rusya Moskova’daki fuarımız Interfabric
+                                {% elif LANGUAGE_CODE == "en" %}
+                                     Our fair in Moscow, Russia Interfabric
+                                {% elif LANGUAGE_CODE == "ru" %}
+                                     Наша ярмарка в Москве, Россия Interfabric
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -121,7 +143,13 @@
                         </div>
                         <div class="card-title-content">
                             <div class="mb-3">
-                                Bölgemizin en önemli pazarı Rusya’daki ikinci fuarımız Textile Salon Moscow
+                                {% if LANGUAGE_CODE == "tr" %}
+                                   Bölgemizin en önemli pazarı Rusya’daki ikinci fuarımız Textile Salon Moscow
+                                {% elif LANGUAGE_CODE == "en" %}
+                                     Textile Salon Moscow, our second fair in Russia, the most important market of our region
+                                {% elif LANGUAGE_CODE == "ru" %}
+                                     Textile Salon Moscow, наша вторая выставка в России, важнейшем рынке нашего региона.
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -134,7 +162,13 @@
                         </div>
                         <div class="card-title-content">
                             <div class="mb-3">
-                                Münih’te düzenlenen Munich Fabric Start fuarımı
+                                {% if LANGUAGE_CODE == "tr" %}
+                                   Münih’te düzenlenen Munich Fabric Start fuarımı
+                                {% elif LANGUAGE_CODE == "en" %}
+                                     Munich Fabric Start fair held in Munich
+                                {% elif LANGUAGE_CODE == "ru" %}
+                                    Выставка Munich Fabric Start прошла в Мюнхене
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -147,7 +181,14 @@
                         </div>
                         <div class="card-title-content">
                             <div class="mb-3">
-                                Yün ve ekosenin ülkesinde katıldığımız Londra fuarımız London Textile Fair
+                                {% if LANGUAGE_CODE == "tr" %}
+                                   Yün ve ekosenin ülkesinde katıldığımız Londra fuarımız London Textile Fair
+                                {% elif LANGUAGE_CODE == "en" %}
+                                     London Textile Fair, our London fair in the country of wool and plaid
+                                {% elif LANGUAGE_CODE == "ru" %}
+                                    London Textile Fair, наша лондонская ярмарка в стране шерсти и пледа
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>
