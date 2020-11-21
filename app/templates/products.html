@@ -48,11 +48,13 @@
                             {% if x.id not in cart %}
                             <p style="font-size:11px;" align="center">{{x.detail}} <br>
                             <a href="{% url 'update_carts' x.id %}">
-                            Sepete Ekle <i class="fas fa-plus"></i></a></p>
+
+                                {% if LANGUAGE_CODE == "tr" %} Sepete Ekle {% elif LANGUAGE_CODE == "en" %} Add to cart {% elif LANGUAGE_CODE == "ru" %} добавить в корзину {% endif %}
+                                <i class="fas fa-plus"></i></a></p>
                             {% else %}
                                 <p style="font-size:11px;" align="center">{{x.detail}} <br>
                                 <a href="{% url 'update_carts_2' x.id %}">
-                                Sepetten Çıkar <i class="fas fa-minus-circle" style="color:red;"></i></a></p>
+                                 {% if LANGUAGE_CODE == "tr" %} Sepetten Çıkar {% elif LANGUAGE_CODE == "en" %} Remove from cart {% elif LANGUAGE_CODE == "ru" %} убрать из корзины {% endif %}<i class="fas fa-minus-circle" style="color:red;"></i></a></p>
                             {% endif %}
                         {% endif %}
                     </div>

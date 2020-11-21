@@ -82,10 +82,13 @@
                             {% if x.id not in cart %}
 
                             <a href="{% url 'update_carts_up' x.id %}">
-                            Sepete Ekle <i class="fas fa-plus"></i></a>
+                                {% if LANGUAGE_CODE == "tr" %} Sepete Ekle {% elif LANGUAGE_CODE == "en" %} Add to cart {% elif LANGUAGE_CODE == "ru" %} добавить в корзину {% endif %}
+
+                             <i class="fas fa-plus"></i></a>
                             {% else %}
                                 <a href="{% url 'update_carts_up_2' x.id %}">
-                                Sepetten Çıkar <i class="fas fa-minus-circle" style="color:red;"></i></a>
+                                    {% if LANGUAGE_CODE == "tr" %} Sepetten Çıkar {% elif LANGUAGE_CODE == "en" %} Remove from cart {% elif LANGUAGE_CODE == "ru" %} убрать из корзины {% endif %}
+                                 <i class="fas fa-minus-circle" style="color:red;"></i></a>
                             {% endif %}
                         {% endif %}
                         <p></p>
