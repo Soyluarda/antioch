@@ -361,6 +361,7 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.username = user.email
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
