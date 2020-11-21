@@ -921,6 +921,7 @@ div.sku strong{
 }
 </style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -950,7 +951,7 @@ div.sku strong{
           {% if request.user.is_authenticated %}
           <li>
               <label>
-                {% if not request.session.items_total %} <a> SEPET 0 </a> {% else %}
+                {% if not request.session.items_total %} <a> SEPET <i class="fas fa-shopping-cart"></i> 0 </a> {% else %}
                    <a href="{% url 'carts' %}" style="font-size:13px;"> SEPET {{request.session.items_total }}</a>
                    {% endif %}
               </label>
