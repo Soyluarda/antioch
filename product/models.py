@@ -1,5 +1,6 @@
 from django.db import models
 from sorl.thumbnail import ImageField
+import os
 # Create your models here.
 
 
@@ -82,7 +83,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
-        os.system("python3 manage.py collectstatic --no-input")
+        os.system("python3 manage.py collectstatic --noinput")
 
     class Meta:
         verbose_name_plural = 'ürünler'
@@ -122,4 +123,4 @@ class Upholstery(models.Model):
 
     def save(self, *args, **kwargs):
         super(Upholstery, self).save(*args, **kwargs)
-        os.system("python3 manage.py collectstatic --no-input")
+        os.system("python3 manage.py collectstatic --noinput")
