@@ -4,19 +4,12 @@ import os
 # Create your models here.
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from asgiref.sync import sync_to_async
 import asyncio
 import time
 import random
 
-
-
-
 loop = asyncio.get_event_loop()
 
-
-def update_statics():
-    os.system('python3 manage.py collectstatic')
 
 class Product(models.Model):
     DESEN = [
