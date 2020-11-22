@@ -123,6 +123,11 @@ class Upholstery(models.Model):
         verbose_name_plural = 'Döşemelikler'
 
 
+    def save(self, *args, **kwargs):
+        super(Upholstery, self).save(*args, **kwargs)
+        print("saved.")
+        os.system("python3 manage.py collectstatic --noinput")
+
 
 @receiver(post_save, sender=Product)
 def update_products_statics(sender, instance, **kwargs):
