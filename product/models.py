@@ -2,6 +2,8 @@ from django.db import models
 from sorl.thumbnail import ImageField
 import os
 # Create your models here.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Product(models.Model):
@@ -83,7 +85,6 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
-        os.system("python3 manage.py collectstatic --noinput")
 
     class Meta:
         verbose_name_plural = 'ürünler'
@@ -121,6 +122,14 @@ class Upholstery(models.Model):
     class Meta:
         verbose_name_plural = 'Döşemelikler'
 
-    def save(self, *args, **kwargs):
-        super(Upholstery, self).save(*args, **kwargs)
-        os.system("python3 manage.py collectstatic --noinput")
+
+
+@receiver(post_save, sender=Product)
+def update_products_statics(sender, instance, **kwargs):
+    print("inside static update.")
+    os.system("python3 manage.py collectstatic --noinput")
+
+@receiver(post_save, sender=Upholstery)
+def update_upholstery_statics(sender, instance, **kwargs):
+    print("inside static update.")
+    os.system("python3 manage.py collectstatic --noinput")
