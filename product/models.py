@@ -4,7 +4,19 @@ import os
 # Create your models here.
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from asgiref.sync import sync_to_async
+import asyncio
+import time
+import random
 
+
+
+
+loop = asyncio.get_event_loop()
+
+
+def update_statics():
+    os.system('python3 manage.py collectstatic')
 
 class Product(models.Model):
     DESEN = [
@@ -85,6 +97,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
+        loop.run_in_executor(None, tester, args)
 
     class Meta:
         verbose_name_plural = 'ürünler'
@@ -125,16 +138,10 @@ class Upholstery(models.Model):
 
     def save(self, *args, **kwargs):
         super(Upholstery, self).save(*args, **kwargs)
-        print("saved.")
-        os.system("python3 manage.py collectstatic --noinput")
+        loop.run_in_executor(None, tester, args)
 
 
-@receiver(post_save, sender=Product)
-def update_products_statics(sender, instance, **kwargs):
-    print("inside static update.")
-    os.system("python3 manage.py collectstatic --noinput")
+def tester(args):
+    time.sleep(10)
+    os.system('python3 manage.py collectstatic --noinput')
 
-@receiver(post_save, sender=Upholstery)
-def update_upholstery_statics(sender, instance, **kwargs):
-    print("inside static update.")
-    os.system("python3 manage.py collectstatic --noinput")
