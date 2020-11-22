@@ -39,8 +39,8 @@
              <div class="col-3 col-offset">
                 <a href="" data-image-id="" data-toggle="modal" data-title=""
                    data-target="#{{x.id}}">
-                    <img class="img-thumbnail"
-                         src="{{x.img.url}}"  style="width:250px; height:250px;"
+                    <img class="img-thumbnail" style="width:250px; height:250px;"
+                         src="{% thumbnail x.img '200x200' as im %}{{ im.url }}{% endthumbnail %}"
                          alt="Another alt text" >
                         <div>
                             <p align="center">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</p>
