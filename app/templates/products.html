@@ -40,7 +40,7 @@
                 <a href="" data-image-id="" data-toggle="modal" data-title=""
                    data-target="#{{x.id}}">
                     <img class="img-thumbnail" style="width:250px; height:250px;"
-                         src="{% thumbnail x.img '200x200' as im %}{{ im.url }}{% endthumbnail %}"
+                         src="{% thumbnail x.img '200x200' as im %}{% if im.url %} {{im.url}} {% else %} {{x.img.url}} {% endif %} {% endthumbnail %}"
                          alt="Another alt text" >
                         <div>
                             <p align="center">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</p>
@@ -68,7 +68,7 @@
                             <h6 class="modal-title" id="image-gallery-title">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</h6>
                         </div>
                         <div class="modal-body">
-                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{% thumbnail x.img '500x500'  as im %}{{ im.url }}{% endthumbnail %}">
+                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{% thumbnail x.img '500x500'  as im %}{% if im.url %} {{im.url}} {% else %} {{x.img.url}} {% endif %}{% endthumbnail %}">
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{% if LANGUAGE_CODE == "tr" %} Kapat {% elif LANGUAGE_CODE == "en" %} Close {% elif LANGUAGE_CODE == "ru" %} близко {% endif %}</button>

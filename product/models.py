@@ -15,28 +15,8 @@ import random
 loop = asyncio.get_event_loop()
 
 
-async def update_statics(delay):
-    await asyncio.sleep(delay)
+def update_statics():
     os.system('python3 manage.py collectstatic')
-
-
-async def main():
-    task1 = asyncio.create_task(
-        update_statics(3))
-
-    task2 = asyncio.create_task(
-        update_statics(5))
-
-    task3 = asyncio.create_task(
-        update_statics(10))
-
-    # Wait until both tasks are completed (should take
-    # around 2 seconds.)
-    await task1
-    await task2
-    await task3
-
-
 
 class Product(models.Model):
     DESEN = [
@@ -117,7 +97,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
-        asyncio.run(main())
+        loop.run_in_executor(None, tester, args)
 
     class Meta:
         verbose_name_plural = 'ürünler'
@@ -155,7 +135,13 @@ class Upholstery(models.Model):
     class Meta:
         verbose_name_plural = 'Döşemelikler'
 
+
     def save(self, *args, **kwargs):
         super(Upholstery, self).save(*args, **kwargs)
-        asyncio.run(main())
+        loop.run_in_executor(None, tester, args)
+
+
+def tester(args):
+    time.sleep(5)
+    os.system('python3 manage.py collectstatic --noinput')
 
