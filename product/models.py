@@ -11,16 +11,8 @@ import random
 import django_rq
 
 
-
-loop = asyncio.get_event_loop()
-
-
-def update_statics():
-    time.sleep(5)
-    os.system('python3 manage.py collectstatic --noinput')
-
-def update_statics2():
-    time.sleep(10)
+def update_products():
+    time.sleep(3)
     os.system('python3 manage.py collectstatic --noinput')
 
 class Product(models.Model):
@@ -102,12 +94,16 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
-        loop.run_in_executor(None, tester, args)
         queue = django_rq.get_queue('default')
-        queue.enqueue(update_statics)
+        queue.enqueue(update_products)
 
     class Meta:
         verbose_name_plural = 'ürünler'
+
+
+def update_upholsteries():
+    time.sleep(3)
+    os.system('python3 manage.py collectstatic --noinput')
 
 class Upholstery(models.Model):
     RENK = [
@@ -145,11 +141,6 @@ class Upholstery(models.Model):
 
     def save(self, *args, **kwargs):
         super(Upholstery, self).save(*args, **kwargs)
-        loop.run_in_executor(None, tester, args)
         queue = django_rq.get_queue('default')
-        queue.enqueue(update_statics2)
-
-def tester(args):
-    time.sleep(5)
-    os.system('python3 manage.py collectstatic --noinput')
+        queue.enqueue(update_upholsteries)
 
