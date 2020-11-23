@@ -11,8 +11,8 @@ import random
 import django_rq
 
 
-def update_products():
-    time.sleep(3)
+def update_products(delay):
+    time.sleep(delay)
     os.system('python3 manage.py collectstatic --noinput')
 
 class Product(models.Model):
@@ -95,14 +95,14 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         queue = django_rq.get_queue('default')
-        queue.enqueue(update_products)
+        queue.enqueue('product.models.update_products', 5)
 
     class Meta:
         verbose_name_plural = 'ürünler'
 
 
-def update_upholsteries():
-    time.sleep(3)
+def update_upholsteries(delay):
+    time.sleep(delay)
     os.system('python3 manage.py collectstatic --noinput')
 
 class Upholstery(models.Model):
@@ -142,5 +142,5 @@ class Upholstery(models.Model):
     def save(self, *args, **kwargs):
         super(Upholstery, self).save(*args, **kwargs)
         queue = django_rq.get_queue('default')
-        queue.enqueue(update_upholsteries)
+        queue.enqueue('product.models.update_upholsteries', 5)
 
