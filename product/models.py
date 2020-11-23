@@ -19,6 +19,10 @@ def update_statics():
     time.sleep(5)
     os.system('python3 manage.py collectstatic --noinput')
 
+def update_statics2():
+    time.sleep(10)
+    os.system('python3 manage.py collectstatic --noinput')
+
 class Product(models.Model):
     DESEN = [
         ('ekose', 'ekose'),
@@ -143,7 +147,7 @@ class Upholstery(models.Model):
         super(Upholstery, self).save(*args, **kwargs)
         loop.run_in_executor(None, tester, args)
         queue = django_rq.get_queue('default')
-        queue.enqueue(update_statics)
+        queue.enqueue(update_statics2)
 
 def tester(args):
     time.sleep(5)
