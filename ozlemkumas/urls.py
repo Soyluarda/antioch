@@ -26,3 +26,7 @@ urlpatterns = [
     path('',include('app.urls')),
     path('logout/$', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
+    path('django-rq/', include('django_rq.urls'))
+]

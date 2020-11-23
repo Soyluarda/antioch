@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cart',
     'crispy_forms',
     'sorl.thumbnail',
+    'django_rq',
 ]
 
 MIDDLEWARE = [
@@ -175,10 +176,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/img/products/')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+Q_CLUSTER = {
+    'name': 'OzlemKumas',
+    'workers': 8,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': '127.0.0.1',
+        'port': 6379,
+        'db': 0, }
+}
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-snowflake',
-    }
+RQ_QUEUES = {
+'default': {
+    'HOST': 'localhost',
+    'PORT': 6379,
+    'DB': 0,
+    #'PASSWORD': '',
+    'DEFAULT_TIMEOUT': 360,
+    },
 }

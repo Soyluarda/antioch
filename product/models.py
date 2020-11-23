@@ -8,7 +8,7 @@ from asgiref.sync import sync_to_async
 import asyncio
 import time
 import random
-
+import django_rq
 
 
 
@@ -16,7 +16,8 @@ loop = asyncio.get_event_loop()
 
 
 def update_statics():
-    os.system('python3 manage.py collectstatic')
+    time.sleep(5)
+    os.system('python3 manage.py collectstatic --noinput')
 
 class Product(models.Model):
     DESEN = [
@@ -98,6 +99,8 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         loop.run_in_executor(None, tester, args)
+        queue = django_rq.get_queue('default')
+        queue.enqueue(update_statics)
 
     class Meta:
         verbose_name_plural = 'ürünler'
@@ -139,7 +142,8 @@ class Upholstery(models.Model):
     def save(self, *args, **kwargs):
         super(Upholstery, self).save(*args, **kwargs)
         loop.run_in_executor(None, tester, args)
-
+        queue = django_rq.get_queue('default')
+        queue.enqueue(update_statics)
 
 def tester(args):
     time.sleep(5)
