@@ -4,6 +4,17 @@
 {% endblock %}
 
 {% block body %}
+<style>
+
+@media (max-device-width:801px)  {
+      .images {
+        width:100px !important;
+        height:100px !important;
+      }
+    }
+
+
+</style>
 <section id="about">
       <div class="container">
         <div class="row">
@@ -50,10 +61,10 @@
 
             </div>
             <br><br><br>
-             <div class="about-img" style="width:75%; height:20%;">
-              <img class="images" src="{% static 'img/HakkımızdaUfakFoto1_OZLEM_kaz.jpg' %}" style="width:100px; height:100px; margin-left:25px;"  alt="">
-               <img class="images" src="{% static 'img/HakkımızdaUfakFoto2_Nice_Alpaca.jpg' %}" style="width:100px; height:100px; margin-left:25px;"  alt="">
-               <img class="images" src="{% static 'img/HakkımızdaUfakFoto3.jpg' %}" style="width:100px; height:100px; margin-left:25px;"  alt="">
+             <div class="about-img">
+              <img class="images" src="{% static 'img/HakkımızdaUfakFoto1_OZLEM_kaz.jpg' %}" style="width:150px; height:150px; margin-left:25px;"  alt="">
+               <img class="images" src="{% static 'img/HakkımızdaUfakFoto2_Nice_Alpaca.jpg' %}" style="width:150px; height:150px; margin-left:25px;"  alt="">
+               <img class="images" src="{% static 'img/HakkımızdaUfakFoto3.jpg' %}" style="width:150px; height:150px; margin-left:25px;"  alt="">
             </div>
       </div>
 
