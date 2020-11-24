@@ -30,7 +30,7 @@
                           Kat:31 No:119 Esenler 34235<br>
                           İstanbul Türkiye <br>
                         </address>
-                        <abbr style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} tel {% elif LANGUAGE_CODE == "en" %} phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}: +90 212 438 5 438</abbr><br><br>
+                        <abbr style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} T {% elif LANGUAGE_CODE == "en" %} phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}: +90 212 438 5 438</abbr><br><br>
                          <address>
                           <strong style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} E-posta {% elif LANGUAGE_CODE == "en" %} E-mail {% elif LANGUAGE_CODE == "ru" %} е-мейл {% endif %}:</strong><br>
                           <a href="mailto:#" style="font-size:15px;">info@ozlemkumas.com</a>
@@ -60,7 +60,7 @@
          </div></div></div>
 
  </div>
-                <h2 align="center">{% if LANGUAGE_CODE == "tr" %} Bize ulaşın {% elif LANGUAGE_CODE == "en" %} Contact us {% elif LANGUAGE_CODE == "ru" %} свяжитесь с нами {% endif %}</h2>
+                <h2 align="center">{% if LANGUAGE_CODE == "tr" %} Bize Ulaşın {% elif LANGUAGE_CODE == "en" %} Contact us {% elif LANGUAGE_CODE == "ru" %} свяжитесь с нами {% endif %}</h2>
               <form  method="post" >
                        {% csrf_token %}
                   <div class="row align-items-stretch mb-5">
@@ -70,11 +70,11 @@
                             {{form.name}}
                           </div>
                           <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Soy isim {% elif LANGUAGE_CODE == "en" %} Surname {% elif LANGUAGE_CODE == "ru" %} фамилия {% endif %}</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Soyadı {% elif LANGUAGE_CODE == "en" %} Surname {% elif LANGUAGE_CODE == "ru" %} фамилия {% endif %}</p>
                             {{form.email}}
                           </div>
                           <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} tel {% elif LANGUAGE_CODE == "en" %} phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Telefon Numarası {% elif LANGUAGE_CODE == "en" %} Phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}</p>
                             {{form.phone}}
                           </div>
                       </div>
