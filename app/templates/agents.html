@@ -22,8 +22,15 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Batı Almanya & Kuzey Almanya <br>
-                       Bernd Strauss <br>
+                      <p>
+                           {% if LANGUAGE_CODE == "tr" %}
+                                Batı Almanya & Kuzey Almanya <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                West Germany & North Germany <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 West Germany & North Germany <br>
+                            {% endif %}
+                        Bernd Strauss <br>
                        straussb00@googlemail.com <br>
                       +49 1522 3344877</p>
                   </div>
@@ -36,7 +43,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Fransa Paris <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Fransa Paris <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                France Paris <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 France Paris <br>
+                            {% endif %}
                        Carine Faivre <br>
                        carinefaivre@me.com<br>
                       +33 661 184 305</p>
@@ -50,7 +64,13 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Fransa Paris <br>
+                      <p>   {% if LANGUAGE_CODE == "tr" %}
+                                Fransa Paris <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                France Paris <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 France Paris <br>
+                            {% endif %}
                        Valerie Fernandes - VPF Moda <br>
                         vpfmoda@gmail.com<br>
                         +33 609 731 734</p>
@@ -65,7 +85,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Batı Fransa <br>
+                      <p>Batı Fransa
+                            {% if LANGUAGE_CODE == "tr" %}
+                                Fransa Paris <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                West France <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 West France<br>
+                            {% endif %}
                        Genevieve Monnet <br>
                         genevieve.marsaud@wanadoo.fr<br>
                         +33 614 394 828</p>
@@ -81,7 +108,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin-left: 10px; margin-top:10px;">
-                      <p>Hollanda <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Hollanda <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                Netherlands <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 Netherlands <br>
+                            {% endif %}
                        Li-Janne Nagle - Bruggen Brocker <br>
                        l.nagle@bruggen-brocker.nl <br>
                         +31 650 261 681 </p>
@@ -96,7 +130,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Portekiz <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Portekiz <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                Portugal <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 Portugal <br>
+                            {% endif %}
                        Bernardete Marques<br>
                        bernardete3j@gmail.com<br>
                         +351 920 185 465  </p>
@@ -112,7 +153,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin-left: 10px; margin-top:10px;">
-                      <p>İspanya Madrid & Coruna<br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                İspanya Madrid & Coruna <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                Spain Madrid & Coruna <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 Spain Madrid & Coruna <br>
+                            {% endif %}
                        Jorge Duran <br>
                        representacionesduran@gmail.com <br>
                       +34 606 448 801</p>
@@ -128,7 +176,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>İspanya Barcelona <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                İspanya Barcelona  <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                Spain Barcelona <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 Spain Barcelona <br>
+                            {% endif %}
                        Sergio Serrat - Spain Boton<br>
                        sergio@spainboton.com<br>
                         +34 656 918 531</p>
@@ -144,7 +199,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Birleşik Krallık <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Birleşik Krallık  <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                United Kingdom <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 United Kingdom <br>
+                            {% endif %}
                        Ciara Jennings<br>
                        ciarajenningstextiles@gmail.com <br>
                         +44 774 877 4040 </p>
@@ -160,7 +222,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Rusya <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Rusya <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                Russia <br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 Russia<br>
+                            {% endif %}
                        Olga Valentinovna Kiray <br>
                        sales@ozlemkumas.com <br>
                         +90 532 242 5964</p>
@@ -175,7 +244,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin-left: 10px; margin-top:10px;">
-                      <p>California & Batı Amerika<br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                California & Batı Amerika<br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                California & West  USA<br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 California & West  USA<br>
+                            {% endif %}
                        Kimberlee Schreiner - KMS Group <br>
                        kimberlee@thekmsgrp.com <br>
                       +1 704 724 2269</p>
@@ -190,7 +266,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Kanada <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Kanada <br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                Canada<br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 Canada<br>
+                            {% endif %}
                        John Wood <br>
                        johnharvard@videotron.ca <br>
                         +1 514 773 5399</p>
@@ -205,7 +288,14 @@
                          alt="Another alt text" style="width: 150px; height: 110px;">
                   </div>
                   <div style="font-size: 12px; margin: 10px;">
-                      <p>Güney Kore <br>
+                      <p>
+                          {% if LANGUAGE_CODE == "tr" %}
+                                Güney Kore<br>
+                            {% elif LANGUAGE_CODE == "en" %}
+                                South Korea<br>
+                            {% elif LANGUAGE_CODE == "ru" %}
+                                 South Korea<br>
+                            {% endif %}
                        Pedro Kang - Avvio <br>
                        avviobypedro@gmail.com <br>
                       +82 10 9184 9425</p>
