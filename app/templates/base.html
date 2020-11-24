@@ -4,7 +4,7 @@
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=1024">
@@ -944,8 +944,8 @@ div.sku strong{
         <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li><a href="{% url 'about' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Hakkımızda {% elif LANGUAGE_CODE == "en" %} About {% elif LANGUAGE_CODE == "ru" %} дом {% endif %}</a></li>
-          <li><a href="{% url 'products' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Ürünler {% elif LANGUAGE_CODE == "en" %} Products {% elif LANGUAGE_CODE == "ru" %} товары {% endif %}</a></li>
-          <li><a href="{% url 'upholstery' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Döşemelik {% elif LANGUAGE_CODE == "en" %} upholsteries {% elif LANGUAGE_CODE == "ru" %} обивка {% endif %}</a></li>
+          <li><a href="{% url 'products' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Ürünler {% elif LANGUAGE_CODE == "en" %} Fabrics {% elif LANGUAGE_CODE == "ru" %} товары {% endif %}</a></li>
+          <li><a href="{% url 'upholstery' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Döşemelik {% elif LANGUAGE_CODE == "en" %} Upholstery  {% elif LANGUAGE_CODE == "ru" %} обивка {% endif %}</a></li>
           <li><a href="{% url 'fairs' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Fuarlar {% elif LANGUAGE_CODE == "en" %} fairs {% elif LANGUAGE_CODE == "ru" %} ярмарки {% endif %}</a></li>
           <li><a href="{% url 'agents' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Acentalar {% elif LANGUAGE_CODE == "en" %} agents {% elif LANGUAGE_CODE == "ru" %} агенты {% endif %}</a></li>
           <!--<li><a href="{% url 'stock_service' %}">Stok Servis</a></li> -->
