@@ -2,8 +2,10 @@
 {% load static %}
 {% block head %}
 {% endblock %}
-
 {% block body %}
+<style>
+
+</style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <section id="about" class="section-bg" style="background-color:white;">
       <div class="container">
@@ -44,12 +46,19 @@
             <div class="card py-4 h-100">
                 <div class="card-body text-center">
                 <div class="social-links">
-
+                <h4>
+                    {% if LANGUAGE_CODE == "tr" %}
+                        Instagramda Bizi Takip Edin!
+                    {% elif LANGUAGE_CODE == "en" %}
+                        Follow Us on Instagram
+                    {% elif LANGUAGE_CODE == "ru" %}
+                        Follow Us on Instagram
+                    {% endif %}
+                </h4>
                 <a href="https://www.instagram.com/ozlem_fabric/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></div>
               <script src="{% static 'elfsight.js' %}" defer></script>
              <div class="elfsight-app-a2d4f8a0-5fc1-49b5-b4c3-6caf01e7950e"></div>
         <br>
-
      </div>
             </div>
         </div>
