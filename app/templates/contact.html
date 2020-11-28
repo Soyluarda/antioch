@@ -52,7 +52,7 @@
                     {% elif LANGUAGE_CODE == "en" %}
                         Follow Us on Instagram
                     {% elif LANGUAGE_CODE == "ru" %}
-                        Follow Us on Instagram
+                        Мы в Instagram
                     {% endif %}
                 </h4>
                 <a href="https://www.instagram.com/ozlem_fabric/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></div>
@@ -69,21 +69,21 @@
          </div></div></div>
 
  </div>
-                <h2 align="center">{% if LANGUAGE_CODE == "tr" %} Bize Ulaşın {% elif LANGUAGE_CODE == "en" %} Contact us {% elif LANGUAGE_CODE == "ru" %} свяжитесь с нами {% endif %}</h2>
+                <h2 align="center">{% if LANGUAGE_CODE == "tr" %} Bize Ulaşın {% elif LANGUAGE_CODE == "en" %} Contact us {% elif LANGUAGE_CODE == "ru" %} Связаться с нами {% endif %}</h2>
               <form  method="post" >
                        {% csrf_token %}
                   <div class="row align-items-stretch mb-5">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} İsim {% elif LANGUAGE_CODE == "en" %} Name {% elif LANGUAGE_CODE == "ru" %} название {% endif %}</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} İsim {% elif LANGUAGE_CODE == "en" %} Name {% elif LANGUAGE_CODE == "ru" %} Имя {% endif %}</p>
                             {{form.name}}
                           </div>
                           <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Soyadı {% elif LANGUAGE_CODE == "en" %} Surname {% elif LANGUAGE_CODE == "ru" %} фамилия {% endif %}</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Soyadı {% elif LANGUAGE_CODE == "en" %} Surname {% elif LANGUAGE_CODE == "ru" %} Фамилия {% endif %}</p>
                             {{form.email}}
                           </div>
                           <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Telefon Numarası {% elif LANGUAGE_CODE == "en" %} Telephone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}</p>
+                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Telefon Numarası {% elif LANGUAGE_CODE == "en" %} Telephone {% elif LANGUAGE_CODE == "ru" %} Tелефон {% endif %}</p>
                             {{form.phone}}
                           </div>
                       </div>

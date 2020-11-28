@@ -7,7 +7,7 @@
 
 {% block body %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
+<!-- <script>
     function checkrules(id){
            var desen = $( "#desen-"+id ).val();
            var renk = $( "#renk-"+id ).val();
@@ -22,7 +22,7 @@
 
         }
 
-</script>
+</script> -->
 <section id="about" class="section-bg">
       <div class="container">
         <div class="row">
@@ -42,16 +42,62 @@
         <table class="table">
             <thead>
                 <th></th>
-                <th>Ürün</th>
-                <th colspan="2">Detay</th>
-                <th>Fiyat</th>
-                <th>Seçim</th>
+                <th>
+                    {% if LANGUAGE_CODE == "tr" %}
+                       Kumaş
+                    {% elif LANGUAGE_CODE == "en" %}
+                         Fabric
+                    {% elif LANGUAGE_CODE == "ru" %}
+                         Fabric
+                    {% endif %}
+                </th>
+                <th colspan="2">
+                    {% if LANGUAGE_CODE == "tr" %}
+                       Detay
+                    {% elif LANGUAGE_CODE == "en" %}
+                         Details
+                    {% elif LANGUAGE_CODE == "ru" %}
+                         Details
+                    {% endif %}
+                </th>
+                <th>
+                    {% if LANGUAGE_CODE == "tr" %}
+                       Fiyat
+                    {% elif LANGUAGE_CODE == "en" %}
+                         Price
+                    {% elif LANGUAGE_CODE == "ru" %}
+                         Цена
+                    {% endif %}
+                </th>
+                <th>{% if LANGUAGE_CODE == "tr" %}
+                       Adet
+                    {% elif LANGUAGE_CODE == "en" %}
+                         Qty
+                    {% elif LANGUAGE_CODE == "ru" %}
+                         Кол-во
+                    {% endif %}
+                </th>
             </thead>
             <tfoot>
                 <tr>
+                    <td colspan="10"><strong>
+                        {% if LANGUAGE_CODE == "tr" %}
+                       Toplam
+                    {% elif LANGUAGE_CODE == "en" %}
+                         Total
+                    {% elif LANGUAGE_CODE == "ru" %}
+                         Итого
+                    {% endif %}:{{cart.total}}</strong></td>
+                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit"  class="btn btn-primary">
+                    {% if LANGUAGE_CODE == "tr" %}
+                       Siparişi Tamamla
+                    {% elif LANGUAGE_CODE == "en" %}
+                         Complete Order
+                    {% elif LANGUAGE_CODE == "ru" %}
+                         Отправить заказ
+                    {% endif %}
 
-                    <td colspan="10"><strong>Toplam:{{cart.total}}</strong></td>
-                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit"  class="btn btn-primary" {% if status == False %} disabled  {% endif %}>Siparişi Tamamla</button></form></td>
+                    </button></form></td>
 
                 </tr>
             </tfoot>
@@ -59,110 +105,24 @@
             <tr>
                 <td><img src="{{item.img.url}}" alt=""  style="width:75px; heigh:75px;"/></td>
                 <td colspan="1">{{item}}
-                <td colspan="2">{% for x in details.values %} {% if x.id == item.id %}
-                <strong>Desen:</strong>{{x.desen}}<br>
-                <strong>Renk:</strong>{{x.renk}}<br>
-                <strong>Karisim:</strong>{{x.karisim}}<br>
-                <strong>Agirlik:</strong>{{x.agirlik}}<br>
-                <strong>Siparis miktari:</strong>{{x.siparis}}<br>
-                {% endif %}
-
-                    {% endfor %}</td>
+                <td colspan="2">
+                    {{item.detail}}
                 </td>
                 <td>{{item.price}} USD</td>
                 <td>
-                    <form action="{% url 'update_carts_3' %}" method="post">
-                <div class="row">
-                {% csrf_token %}
-                 <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="desen" id="desen-{{item.id}}">
-                      <option selected disabled>Desen</option>
-                      <option>ekose</option>
-                      <option>Etnik</option>
-                      <option>Geometrik</option>
-                      <option>Baliksirti</option>
-                      <option>Kazayagi</option>
-                      <option>Duz</option>
-                      <option>Cizgi</option>
-                      <option>Tweed</option>
-                    </select>
-                 </div></div>
+                    <input type="number" name="quantity" min="1" max="10000">
 
-                        <div class="row">
-
-              <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="renk" id="renk-{{item.id}}">
-                      <option selected disabled>Renk</option>
-                      <option>Bej</option>
-                      <option>Siyah</option>
-                      <option>Beyaz</option>
-                      <option>mavi</option>
-                      <option>Lacivert</option>
-                      <option>Kahverengi</option>
-                      <option>Camel</option>
-                      <option>Tesil</option>
-                      <option>Haki</option>
-                      <option>Turuncu</option>
-                      <option>Pembe</option>
-                      <option>kirmizi</option>
-                      <option>Bordo</option>
-                      <option>Mor</option>
-                      <option>Sari</option>
-                      <option>Gri</option>
-                      <option>Antrasit</option>
-                      <option>Multicolor</option>
-                    </select>
-                </div>
-                        </div>
-                        <div class="row">
-                <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="karisim" id="karisim-{{item.id}}">
-                      <option selected disabled>Karisim</option>
-                      <option>Akrilik</option>
-                      <option>Alpaka</option>
-                      <option>Angora</option>
-                      <option>Kasmir</option>
-                      <option>Pamuk</option>
-                      <option>Elastan</option>
-                      <option>Keten</option>
-                      <option>Polyamid</option>
-                      <option>Polyester</option>
-                      <option>Ipek</option>
-                      <option>Moher</option>
-                      <option>Yun</option>
-                      <option>Viskon</option>
-                    </select>
-                </div>
-                            </div>
-                        <div class="row">
-                   <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="agirlik" id="agirlik-{{item.id}}">
-                      <option selected disabled>Agirlik</option>
-                      <option>0-200 g/mtul</option>
-                      <option>201-400g/mtul</option>
-                      <option>401-600g/mtul</option>
-                      <option>600+ g/mtul</option>
-                    </select>
-                </div>
-                            </div>
-                        <div class="row">
-                   <div class="form-group" style="width:150px;">
-                    <select class="form-control" name="siparis" id="siparis-{{item.id}}">
-                      <option selected disabled>Min. Siparis</option>
-                      <option>1-100</option>
-                      <option>101-300</option>
-                      <option>301-500</option>
-                      <option>500+</option>
-                    </select>
-                </div>
-                            </div>
-        </div>
-    </td>
-
-
-            <td><button class="btn btn-primary" name="urun_id" onClick="checkrules({{item.id}})" value="{{item.id}}">Onayla</button></td>
-             </form>
-                <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">Sil</a></td>
+            </td>
+            </form>
+                <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">
+                    {% if LANGUAGE_CODE == "tr" %}
+                       Sil
+                    {% elif LANGUAGE_CODE == "en" %}
+                        Delete
+                    {% elif LANGUAGE_CODE == "ru" %}
+                        Удалить
+                    {% endif %}
+                </a></td>
             </tr>
 
             {% endfor %}
@@ -172,8 +132,8 @@
                 <td colspan="1">{{item}}
                 <td colspan="2">Standart</td>
 
-                <td colspan="">{{item.price}} TL</td>
-                <td colspan="2">Standart</td>
+                <td colspan="">{{item.price}} USD</td>
+                <td><input type="number" name="quantity" min="1" max="10000"></td>
                     <form action="{% url 'update_carts_3' %}" method="post">
                 <div class="row">
                 {% csrf_token %}
@@ -181,7 +141,15 @@
     </td>
                     </form>
 
-                <td colspan="8"><a href="{% url 'update_carts_up_2' item.id %}" class="btn btn-danger">Sil</a></td>
+                <td colspan="8"><a href="{% url 'update_carts_up_2' item.id %}" class="btn btn-danger">
+                    {% if LANGUAGE_CODE == "tr" %}
+                       Sil
+                    {% elif LANGUAGE_CODE == "en" %}
+                        Delete
+                    {% elif LANGUAGE_CODE == "ru" %}
+                        Удалить
+                    {% endif %}
+                </a></td>
             </tr>
 
             {% endfor %}
@@ -191,7 +159,6 @@
     </div>
 
         </div>
-    <label>* Siparişi tamamlamak için seçimli ürünleri onaylamanız gerekir.</label>
     </div>
 </section>
 

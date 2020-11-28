@@ -6,12 +6,9 @@ from django.contrib.auth import get_user_model
 
 
 class ExtendedUser(AbstractUser):
-    isim = models.CharField(max_length=100)
-    soyisim = models.CharField(max_length=100)
+    ad_soyad = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(null=False, unique=True)
-    address = models.CharField(max_length=100,null=True, verbose_name="adres")
-    telefon = models.CharField(max_length=100,null=True)
-    firma_adi = models.CharField(max_length=100)
+    firma_adi = models.CharField(max_length=100,  null=True, blank=True)
 
     def __str__(self):
         return self.email

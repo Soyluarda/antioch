@@ -1,8 +1,10 @@
-<html>
-<head>
-    <style>
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
 
-
+{% block body %}
+<style>
 /* BASIC */
 
 html {
@@ -496,10 +498,6 @@ input[type=password2]:placeholder {
   color: #cccccc;
 }
 
-
-
-
-
 .underlineHover:hover {
   color: #0d0d0d;
 }
@@ -507,8 +505,6 @@ input[type=password2]:placeholder {
 .underlineHover:hover:after{
   width: 100%;
 }
-
-
 
 /* OTHERS */
 
@@ -520,21 +516,39 @@ input[type=password2]:placeholder {
   width:60%;
 }
 
+
+
     </style>
-</head>
-<body>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
-<script></script>
+<script>
+function mouseoverPass(obj) {
+  var obj = document.getElementById('password1');
+  obj.type = "text";
+}
+function mouseoutPass(obj) {
+  var obj2 = document.getElementById('password1');
+  obj2.type = "password";
+}
+function mouseoverPass2(obj) {
+  var obj2 = document.getElementById('password1');
+  obj2.type = "text";
+  var obj = document.getElementById('password2');
+  obj.type = "text";
+}
+function mouseoutPass2(obj) {
+  var obj = document.getElementById('password2');
+  obj.type = "password";
+  var obj2 = document.getElementById('password1');
+  obj2.type = "password";
+}
+</script>
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
 
-    <!-- Icon -->
-
-    <!-- Login Form -->
     {% if form.errors %}
       {% for key,value in form.errors.items %}
       <p>{{ value|escape }}</p>
@@ -548,57 +562,38 @@ input[type=password2]:placeholder {
 
     <form method="POST" action="{% url 'signup' %}">
         {% csrf_token %}
-
-
-
      <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="text" id="isim" name="isim"  placeholder="Ad" required>
+        <div class="controls col-12">
+            <input class="form-control" type="text" id="ad_soyad" name="ad_soyad"  placeholder="{% if LANGUAGE_CODE == 'tr' %} Ad Soyad {% elif LANGUAGE_CODE == 'en' %} Name Surname {% elif LANGUAGE_CODE == 'ru' %} Имя Фамилия {% endif %}" required>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls col-12">
+            <input class="form-control" type="firma_adi" name="firma_adi" id="firma_adi" placeholder="{% if LANGUAGE_CODE == 'tr' %} Firma {% elif LANGUAGE_CODE == 'en' %} Company {% elif LANGUAGE_CODE == 'ru' %} Название фирмы  {% endif %}" required>
         </div>
     </div>
 
     <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="text" name="soyisim" id="soyisim" placeholder="Soyad" required>
+        <div class="controls col-12">
+            <input class="form-control" type="email" name="email" id="email" placeholder="{% if LANGUAGE_CODE == 'tr' %} Email {% elif LANGUAGE_CODE == 'en' %} Email {% elif LANGUAGE_CODE == 'ru' %} Эл. почта  {% endif %}"  required>
+        </div>
+    </div>
+
+   <div class="control-group">
+        <div class="controls col-12">
+            <input class="form-control" type="password" id="password1" name="password1"  placeholder="{% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} пароль  {% endif %}" required>
         </div>
     </div>
     <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="email" name="email" id="email" placeholder="Email"  required>
+        <div class="controls col-12">
+            <input class="form-control" type="password" name="password2" id="password2" placeholder="{% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} Повторить пароль  {% endif %}" required>
         </div>
     </div>
+        <span class="fa fa-fw fa-eye field-icon toggle-password" onmouseover="mouseoverPass2();" onmouseout="mouseoutPass2();" ></span>
 
-    <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="address" name="address" id="address" placeholder="Adres" required>
-        </div>
-    </div>
-
-
-     <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="telefon" id="telefon" name="telefon"  placeholder="Telefon" required>
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="firma_adi" name="firma_adi" id="firma_adi" placeholder="Firma Adı" required>
-        </div>
-    </div>
-
-           <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="password" id="password1" name="password1"  placeholder="Parola " required>
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="controls">
-            <input class="form-control" type="password" name="password2" id="password2" placeholder="Parola Tekrar" required>
-        </div>
-    </div>
-
-
-        <input type="submit" value="Kayıt ol">
+        <br>
+        <input type="submit" value="{% if LANGUAGE_CODE == 'tr' %} Kayıt ol {% elif LANGUAGE_CODE == 'en' %} Sign up {% elif LANGUAGE_CODE == 'ru' %} Зарегистрироваться  {% endif %}
+        ">
         <input type="hidden" name="next" value="{{ next }}">
 
     </form>
@@ -607,6 +602,5 @@ input[type=password2]:placeholder {
 
   </div>
 </div>
-</body>
-</html>
+{% endblock %}
 

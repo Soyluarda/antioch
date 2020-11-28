@@ -86,7 +86,7 @@ TEMPLATES = [
 
 LANGUAGES = [
   ('tr', 'Turkish'),
-  ('en', 'English'),
+  ('en', 'english'),
   ('ru', 'русский')
 ]
 

@@ -11,7 +11,7 @@ class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
     class Meta:
         model = ExtendedUser
-        fields = ('isim', 'soyisim', 'email','address','telefon','firma_adi','password1', 'password2')
+        fields = ('ad_soyad','firma_adi','email','password1','password2')
 
 
 

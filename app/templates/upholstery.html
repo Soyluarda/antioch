@@ -29,7 +29,7 @@
             {% elif LANGUAGE_CODE == "en" %}
                 You must be a member to add products to your cart and place an order.<a href="{% url 'signup' %}">Become a member</a>
             {% elif LANGUAGE_CODE == "ru" %}
-                Вы должны быть участником, чтобы добавлять товары в корзину и размещать заказ. <a href="{% url 'signup' %}">стать членом</a>
+                <!--Вы должны быть участником, чтобы добавлять товары в корзину и размещать заказ. --> <a href="{% url 'signup' %}">Зарегистрироваться</a>
             {% endif %}
     {% endif %}
     <div class="row">
@@ -59,15 +59,15 @@
 
                 <p> <b>Cleaning</b><br> Professional dry clean or wipe with a damp cloth using water </p>
             {% elif LANGUAGE_CODE == "ru" %}
-                <p> <b>Composition </b><br> %80 Wool %20 Polyamide </p>
+                <p> <b>Состав Смесь </b><br> 80% шерсть 20% полиамид </p>
 
-                <p> <b>Enviromental</b> <br> Rapidly renewable and compostable </p>
+                <p> 100% пригодность для вторичной переработки</p>
 
-                <p> <b> Width</b><br> 140 cm minimum </p>
+                <p> <b> Ширина</b><br> минимум 140 см </p>
 
-                <p> <b>Weight</b><br> 460 grams/sqm</p>
+                <p> <b>Вес</b><br> 460 гр/м2 </p>
 
-                <p> <b>Cleaning</b><br> Professional dry clean or wipe with a damp cloth using water </p>
+                <p> <b>Уход</b><br> Профессиональная химчистка, можно протереть влажной салфеткой</p>
             {% endif %}
 
         </div>
@@ -99,17 +99,17 @@
                 <p> <b>Cigarette and Match Flame Resistance Tests Passed Successfully </b> <br>
                 (BS EN 1021-1:2006 Cigarette) (BS EN 1021-2:2006 Match)</p>
             {% elif LANGUAGE_CODE == "ru" %}
-                <p> <b>Abrasion Resistance</b><br> 50.000 Martindale Cycle  (ISO 19247-2:1998) </p>
-                <p> <b>Pilling Resistance</b><br> 4/5 (ISO 12945-2:2000)</p>
+                <p> <b>Показатель истирания </b><br> 50.000 Martindale turu (ISO 12947-2:1998) </p>
+                <p> <b>Пиллинг</b><br> 4/5  (ISO 12945-2:2000)</p>
 
-                <p> <b>Color Fastness to Crocking</b> <br>
-                    <b>Dry:</b> 4/5
-                    <b>Wet:</b> 4/5 (BS EN ISO 105 X12:2002) </p>
+                <p> <b>Стойкость цвета </b> <br>
+                    <b>Kuru:</b> 4/5
+                    <b>Islak:</b> 4/5 (BS EN ISO 105 X12:2002) </p>
 
-                <p> <b>Color Fastness to Light</b><br>5 (BS EN ISO 105 B02:1999) </p>
+                <p> <b>Светостойкость</b><br>5 (BS EN ISO 105 B02:1999) </p>
 
-                <p> <b>Cigarette and Match Flame Resistance Tests Passed Successfully </b> <br>
-                (BS EN 1021-1:2006 Cigarette) (BS EN 1021-2:2006 Match)</p>
+                <p> <b>Испытания на огнестойкость от сигарет и спичек успешно завершены.</b> <br>
+                (BS EN 1021-1:2006 Cigarette)  (BS EN 1021-2:2006 Match)</p>
             {% endif %}
 
         </div>
@@ -166,7 +166,17 @@
 	</div>
           <hr>
         <div class="row1">
-        <a href="static/FURNILANA_ENG_TestReport.pdf" target="_blank">Furnilana Test Report</a>
+        <a href="static/FURNILANA_ENG_TestReport.pdf" target="_blank">
+
+            {% if LANGUAGE_CODE == "tr" %}
+                Furnilana Test Raporu İngilizce
+            {% elif LANGUAGE_CODE == "en" %}
+                Furnilana Test Report
+            {% elif LANGUAGE_CODE == "ru" %}
+                Furnilana Результаты лабораторных испытаний
+            {% endif %}
+
+        </a>
         </div>
 </div>
   </section>

@@ -1,8 +1,10 @@
-<html>
-<head>
-    <style>
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
 
-
+{% block body %}
+<style>
 /* BASIC */
 
 html {
@@ -150,36 +152,6 @@ input[type=text]:placeholder {
 }
 
 
-input[type=password] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-input[type=password]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
-}
-
-input[type=password]:placeholder {
-  color: #cccccc;
-}
-
 
 /* ANIMATIONS */
 
@@ -275,6 +247,257 @@ input[type=password]:placeholder {
   transition: width 0.2s;
 }
 
+input[type=password] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=password]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=password]:placeholder {
+  color: #cccccc;
+}
+
+input[type=firma_bilgisi] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=firma_bilgisi]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=firma_bilgisi]:placeholder {
+  color: #cccccc;
+}
+
+
+input[type=address] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=address]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=address]:placeholder {
+  color: #cccccc;
+}
+
+
+
+
+input[type=telefon] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=telefon]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=telefon]:placeholder {
+  color: #cccccc;
+}
+
+
+
+
+input[type=firma_adi] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=email]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=email]:placeholder {
+  color: #cccccc;
+}
+
+
+
+input[type=email] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=firma_adi]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=firma_adi]:placeholder {
+  color: #cccccc;
+}
+
+
+input[type=password1] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=password1]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=password1]:placeholder {
+  color: #cccccc;
+}
+
+
+input[type=password2] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=password2]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=password2]:placeholder {
+  color: #cccccc;
+}
+
 .underlineHover:hover {
   color: #0d0d0d;
 }
@@ -282,8 +505,6 @@ input[type=password]:placeholder {
 .underlineHover:hover:after{
   width: 100%;
 }
-
-
 
 /* OTHERS */
 
@@ -295,13 +516,31 @@ input[type=password]:placeholder {
   width:60%;
 }
 
+
+
     </style>
-</head>
-<body>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
+<script>
+function mouseoverPass(obj) {
+  var obj = document.getElementById('password1');
+  obj.type = "text";
+}
+function mouseoutPass(obj) {
+  var obj = document.getElementById('password1');
+  obj.type = "password";
+}
+function mouseoverPass2(obj) {
+  var obj = document.getElementById('password2');
+  obj.type = "text";
+}
+function mouseoutPass2(obj) {
+  var obj = document.getElementById('password2');
+  obj.type = "password";
+}
+</script>
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
@@ -324,18 +563,28 @@ input[type=password]:placeholder {
 
      <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="text" id="username" name="username"  placeholder="Kullanıcı Adı">
+            <input class="form-control" type="text" id="username" name="username"  placeholder="
+            {% if LANGUAGE_CODE == 'tr' %} Kullanıcı adı {% elif LANGUAGE_CODE == 'en' %} Username {% elif LANGUAGE_CODE == 'ru' %} имя пользователя  {% endif %}
+
+        ">
         </div>
     </div>
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="password" name="password" id="password" placeholder="Şifre">
+            <input class="form-control" type="password" name="password" id="password" placeholder="
+            {% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} пароль  {% endif %}
+        ">
         </div>
     </div><br>
 
-        <br> <input type="submit" value="GİRİŞ yap">
+        <br> <input type="submit" value="
+        {% if LANGUAGE_CODE == 'tr' %} GİRİŞ yap {% elif LANGUAGE_CODE == 'en' %} Login {% elif LANGUAGE_CODE == 'ru' %} авторизоваться  {% endif %}
+    ">
         <input type="hidden" name="next" value="{{ next }}"> <br>
-        <a href="{% url 'password_reset' %}">Şifremi unuttum</a>
+        <a href="{% url 'password_reset' %}">
+        {% if LANGUAGE_CODE == 'tr' %} Şifremi unuttum {% elif LANGUAGE_CODE == 'en' %} Forgot Password {% elif LANGUAGE_CODE == 'ru' %} забыл пароль  {% endif %}
+        </a>
+
 
     </form>
     <!-- Remind Passowrd -->
@@ -343,5 +592,4 @@ input[type=password]:placeholder {
 
   </div>
 </div>
-</body>
-</html>
+{% endblock %}
