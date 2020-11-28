@@ -87,28 +87,6 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
-  border: none;
-  color: white;
-  padding: 15px 80px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
   background-color: #39ace7;
 }
@@ -524,14 +502,7 @@ input[type=password2]:placeholder {
 
 <!------ Include the above in your HEAD tag ---------->
 <script>
-function mouseoverPass(obj) {
-  var obj = document.getElementById('password1');
-  obj.type = "text";
-}
-function mouseoutPass(obj) {
-  var obj = document.getElementById('password1');
-  obj.type = "password";
-}
+
 function mouseoverPass2(obj) {
   var obj = document.getElementById('password2');
   obj.type = "text";
@@ -560,7 +531,9 @@ function mouseoutPass2(obj) {
 
     <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
-
+        <h3>
+            {% if LANGUAGE_CODE == 'tr' %} Giriş yap {% elif LANGUAGE_CODE == 'en' %} Login {% elif LANGUAGE_CODE == 'ru' %} авторизоваться  {% endif %}
+        </h3>
      <div class="control-group">
         <div class="controls">
             <input class="form-control" type="text" id="username" name="username"  placeholder="
@@ -571,21 +544,22 @@ function mouseoutPass2(obj) {
     </div>
     <div class="control-group">
         <div class="controls">
-            <input class="form-control" type="password" name="password" id="password" placeholder="
+            <input class="form-control" type="password" name="password" id="password2" placeholder="
             {% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} пароль  {% endif %}
         ">
         </div>
-    </div><br>
+    </div>
+                <span class="fa fa-fw fa-eye field-icon toggle-password" onmouseover="mouseoverPass2();" onmouseout="mouseoutPass2();" ></span>
 
-        <br> <input type="submit" value="
-        {% if LANGUAGE_CODE == 'tr' %} GİRİŞ yap {% elif LANGUAGE_CODE == 'en' %} Login {% elif LANGUAGE_CODE == 'ru' %} авторизоваться  {% endif %}
+
+        <br> <input type="submit" class="btn  btn-info" value="
+        {% if LANGUAGE_CODE == 'tr' %} GİRİŞ {% elif LANGUAGE_CODE == 'en' %} Login {% elif LANGUAGE_CODE == 'ru' %} авторизоваться  {% endif %}
     ">
+
         <input type="hidden" name="next" value="{{ next }}"> <br>
         <a href="{% url 'password_reset' %}">
         {% if LANGUAGE_CODE == 'tr' %} Şifremi unuttum {% elif LANGUAGE_CODE == 'en' %} Forgot Password {% elif LANGUAGE_CODE == 'ru' %} забыл пароль  {% endif %}
         </a>
-
-
     </form>
     <!-- Remind Passowrd -->
 
