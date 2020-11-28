@@ -7,22 +7,35 @@
 
 {% block body %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- <script>
+ <script>
     function checkrules(id){
-           var desen = $( "#desen-"+id ).val();
-           var renk = $( "#renk-"+id ).val();
-           var karisim = $( "#karisim-"+id ).val();
-           var siparis = $( "#siparis-"+id ).val();
-           var agirlik = $( "#agirlik-"+id ).val();
+           $(':input[type="number"]').each(function(){
+             var input = $(this).val(); // This is the jquery object of the input, do what you will
+             console.log(input);
+             if (!input > 0 ){
+                 alert("Lütfen adet girin.");
+                 event.preventDefault();
+             }
 
-           if (  desen == null || renk == null || karisim == null || siparis == null || agirlik == null  ){
-            alert("Lütfen bütün seçimleri tamamlayın");
-            event.preventDefault();
-           }
-
+           });
         }
 
-</script> -->
+        $(function() {
+            $(':input[type="number"]').change(function () {
+              var total = 0;
+             $(':input[type="number"]').each(function(){
+             var input = $(this).val(); // This is the jquery object of the input, do what you will
+              console.log($(this).attr("id"));
+              total += Number(input) * Number($(this).attr("id"));
+             });
+
+
+            $("#total_top").text(total);
+
+             });
+        });
+
+</script>
 <section id="about" class="section-bg">
       <div class="container">
         <div class="row">
@@ -87,8 +100,10 @@
                          Total
                     {% elif LANGUAGE_CODE == "ru" %}
                          Итого
-                    {% endif %}:{{cart.total}}</strong></td>
-                    <td><form action="{% url 'carts' %}" method="post">{% csrf_token %}<button type="submit"  class="btn btn-primary">
+                    {% endif %}:  <label id="total_top">0</label>   </strong></td>
+                    <td><form action="{% url 'carts' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
                     {% if LANGUAGE_CODE == "tr" %}
                        Siparişi Tamamla
                     {% elif LANGUAGE_CODE == "en" %}
@@ -97,7 +112,7 @@
                          Отправить заказ
                     {% endif %}
 
-                    </button></form></td>
+                    </button></td>
 
                 </tr>
             </tfoot>
@@ -110,10 +125,10 @@
                 </td>
                 <td>{{item.price}} USD</td>
                 <td>
-                    <input type="number" name="quantity" min="1" max="10000">
+                    <input type="number" name="{{item.name}}" id="{{item.price}}" min="1" max="10000"  required>
 
             </td>
-            </form>
+
                 <td colspan="8"><a href="{% url 'update_carts_2' item.id %}" class="btn btn-danger">
                     {% if LANGUAGE_CODE == "tr" %}
                        Sil
@@ -133,14 +148,7 @@
                 <td colspan="2">Standart</td>
 
                 <td colspan="">{{item.price}} USD</td>
-                <td><input type="number" name="quantity" min="1" max="10000"></td>
-                    <form action="{% url 'update_carts_3' %}" method="post">
-                <div class="row">
-                {% csrf_token %}
-                </div>
-    </td>
-                    </form>
-
+                <td><input type="number" name="{{item.name}}" id="{{item.price}}" min="1" max="10000" required></td>
                 <td colspan="8"><a href="{% url 'update_carts_up_2' item.id %}" class="btn btn-danger">
                     {% if LANGUAGE_CODE == "tr" %}
                        Sil
@@ -151,7 +159,7 @@
                     {% endif %}
                 </a></td>
             </tr>
-
+            </form>
             {% endfor %}
         </table>
 

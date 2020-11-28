@@ -105,6 +105,7 @@ def update_upholsteries(delay):
     time.sleep(delay)
     os.system('python3 manage.py collectstatic --noinput')
 
+
 class Upholstery(models.Model):
     RENK = [
         ('Bej', 'Bej'),
@@ -130,6 +131,7 @@ class Upholstery(models.Model):
     name_en = models.CharField(max_length=100, verbose_name="ingilizce başlık", blank=True)
     name_ru = models.CharField(max_length=100, verbose_name="rusça başlık", blank=True)
     img = ImageField(upload_to="dosemelik", verbose_name="resim")
+    price = models.IntegerField(verbose_name="fiyat")
     renk = models.CharField(max_length=100, null=True, choices=RENK, blank=True)
 
     def __str__(self):

@@ -143,33 +143,20 @@ def carts(request):
         the_id = None
     if the_id:
         cart = Cart.objects.get(id=the_id)
-        det_ins = list(cart.products.all().values_list('id', flat=True))
-        if type(cart.details) != dict:
-            det = json.loads(cart.details)
-        else:
-            det = cart.details
 
-        if type(cart.details) != dict:
-            siparisler = json.loads(cart.details)
-        else:
-            siparisler = cart.details
-
-        det_keys = map(int, list(det.keys()))
-        status = False
-        if set(det_ins).issubset(det_keys):
-            status = True
-        context = {'cart': cart, 'details': siparisler, "status": status}
+        context = {'cart': cart}
         if request.method == "POST":
-            istekler = []
-            dosemelik = []
-            for x in cart.products.all():
-                istekler.append(x.name)
-            for y in cart.upholsteries.all():
-                dosemelik.append(y.name)
             user = ExtendedUser.objects.filter(email=request.user.email).all()
+            siparisler = {}
+            for key, value in request.POST.items():
+                if key != "csrfmiddlewaretoken":
+                    siparisler[key] = value
+            print(siparisler)
+            cart.details = siparisler
+            cart.save()
+            msg_html = render_to_string('email.html', {'alici': user[0].username, 'user': user[0], 'siparis': siparisler})
+            msg_html2 = render_to_string('email2.html', {'alici': user[0].username,'firma': user[0].firma_adi, 'ad_soyad':user[0].ad_soyad, 'siparis': siparisler})
 
-            msg_html = render_to_string('email.html', {'urunler': istekler, 'alici': user[0].username, 'siparis': siparisler, 'dosemelik': dosemelik })
-            msg_html2 = render_to_string('email2.html', {'urunler': istekler, 'alici': user[0].username, 'siparis': siparisler, 'dosemelik': dosemelik  })
             send_mail("Yeni bir siparis var ",
                       "Siparis!",
                       "order@ozlemkumas.com",
