@@ -943,13 +943,13 @@ div.sku strong{
       <div class="col-10">
         <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="{% url 'about' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Hakkımızda {% elif LANGUAGE_CODE == "en" %} About {% elif LANGUAGE_CODE == "ru" %} O нас {% endif %}</a></li>
-          <li><a href="{% url 'products' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Ürünler {% elif LANGUAGE_CODE == "en" %} Fabrics {% elif LANGUAGE_CODE == "ru" %} Товары {% endif %}</a></li>
-          <li><a href="{% url 'upholstery' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Döşemelik {% elif LANGUAGE_CODE == "en" %} Upholstery  {% elif LANGUAGE_CODE == "ru" %} Мебельная ткань {% endif %}</a></li>
-          <li><a href="{% url 'fairs' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Fuarlar {% elif LANGUAGE_CODE == "en" %} fairs {% elif LANGUAGE_CODE == "ru" %} Выставки {% endif %}</a></li>
-          <li><a href="{% url 'agents' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Acentalar {% elif LANGUAGE_CODE == "en" %} agents {% elif LANGUAGE_CODE == "ru" %} Представительства {% endif %}</a></li>
+          <li><a href="{% url 'about' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Hakkımızda {% elif LANGUAGE_CODE == "en" %} About {% elif LANGUAGE_CODE == "ru" %} O нас {% endif %}</a></li>
+          <li><a href="{% url 'products' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Ürünler {% elif LANGUAGE_CODE == "en" %} Fabrics {% elif LANGUAGE_CODE == "ru" %} Товары {% endif %}</a></li>
+          <li><a href="{% url 'upholstery' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Döşemelik {% elif LANGUAGE_CODE == "en" %} Upholstery  {% elif LANGUAGE_CODE == "ru" %} Мебельная ткань {% endif %}</a></li>
+          <li><a href="{% url 'fairs' %}" style="font-size:11px;   {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Fuarlar {% elif LANGUAGE_CODE == "en" %} fairs {% elif LANGUAGE_CODE == "ru" %} Выставки {% endif %}</a></li>
+          <li><a href="{% url 'agents' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Acentalar {% elif LANGUAGE_CODE == "en" %} agents {% elif LANGUAGE_CODE == "ru" %} Представительства {% endif %}</a></li>
           <!--<li><a href="{% url 'stock_service' %}">Stok Servis</a></li> -->
-             <li><a href="{% url 'contact' %}" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} iletişim {% elif LANGUAGE_CODE == "en" %} contact {% elif LANGUAGE_CODE == "ru" %} Связаться с нами {% endif %}</a></li>
+             <li><a href="{% url 'contact' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} iletişim {% elif LANGUAGE_CODE == "en" %} contact {% elif LANGUAGE_CODE == "ru" %} Связаться с нами {% endif %}</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px;"><span class="glyphicon glyphicon-globe"
                                           aria-hidden="true"></span></a>
@@ -977,7 +977,7 @@ div.sku strong{
           {% if request.user.is_authenticated %}
           <li>
               <label>
-                {% if not request.session.items_total %} <a style="font-size:12px;"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} Корзина {% endif %} <i class="fas fa-shopping-cart"></i> 0 </a> {% else %}
+                {% if not request.session.items_total %} <a style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} Корзина {% endif %} <i class="fas fa-shopping-cart"></i> 0 </a> {% else %}
                    <a href="{% url 'carts' %}" style="font-size:11px;"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} тележка {% endif %} <i class="fas fa-shopping-cart"></i> {{request.session.items_total }}</a>
                    {% endif %}
               </label>
@@ -986,7 +986,7 @@ div.sku strong{
           {% endif %}
           {% if not user.is_authenticated %}
             <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px;">{% if LANGUAGE_CODE == "tr" %} Giriş {% elif LANGUAGE_CODE == "en" %} login {% elif LANGUAGE_CODE == "ru" %} Войти {% endif %} </a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px; {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %} ">{% if LANGUAGE_CODE == "tr" %} Giriş {% elif LANGUAGE_CODE == "en" %} login {% elif LANGUAGE_CODE == "ru" %} Войти {% endif %} </a>
 			<ul id="login-dp" class="dropdown-menu">
                 <!--<li> <a href="{% url 'login' %}" >Giriş yap <i class="fa fa-sign-in"></i></a> </li> -->
 				<li>
@@ -997,28 +997,28 @@ div.sku strong{
                              <div class="control-group">
                                 <div class="controls">
                                     <input class="form-control" type="text" id="username" name="username"  placeholder="
-{% if LANGUAGE_CODE == 'tr' %} Kullanıcı Adı {% elif LANGUAGE_CODE == 'en' %} Account Name {% elif LANGUAGE_CODE == 'ru' %} Account Name {% endif %}">
+{% if LANGUAGE_CODE == 'tr' %} Kullanıcı Adı {% elif LANGUAGE_CODE == 'en' %} Account Name {% elif LANGUAGE_CODE == 'ru' %} Имя учетной записи {% endif %}">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <div class="controls">
                                     <input class="form-control" type="password" name="password" id="password" placeholder="
-{% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} Password {% endif %}">
+{% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} пароль {% endif %}">
                                 </div>
                             </div>
                                 <input type="submit" class="btn btn-primary btn-block" value="
-{% if LANGUAGE_CODE == 'tr' %} Giriş {% elif LANGUAGE_CODE == 'en' %} Enter {% elif LANGUAGE_CODE == 'ru' %} Enter {% endif %}">
+{% if LANGUAGE_CODE == 'tr' %} Giriş {% elif LANGUAGE_CODE == 'en' %} Enter {% elif LANGUAGE_CODE == 'ru' %} Войти {% endif %}">
                                 <input type="hidden" name="next" value="{{ next }}">
                             </form>
                                   <div class="help-block text-right"><a style="font-size:11px;" href="{% url 'signup' %}">
 
-                                  {% if LANGUAGE_CODE == 'tr' %} Üye Ol {% elif LANGUAGE_CODE == 'en' %} Sign up {% elif LANGUAGE_CODE == 'ru' %} Новый пользователь {% endif %}
+                                  {% if LANGUAGE_CODE == 'tr' %} Üye Ol {% elif LANGUAGE_CODE == 'en' %} Sign up {% elif LANGUAGE_CODE == 'ru' %}Новый пользователь{% endif %}
                                   </a></div>
 					 </div>
 				</li>
           {% else %}
 
-          <li><a href="{% url 'logout' %}" style="font-size:11px;" > {% if LANGUAGE_CODE == "tr" %} çıkış {% elif LANGUAGE_CODE == "en" %} logout {% elif LANGUAGE_CODE == "ru" %} Выход {% endif %} <i class="fa fa-user"></i>&nbsp;&nbsp;</a> </li>
+          <li><a href="{% url 'logout' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}" > {% if LANGUAGE_CODE == "tr" %} çıkış {% elif LANGUAGE_CODE == "en" %} logout {% elif LANGUAGE_CODE == "ru" %}Выход{% endif %} <i class="fa fa-user"></i>&nbsp;&nbsp;</a> </li>
 
           {% endif %}
 
