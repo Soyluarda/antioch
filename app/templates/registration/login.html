@@ -521,7 +521,17 @@ function mouseoutPass2(obj) {
 
     <!-- Login Form -->
     {% if form.errors %}
-    <p> Kullanıcı adı veya şifreniz yanlış lütfen tekrar girin.</p>
+    <p>
+      {% if LANGUAGE_CODE == 'tr' %} Kullanıcı adı veya şifreniz yanlış lütfen tekrar girin.
+        {% elif LANGUAGE_CODE == 'en' %}
+        Your username or password is incorrect, please re-enter it.
+
+
+        {% elif LANGUAGE_CODE == 'ru' %}
+
+        Ваше имя пользователя или пароль неверны, введите его еще раз.
+ {% endif %}
+    </p>
     {% endif %}
 
     {% if next %}
