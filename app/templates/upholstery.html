@@ -123,7 +123,7 @@
                 <a href="" data-image-id="" data-toggle="modal" data-title=""
                    data-target="#{{x.id}}">
                     <img class="img-thumbnail" style="width:200px;  height:150px;"
-                         src="{% thumbnail x.img '200x200' as im %}{{ im.url }}{% endthumbnail %}"
+                         src="{% thumbnail x.img '300x300' as im %}{{ im.url }}{% endthumbnail %}"
                          alt="Another alt text" style="width:150px; height:150px;">
                     <div align="center">
                         {% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}<br>
