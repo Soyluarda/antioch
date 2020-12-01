@@ -345,32 +345,48 @@ def update_carts_up_2(request,slug):
 
 def signup(request):
     if request.method == 'POST':
+        print(request.POST.get('lang'),"*")
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.email
             user.is_active = False
             user.save()
+            lang = request.POST.get('lang')
             current_site = get_current_site(request)
             mail_subject = 'Hesabınızı aktifleştirin.'
+            if lang == "en":
+                mail_subject = "Activate your account"
+            if lang == "ru":
+                mail_subject = "Активируйте вашу учетную запись"
+
             message = render_to_string('registration/activate_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
                 'token':account_activation_token.make_token(user),
+                'lang': lang,
             })
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(
                         mail_subject, message, to=[to_email]
             )
             send_mail(mail_subject,
-                      "Hesabınızı aktifleştirin!",
+                      mail_subject,
                       "order@ozlemkumas.com",
                       [user.email],
                       html_message=message,
                       )
 
-            messages.success(request, 'Hesabınız başarıyla oluşturuldu, lütfen mailinize gelen aktivasyon kodunu onaylayın.')
+
+            message = 'Hesabınız başarıyla oluşturuldu, lütfen mailinize gelen aktivasyon kodunu onaylayın.'
+            if lang == "en":
+                message = "Your account has been created succesfully. Please confirm the activation code sent to your email."
+            if lang == "ru":
+                message = "Ваша учетная запись была успешно создана, пожалуйста, подтвердите код активации, отправленный на вашу электронную почту."
+
+
+            messages.success(request, message)
             return redirect('contact')
     else:
         form = SignupForm()

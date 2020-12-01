@@ -81,6 +81,8 @@ class Product(models.Model):
     name_ru = models.CharField(max_length=100, verbose_name="rusça başlık", blank=True)
     price = models.IntegerField(verbose_name="fiyat")
     detail = models.CharField(max_length=200, verbose_name="detay")
+    detail_en = models.CharField(max_length=200, verbose_name="detay ingilizce")
+    detail_ru = models.CharField(max_length=200, verbose_name="detay rusça")
     img = ImageField(upload_to='urunler', verbose_name="resim")
     desen = models.CharField(max_length=100,null=True,choices=DESEN,blank=True)
     renk = models.CharField(max_length=100,null=True,choices=RENK,blank=True)

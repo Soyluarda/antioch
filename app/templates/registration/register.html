@@ -569,6 +569,7 @@ function mouseoutPass2(obj) {
         <br>
         <input type="submit" class="btn btn-info  btn-lg" value="{% if LANGUAGE_CODE == 'tr' %} Kayıt ol {% elif LANGUAGE_CODE == 'en' %} Sign up {% elif LANGUAGE_CODE == 'ru' %} Зарегистрироваться  {% endif %}
         ">
+        <input type="hidden" name="lang" value="{{LANGUAGE_CODE}}" />
          <br /> <br>
         <input type="hidden" name="next" value="{{ next }}">
 

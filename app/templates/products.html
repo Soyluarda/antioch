@@ -46,13 +46,18 @@
                             <p align="center">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</p>
                          {% if user.is_authenticated %}
                             {% if x.id not in cart %}
-                            <p style="font-size:11px;" align="center">{{x.detail}} <br>
+                            <p style="font-size:11px;" align="center">
+                                {% if LANGUAGE_CODE == "tr" %}{{x.detail}}{% elif LANGUAGE_CODE == "en" %} {{x.detail_en}}{% elif LANGUAGE_CODE == "ru" %} {{x.detail_ru}}{% endif %}
+                                <br>
                             <a href="{% url 'update_carts' x.id %}">
 
                                 {% if LANGUAGE_CODE == "tr" %} Sepete Ekle {% elif LANGUAGE_CODE == "en" %} Add to cart {% elif LANGUAGE_CODE == "ru" %} добавить в корзину {% endif %}
                                 <i class="fas fa-plus"></i></a></p>
                             {% else %}
-                                <p style="font-size:11px;" align="center">{{x.detail}} <br>
+                                <p style="font-size:11px;" align="center">
+                                    {% if LANGUAGE_CODE == "tr" %}{{x.detail}}{% elif LANGUAGE_CODE == "en" %} {{x.detail_en}}{% elif LANGUAGE_CODE == "ru" %} {{x.detail_ru}}{% endif %}
+
+                                    <br>
                                 <a href="{% url 'update_carts_2' x.id %}">
                                  {% if LANGUAGE_CODE == "tr" %} Sepetten Çıkar {% elif LANGUAGE_CODE == "en" %} Remove from cart {% elif LANGUAGE_CODE == "ru" %} убрать из корзины {% endif %}<i class="fas fa-minus-circle" style="color:red;"></i></a></p>
                             {% endif %}
