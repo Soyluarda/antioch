@@ -1,89 +1,142 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}
 {% load thumbnail %}
 
-{% endblock %}
-
 {% block body %}
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<section id="about" class="section-bg" style="background-color:white;">
-
-<div class="container">
-    {% if not user.is_authenticated %}
-        <div class="alert alert-info" role="alert">
-            {% if LANGUAGE_CODE == "tr" %}
-                Sepetinize ürün eklemek ve sipariş verebilmek için Üye olmanız gerekmektedir.<a href="{% url 'signup' %}">Üye olun</a>
-            {% elif LANGUAGE_CODE == "en" %}
-                You must be a member to add products to your cart and place an order.<a href="{% url 'signup' %}">Become a member</a>
-            {% elif LANGUAGE_CODE == "ru" %}
-                Вы должны быть участником, чтобы добавлять товары в корзину и размещать заказ. <a href="{% url 'signup' %}">стать членом</a>
-            {% endif %}
+<section id="products" class="section-bg" style="background-color: #f8f9fa; padding: 60px 0;">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 style="color: #28a745; font-weight: 600; margin-bottom: 20px;">Organik Ürünlerimiz</h2>
+            <p style="color: #6c757d; font-size: 18px;">Doğal ve sertifikalı organik ürünlerimizi keşfedin</p>
         </div>
-    {% endif %}
-    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
 
-            <div class="row">
-             {% for x in products %}
-             <div class="col-3 col-offset">
-                <a href="" data-image-id="" data-toggle="modal" data-title=""
-                   data-target="#{{x.id}}">
-                    <img class="img-thumbnail" style="width:250px; height:250px;"
-                         src="{% thumbnail x.img '400x400' as im %}{{ im.url }}{% endthumbnail %}"
-                         alt="Another alt text" >
-                        <div>
-                            <p align="center">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</p>
-                            <p style="font-size:11px;" align="center">
-                                {% if LANGUAGE_CODE == "tr" %}{{x.detail}}{% elif LANGUAGE_CODE == "en" %} {{x.detail_en}}{% elif LANGUAGE_CODE == "ru" %} {{x.detail_ru}}{% endif %}
-                                <br></p>
-                         {% if user.is_authenticated %}
-                            {% if x.id not in cart %}
-                                <p align="center">
-                            <a href="{% url 'update_carts' x.id %}">
-
-                                {% if LANGUAGE_CODE == "tr" %} Sepete Ekle {% elif LANGUAGE_CODE == "en" %} Add to cart {% elif LANGUAGE_CODE == "ru" %} добавить в корзину {% endif %}
-                                <i class="fas fa-plus"></i></a></p>
-                            {% else %}
-                                <p style="font-size:11px;" align="center">
-                                    {% if LANGUAGE_CODE == "tr" %}{{x.detail}}{% elif LANGUAGE_CODE == "en" %} {{x.detail_en}}{% elif LANGUAGE_CODE == "ru" %} {{x.detail_ru}}{% endif %}
-
-                                    <br>
-                                <a href="{% url 'update_carts_2' x.id %}">
-                                 {% if LANGUAGE_CODE == "tr" %} Sepetten Çıkar {% elif LANGUAGE_CODE == "en" %} Remove from cart {% elif LANGUAGE_CODE == "ru" %} убрать из корзины {% endif %}<i class="fas fa-minus-circle" style="color:red;"></i></a></p>
-                            {% endif %}
+        {% if products %}
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="product-card" style="background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease; height: 100%;">
+                    <div class="product-image-container" style="position: relative; height: 250px; overflow: hidden;">
+                        {% if product.image %}
+                            {% thumbnail product.image '400x400' crop="center" as im %}
+                            <img src="{{ im.url }}" 
+                                 alt="{{ product.name }}" 
+                                 style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
+                                 data-toggle="modal" data-target="#productModal{{ product.id }}">
+                            {% endthumbnail %}
+                        {% else %}
+                            <div style="height: 100%; background: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image" style="font-size: 48px; color: #6c757d;"></i>
+                            </div>
                         {% endif %}
+                        <div class="product-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(40, 167, 69, 0.8); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center;">
+                            <span style="color: white; font-weight: 600;">Detayları Gör</span>
+                        </div>
                     </div>
-                </a>
+                    
+                    <div class="product-info" style="padding: 20px;">
+                        <h5 style="color: #28a745; font-weight: 600; margin-bottom: 10px; font-size: 18px;">{{ product.name }}</h5>
+                        
+                        {% if product.description %}
+                        <p style="color: #6c757d; font-size: 14px; margin-bottom: 15px; line-height: 1.5;">
+                            {{ product.description|truncatewords:15 }}
+                        </p>
+                        {% endif %}
+                        
+                        <div class="product-price-section" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e9ecef; padding-top: 15px;">
+                            <div class="price" style="font-size: 22px; font-weight: 700; color: #28a745;">
+                                {{ product.price }} TL
+                            </div>
+                            <button class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#productModal{{ product.id }}" style="border-radius: 20px; padding: 8px 16px;">
+                                <i class="fas fa-eye"></i> Detay
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="modal fade" id="{{x.id}}"  role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h6 class="modal-title" id="image-gallery-title">{% if LANGUAGE_CODE == "tr" %} {{x.name}} {% elif LANGUAGE_CODE == "en" %} {{x.name_en}} {% elif LANGUAGE_CODE == "ru" %} {{x.name_ru}} {% endif %}</h6>
+            <!-- Product Modal -->
+            <div class="modal fade" id="productModal{{ product.id }}" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="border-radius: 15px; border: none;">
+                        <div class="modal-header" style="border-bottom: 1px solid #e9ecef; background: #f8f9fa;">
+                            <h5 class="modal-title" style="color: #28a745; font-weight: 600;">{{ product.name }}</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
                         </div>
-                        <div class="modal-body">
-                            <img id="image-gallery-image" style="width: 500px; height: 500px;" class="img-responsive" style="" src="{% thumbnail x.img '500x500'  as im %}{{ im.url }}{% endthumbnail %}">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{% if LANGUAGE_CODE == "tr" %} Kapat {% elif LANGUAGE_CODE == "en" %} Close {% elif LANGUAGE_CODE == "ru" %} близко {% endif %}</button>
+                        <div class="modal-body" style="padding: 30px;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {% if product.image %}
+                                        {% thumbnail product.image '500x500' crop="center" as im %}
+                                        <img src="{{ im.url }}" alt="{{ product.name }}" style="width: 100%; border-radius: 10px;">
+                                        {% endthumbnail %}
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 style="color: #28a745; margin-bottom: 20px;">{{ product.name }}</h4>
+                                    
+                                    {% if product.description %}
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #495057; font-weight: 600;">Açıklama:</h6>
+                                        <p style="color: #6c757d; line-height: 1.6;">{{ product.description }}</p>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <div class="price-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;">
+                                        <h3 style="color: #28a745; font-weight: 700; margin-bottom: 10px;">{{ product.price }} TL</h3>
+                                        <p style="color: #6c757d; margin-bottom: 20px;">Sipariş için iletişime geçin</p>
+                                        <a href="https://wa.me/905551234567?text=Merhaba, {{ product.name }} ürünü hakkında bilgi almak istiyorum. Fiyatı: {{ product.price }} TL" target="_blank" class="btn" style="border-radius: 25px; padding: 12px 30px; background-color: #25D366; color: white; border: 2px solid #25D366;">
+                                            <i class="fab fa-whatsapp"></i> WhatsApp ile Sipariş Ver
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-    </div>
         </div>
-<!------ Include the above in your HEAD tag ---------->
+        {% else %}
+        <div class="text-center" style="padding: 60px 20px;">
+            <i class="fas fa-box-open" style="font-size: 72px; color: #6c757d; margin-bottom: 20px;"></i>
+            <h4 style="color: #6c757d;">Henüz ürün eklenmemiş</h4>
+            <p style="color: #6c757d;">Yakında organik ürünlerimizi burada bulabileceksiniz.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.05);
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+</style>
+
+<script>
+$(document).ready(function() {
+    $('.product-image-container').hover(
+        function() {
+            $(this).find('.product-overlay').fadeIn(300);
+        },
+        function() {
+            $(this).find('.product-overlay').fadeOut(300);
+        }
+    );
+});
+</script>
 {% endblock %}

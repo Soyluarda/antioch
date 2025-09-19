@@ -1,71 +1,386 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}
-{% endblock %}
 
 {% block body %}
-<style>
+<!-- Hero Section -->
+<section class="about-hero" style="
+    height: 70vh;
+    min-height: 500px;
+    background: linear-gradient(rgba(40, 167, 69, 0.8), rgba(40, 167, 69, 0.8)), url('{% static 'img/intro-bg.jpg' %}');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+">
+    <div class="container text-center">
+        <h1 style="color: white; font-size: 3rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            Bizim Hikayemiz
+        </h1>
+        <p style="color: white; font-size: 1.3rem; max-width: 600px; margin: 0 auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Doğadan sofraya uzanan yolculukta, sağlıklı yaşamın öncüsü olma vizyonumuz
+        </p>
+    </div>
+</section>
 
-@media (max-device-width:801px)  {
-      .images {
-        width:100px !important;
-        height:100px !important;
-      }
-    }
+<!-- Mission Section -->
+<section style="padding: 80px 0; background: white;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 style="color: #28a745; font-weight: 600; margin-bottom: 30px; font-size: 2.5rem;">
+                    Misyonumuz
+                </h2>
+                <p style="color: #6c757d; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                    Antioch Organik Ürünler olarak, <strong style="color: #28a745;">doğal, sağlıklı ve sürdürülebilir</strong> 
+                    gıda ürünlerini herkese ulaştırma misyonuyla yola çıktık. 2025 yılından beri, çevreye saygılı üretim 
+                    yöntemleriyle yetiştirilen organik ürünleri, modern teknoloji ile geleneksel değerleri birleştirerek 
+                    müşterilerimize sunuyoruz.
+                </p>
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; border-left: 4px solid #28a745;">
+                    <p style="color: #495057; font-style: italic; margin: 0; font-size: 1.1rem;">
+                        "Sağlıklı bir gelecek için bugün doğru seçimler yapmak, yarınları için en güzel hediye."
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'img/about-img.jpg' %}" alt="Organik Tarım" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Process Journey Section -->
+<section style="padding: 80px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 style="color: #28a745; font-weight: 600; margin-bottom: 20px; font-size: 2.5rem;">
+                Tohum'dan Sofraya Yolculuk
+            </h2>
+            <p style="color: #6c757d; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+                Organik ürünlerimizin, tarla'dan mutfağınıza uzanan özel süreci
+            </p>
+        </div>
 
-</style>
-<section id="about">
-      <div class="container">
         <div class="row">
-
-          <div class="col-lg-5 col-md-6">
-
-            <div class="about-img">
-              <img src="{% static 'img/Showroom1-min.jpg' %}" alt="">
-
+            <!-- Step 1 -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-card text-center" style="
+                    background: white; 
+                    padding: 40px 25px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    position: relative;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #28a745, #20c997); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+                    ">
+                        <i class="fas fa-seedling" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 15px; font-weight: 600;">Organik Tohum</h4>
+                    <p style="color: #6c757d; line-height: 1.6; font-size: 0.95rem;">
+                        Sertifikalı organik tohumlarla başlayan süreç, doğal ve kimyasalsız tarım yöntemleriyle devam eder.
+                    </p>
+                    <div class="step-number" style="
+                        position: absolute;
+                        top: -15px;
+                        right: -15px;
+                        width: 40px;
+                        height: 40px;
+                        background: #28a745;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        box-shadow: 0 2px 10px rgba(40, 167, 69, 0.4);
+                    ">1</div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-7 col-md-6">
-            <div class="about-content">
-                {% if LANGUAGE_CODE == "tr" %}
-                <h2>Hakkımızda</h2>
-                <p> 1969 yılında kurulan Özlem Kumaş, bugün Avustralya’dan Amerika’ya, Güney Kore’den Avrupa’da birçok ülkeye ürün ihraç etmektedir. Özlem Kumaş, sürdürülebilirliği ilke edinerek, insan sağlığına ve doğaya zararsız üretim gerçekleştirmektedir. Üretim sürecinde kullanılan rejenere elyaflar ile geri dönüşüme katkı sağlamaktadır.
 
-                Trendler doğrultusunda geliştirilen yeni koleksiyonlar Paris , Londra , Moskova şehirlerinde fuarlarda sergilenmekte ayrıca Dünya’nın birçok farklı noktasındaki acentalarımız ile müşterilerimize birebir sunulmaktadır.
-
-                Müşterilerimizin özel taleplerini, üretim esnekliği ve tecrübemiz ile birlikte renk , desen, hammadde fark etmeksizin gerçekleştirebilmekteyiz. Tesisimizde yün, pamuk, polyester, viskon, polyamid elyafları işlenmektedir.
-                </p>
-                {% elif LANGUAGE_CODE == "en" %}
-                 <h2>About Us</h2>
-                <p>
-
-                Founded in 1969, Özlem Kumaş exports fabrics  to 4 continents, America, Australia, Asia and our main market Europe. Özlem Kumaş production cycle and fabrics are harmless to human health and nature. Moreover with principle of sustainability regenerated fibers are used in the production process.
-The new collections developed are shown at international fairs in Paris, London and Moscow. Our local agents across world is at your service to present these collections. We are able to fulfill the special demands of our customers with our production flexibility and experience, regardless of color, pattern, raw material. Wool, cotton, polyester, viscose, polyamide fibers  are processed in our facility.
-
-                </p>
-
-                {% elif LANGUAGE_CODE == "ru" %}
-                <h2>O нас</h2>
-                <p>
-
-                    Компания Özlem Kumaş основанна в 1969 году.  Сегодня мы производим и экспортируем ткани во многие страны Европы, Австралию, Америку и Южную Корею. Руководствуясь принципами устойчивого развития,  мы уделяем большое внимание экологичности нашего производства,  чтобы оно было безвредным для здоровья человека и окружающей среды.  Özlem Kumaş использует регенерированные волокна в производственном процессе, делая свой вклад во вторичную переработку.
-                    Новые коллекции, разработанные в соответствии с последними модными тенденциями, предоставляются вниманию наших клиетов на выставках в Париже, Лондоне и Москве, а также через представительства Özlem Kumaş в разных странах мира.
-                    Благодаря производственной гибкости и опыту, мы имеем возможномть разработки дизайнов и цветовых решений  в соответствии с требованиями наших клиентов. На нашем предприятии обрабатываются шерсть, хлопок, полиэстер, вискоза и полиамидные волокна.
-
-                </p>
-
-                {% endif %}
-
+            <!-- Step 2 -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-card text-center" style="
+                    background: white; 
+                    padding: 40px 25px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    position: relative;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #fd7e14, #e63946); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(253, 126, 20, 0.3);
+                    ">
+                        <i class="fas fa-tractor" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #fd7e14; margin-bottom: 15px; font-weight: 600;">Doğal Üretim</h4>
+                    <p style="color: #6c757d; line-height: 1.6; font-size: 0.95rem;">
+                        Kimyasal pestisit ve gübre kullanmadan, doğal yöntemlerle özenle yetiştirilir.
+                    </p>
+                    <div class="step-number" style="
+                        position: absolute;
+                        top: -15px;
+                        right: -15px;
+                        width: 40px;
+                        height: 40px;
+                        background: #fd7e14;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        box-shadow: 0 2px 10px rgba(253, 126, 20, 0.4);
+                    ">2</div>
+                </div>
             </div>
-            <br><br><br>
-             <div class="about-img">
-              <img class="images" src="{% static 'img/HakkımızdaUfakFoto1_OZLEM_kaz-min.jpg' %}" style="width:150px; height:150px; margin-left:25px;"  alt="">
-               <img class="images" src="{% static 'img/HakkımızdaUfakFoto2_Nice_Alpaca-min.jpg' %}" style="width:150px; height:150px; margin-left:25px;"  alt="">
-               <img class="images" src="{% static 'img/HakkımızdaUfakFoto3-min.jpg' %}" style="width:150px; height:150px; margin-left:25px;"  alt="">
-            </div>
-      </div>
 
-    </section><!-- #about -->
+            <!-- Step 3 -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-card text-center" style="
+                    background: white; 
+                    padding: 40px 25px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    position: relative;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #6f42c1, #e83e8c); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+                    ">
+                        <i class="fas fa-certificate" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #6f42c1; margin-bottom: 15px; font-weight: 600;">Kalite Kontrol</h4>
+                    <p style="color: #6c757d; line-height: 1.6; font-size: 0.95rem;">
+                        Hasat sonrası titiz kalite kontroller ve organik sertifikasyon süreçlerinden geçer.
+                    </p>
+                    <div class="step-number" style="
+                        position: absolute;
+                        top: -15px;
+                        right: -15px;
+                        width: 40px;
+                        height: 40px;
+                        background: #6f42c1;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        box-shadow: 0 2px 10px rgba(111, 66, 193, 0.4);
+                    ">3</div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-card text-center" style="
+                    background: white; 
+                    padding: 40px 25px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    position: relative;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #20c997, #0dcaf0); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(32, 201, 151, 0.3);
+                    ">
+                        <i class="fas fa-home" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #20c997; margin-bottom: 15px; font-weight: 600;">Sofranızda</h4>
+                    <p style="color: #6c757d; line-height: 1.6; font-size: 0.95rem;">
+                        Özel ambalajlama ile taze ve güvenli şekilde doğrudan evinize ulaştırılır.
+                    </p>
+                    <div class="step-number" style="
+                        position: absolute;
+                        top: -15px;
+                        right: -15px;
+                        width: 40px;
+                        height: 40px;
+                        background: #20c997;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        box-shadow: 0 2px 10px rgba(32, 201, 151, 0.4);
+                    ">4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section style="padding: 80px 0; background: white;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 style="color: #28a745; font-weight: 600; margin-bottom: 20px; font-size: 2.5rem;">
+                Değerlerimiz
+            </h2>
+            <p style="color: #6c757d; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                Bizi farklı kılan temel prensiplerimiz
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="value-card text-center" style="
+                    background: #f8f9fa; 
+                    padding: 50px 30px; 
+                    border-radius: 20px; 
+                    height: 100%;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                ">
+                    <div style="color: #28a745; font-size: 64px; margin-bottom: 25px;">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 20px; font-weight: 600;">100% Doğal</h4>
+                    <p style="color: #6c757d; line-height: 1.7;">
+                        Kimyasal katkı maddeleri olmadan, doğanın kendi döngüsü içerisinde üretilen ürünler.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="value-card text-center" style="
+                    background: #f8f9fa; 
+                    padding: 50px 30px; 
+                    border-radius: 20px; 
+                    height: 100%;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                ">
+                    <div style="color: #28a745; font-size: 64px; margin-bottom: 25px;">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 20px; font-weight: 600;">Sürdürülebilir</h4>
+                    <p style="color: #6c757d; line-height: 1.7;">
+                        Gelecek nesillere temiz bir dünya bırakacak çevre dostu üretim yöntemleri.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="value-card text-center" style="
+                    background: #f8f9fa; 
+                    padding: 50px 30px; 
+                    border-radius: 20px; 
+                    height: 100%;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                ">
+                    <div style="color: #28a745; font-size: 64px; margin-bottom: 25px;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 20px; font-weight: 600;">Güvenilir</h4>
+                    <p style="color: #6c757d; line-height: 1.7;">
+                        Uluslararası organik sertifikalar ve titiz kalite kontrol süreçleri.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section style="padding: 80px 0; background: linear-gradient(135deg, #28a745, #20c997);">
+    <div class="container text-center">
+        <h2 style="color: white; font-weight: 600; margin-bottom: 25px; font-size: 2.3rem;">
+            Sağlıklı Yaşama Adım Atın
+        </h2>
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Organik ürünlerimizi keşfedin ve doğal beslenmenin farkını yaşayın
+        </p>
+        <div>
+            <a href="{% url 'products' %}" class="btn btn-light btn-lg" style="
+                margin-right: 20px; 
+                padding: 15px 35px; 
+                border-radius: 30px; 
+                font-weight: 600;
+                color: #28a745;
+                transition: all 0.3s ease;
+            ">
+                <i class="fas fa-shopping-basket"></i> Ürünleri İncele
+            </a>
+            <a href="https://wa.me/905551234567?text=Merhaba, organik ürünleriniz hakkında detaylı bilgi almak istiyorum." target="_blank" class="btn btn-outline-light btn-lg" style="
+                padding: 15px 35px; 
+                border-radius: 30px; 
+                font-weight: 600;
+                border: 3px solid white;
+                transition: all 0.3s ease;
+            ">
+                <i class="fab fa-whatsapp"></i> Bize Ulaşın
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.process-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.value-card:hover {
+    background: white !important;
+    border-color: #28a745 !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(40, 167, 69, 0.15);
+}
+
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 2.2rem !important;
+    }
+    .about-hero p {
+        font-size: 1.1rem !important;
+    }
+    .process-card {
+        margin-bottom: 30px;
+    }
+}
+</style>
 
 {% endblock %}

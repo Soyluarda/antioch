@@ -1,100 +1,264 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}
-{% endblock %}
+
 {% block body %}
-<style>
+<!-- Hero Section -->
+<section class="contact-hero" style="
+    height: 60vh;
+    min-height: 400px;
+    background: linear-gradient(rgba(40, 167, 69, 0.8), rgba(40, 167, 69, 0.8)), url('{% static 'img/intro-bg.jpg' %}');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+">
+    <div class="container text-center">
+        <h1 style="color: white; font-size: 3rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            Bizimle İletişime Geçin
+        </h1>
+        <p style="color: white; font-size: 1.3rem; max-width: 600px; margin: 0 auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Organik ürünlerimiz hakkında sorularınız için bize ulaşın
+        </p>
+    </div>
+</section>
 
-</style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <section id="about" class="section-bg" style="background-color:white;">
-      <div class="container">
-          {% if messages %}
-
-              {% for message in messages %}
-                <div class="alert alert-primary" role="alert" style="text-align:center;">
-                {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+<!-- Contact Info Section -->
+<section style="padding: 80px 0; background: #f8f9fa;">
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success text-center" role="alert" style="border-radius: 15px; border: none; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);">
+                    <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                    {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
                 </div>
             {% endfor %}
+        {% endif %}
 
-             {% endif %}
-          <div class="row">
+        <div class="row">
+            <!-- Address Card -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="contact-card text-center" style="
+                    background: white; 
+                    padding: 50px 30px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #28a745, #20c997); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+                    ">
+                        <i class="fas fa-map-marker-alt" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 20px; font-weight: 600;">Adresimiz</h4>
+                    <address style="color: #6c757d; line-height: 1.8; font-style: normal;">
+                        <strong>Antioch Organik Ürünler</strong><br>
+                        Örnek Mahallesi, Organik Sokak No:123<br>
+                        Beşiktaş / İstanbul 34000<br>
+                        Türkiye
+                    </address>
+                </div>
+            </div>
 
-         <div class="col-md-4 mb-3 mb-md-0">
-
-             <div class="card py-4 h-100">
-                <div class="card-body text-center">
-                    <h4 class="text-uppercase m-0">{% if LANGUAGE_CODE == "tr" %} adres {% elif LANGUAGE_CODE == "en" %} address {% elif LANGUAGE_CODE == "ru" %} АДРЕС {% endif %}</h4>
-                    <hr class="my-4">
-                    <div class="small text-black-50">
-                        <address style="font-size:15px;">
-                          Tekstilkent Koza Plaza B Blok<br>
-                          Kat:31 No:119 Esenler 34235<br>
-                          İstanbul  {% if LANGUAGE_CODE == "tr" %} Türkiye {% elif LANGUAGE_CODE == "en" %} Turkey {% endif %} <br>
-                        </address>
-                        <abbr style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} T {% elif LANGUAGE_CODE == "en" %} phone {% elif LANGUAGE_CODE == "ru" %} Телефон {% endif %}: +90 212 438 5 438</abbr><br><br>
-                         <address>
-                          <strong style="font-size:15px;">{% if LANGUAGE_CODE == "tr" %} E-posta {% elif LANGUAGE_CODE == "en" %} E-mail {% elif LANGUAGE_CODE == "ru" %} е-мейл {% endif %}:</strong><br>
-                          <a href="mailto:#" style="font-size:15px;">info@ozlemkumas.com</a>
-                        </address>
+            <!-- Contact Info Card -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="contact-card text-center" style="
+                    background: white; 
+                    padding: 50px 30px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #fd7e14, #e63946); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(253, 126, 20, 0.3);
+                    ">
+                        <i class="fas fa-phone" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #fd7e14; margin-bottom: 20px; font-weight: 600;">İletişim</h4>
+                    <div style="color: #6c757d; line-height: 1.8;">
+                        <p style="margin-bottom: 10px;">
+                            <strong>Telefon:</strong><br>
+                            <a href="tel:+905551234567" style="color: #28a745; text-decoration: none;">+90 555 123 45 67</a>
+                        </p>
+                        <p style="margin-bottom: 0;">
+                            <strong>E-posta:</strong><br>
+                            <a href="mailto:info@antioch.com" style="color: #28a745; text-decoration: none;">info@antioch.com</a>
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-4 mb-3 mb-md-0">
-            <div class="card py-4 h-100">
-                <div class="card-body text-center">
-                <div class="social-links">
-                <h4>
-                    {% if LANGUAGE_CODE == "tr" %}
-                        Instagramda Bizi Takip Edin!
-                    {% elif LANGUAGE_CODE == "en" %}
-                        Follow Us on Instagram
-                    {% elif LANGUAGE_CODE == "ru" %}
-                        Мы в Instagram
-                    {% endif %}
-                </h4>
-                <a href="https://www.instagram.com/ozlem_fabric/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></div>
-              <script src="{% static 'elfsight.js' %}" defer></script>
-             <div class="elfsight-app-a2d4f8a0-5fc1-49b5-b4c3-6caf01e7950e"></div>
-        <br>
-     </div>
+            <!-- WhatsApp Card -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="contact-card text-center" style="
+                    background: white; 
+                    padding: 50px 30px; 
+                    border-radius: 20px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="
+                        width: 80px; 
+                        height: 80px; 
+                        background: linear-gradient(135deg, #25D366, #128C7E); 
+                        border-radius: 50%; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        margin: 0 auto 25px;
+                        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+                    ">
+                        <i class="fab fa-whatsapp" style="color: white; font-size: 32px;"></i>
+                    </div>
+                    <h4 style="color: #25D366; margin-bottom: 20px; font-weight: 600;">WhatsApp</h4>
+                    <p style="color: #6c757d; margin-bottom: 20px; line-height: 1.6;">
+                        Hızlı iletişim için WhatsApp üzerinden bize ulaşın
+                    </p>
+                    <a href="https://wa.me/905551234567?text=Merhaba, organik ürünleriniz hakkında bilgi almak istiyorum." target="_blank" class="btn" style="
+                        background: #25D366; 
+                        color: white; 
+                        border-radius: 25px; 
+                        padding: 12px 25px; 
+                        border: none;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                    ">
+                        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+                        Mesaj Gönder
+                    </a>
+                </div>
             </div>
         </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1504.0214176449833!2d28.86221806129812!3d41.06805631093827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab003963528f7%3A0x585cde346aed8db9!2zw5Z6bGVtIEt1bWHFnw!5e0!3m2!1str!2str!4v1605353063011!5m2!1str!2str" width="300" height="280" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-         </div></div></div>
+    </div>
+</section>
 
- </div>
-                <h2 align="center">{% if LANGUAGE_CODE == "tr" %} Bize Ulaşın {% elif LANGUAGE_CODE == "en" %} Contact us {% elif LANGUAGE_CODE == "ru" %} Связаться с нами {% endif %}</h2>
-              <form  method="post" >
-                       {% csrf_token %}
-                  <div class="row align-items-stretch mb-5">
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} İsim {% elif LANGUAGE_CODE == "en" %} Name {% elif LANGUAGE_CODE == "ru" %} Имя {% endif %}</p>
-                            {{form.name}}
-                          </div>
-                          <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Soyadı {% elif LANGUAGE_CODE == "en" %} Surname {% elif LANGUAGE_CODE == "ru" %} Фамилия {% endif %}</p>
-                            {{form.email}}
-                          </div>
-                          <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Telefon Numarası {% elif LANGUAGE_CODE == "en" %} Telephone {% elif LANGUAGE_CODE == "ru" %} Tелефон {% endif %}</p>
-                            {{form.phone}}
-                          </div>
-                      </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <p class="help-block">{% if LANGUAGE_CODE == "tr" %} Mesajınız {% elif LANGUAGE_CODE == "en" %} Message  {% elif LANGUAGE_CODE == "ru" %} сообщение {% endif %}:</p>
-                            {{form.content}}
-                          </div>
-                          <button type="submit" class="btn pull-right  btn-lg lang" style="background-color:#d97340 !important; color:white;" id="sendMessageButton" key="sendbutton" >{% if LANGUAGE_CODE == "tr" %} Gönder {% elif LANGUAGE_CODE == "en" %} Submit {% elif LANGUAGE_CODE == "ru" %} представить {% endif %}</button>
-                      </div>
-                    </div>
-              </form>
-  </section><!-- #footer -->
+<!-- Contact Form Section -->
+<section style="padding: 80px 0; background: white;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 style="color: #28a745; font-weight: 600; margin-bottom: 20px; font-size: 2.5rem;">
+                Bize Mesaj Gönderin
+            </h2>
+            <p style="color: #6c757d; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                Formu doldurarak bizimle iletişime geçebilirsiniz
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div style="
+                    background: #f8f9fa; 
+                    padding: 50px; 
+                    border-radius: 20px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                ">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label style="color: #495057; font-weight: 600; margin-bottom: 10px;">Ad Soyad</label>
+                                    {{form.name}}
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label style="color: #495057; font-weight: 600; margin-bottom: 10px;">E-posta</label>
+                                    {{form.email}}
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label style="color: #495057; font-weight: 600; margin-bottom: 10px;">Telefon Numarası</label>
+                                    {{form.phone}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4" style="height: 100%;">
+                                    <label style="color: #495057; font-weight: 600; margin-bottom: 10px;">Mesajınız</label>
+                                    {{form.content}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg" style="
+                                background: linear-gradient(135deg, #28a745, #20c997);
+                                color: white;
+                                border: none;
+                                border-radius: 30px;
+                                padding: 15px 40px;
+                                font-weight: 600;
+                                transition: all 0.3s ease;
+                                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+                            ">
+                                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                                Mesajı Gönder
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+@media (max-width: 768px) {
+    .contact-hero h1 {
+        font-size: 2.2rem !important;
+    }
+    .contact-hero p {
+        font-size: 1.1rem !important;
+    }
+    .contact-card {
+        margin-bottom: 30px;
+    }
+}
+</style>
+
 {% endblock %}

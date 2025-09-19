@@ -1,8 +1,4 @@
 {% load static %}
-{% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-{% get_available_languages as LANGUAGES %}
-{% get_language_info_list for LANGUAGES as languages %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +7,8 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
   <!-- Favicons -->
-  <link href="{% static 'img/logo-3.jpg' %}" rel="icon">
-  <link href="{% static 'img/logo-3.jpg' %}" rel="apple-touch-icon">
+  <link href="{% static 'img/antioch.jpg' %}" rel="icon">
+  <link href="{% static 'img/antioch.jpg' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
@@ -22,6 +18,7 @@
 
   <!-- Libraries CSS Files -->
   <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
@@ -936,92 +933,16 @@ div.sku strong{
       <div class="col-2 ">
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="{% url 'index' %}"><img src="{% static 'img/ozlem_logo_2.jpg' %}" style="width:100%; height:100%;" alt=""></a>
+        <a href="{% url 'index' %}"><img src="{% static 'img/antioch.jpg' %}" style="width:120px; height:auto;" alt="Antioch Organic Market"></a>
         <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
       </div>
     </div>
       <div class="col-10">
         <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="{% url 'about' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Hakkımızda {% elif LANGUAGE_CODE == "en" %} About {% elif LANGUAGE_CODE == "ru" %} O нас {% endif %}</a></li>
-          <li><a href="{% url 'products' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Ürünler {% elif LANGUAGE_CODE == "en" %} Fabrics {% elif LANGUAGE_CODE == "ru" %} Товары {% endif %}</a></li>
-          <li><a href="{% url 'upholstery' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} DÖŞEMELİK {% elif LANGUAGE_CODE == "en" %} Upholstery  {% elif LANGUAGE_CODE == "ru" %} Мебельная ткань {% endif %}</a></li>
-          <li><a href="{% url 'fairs' %}" style="font-size:11px;   {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Fuarlar {% elif LANGUAGE_CODE == "en" %} fairs {% elif LANGUAGE_CODE == "ru" %} Выставки {% endif %}</a></li>
-          <li><a href="{% url 'agents' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} Acentalar {% elif LANGUAGE_CODE == "en" %} agents {% elif LANGUAGE_CODE == "ru" %} Представительства {% endif %}</a></li>
-          <!--<li><a href="{% url 'stock_service' %}">Stok Servis</a></li> -->
-             <li><a href="{% url 'contact' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}">{% if LANGUAGE_CODE == "tr" %} İLETİŞİM {% elif LANGUAGE_CODE == "en" %} contact {% elif LANGUAGE_CODE == "ru" %} Связаться с нами {% endif %}</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px;"><span class="glyphicon glyphicon-globe"
-                                          aria-hidden="true"></span></a>
-                <ul class="dropdown-menu">
-                    <!--<li> <a href="{% url 'login' %}" >Giriş yap <i class="fa fa-sign-in"></i></a> </li> -->
-                    <li>
-                          <div class="col-md-12">
-                            <div style="padding-left:0;">
-                                <form action="{% url 'set_language' %}" method="POST"
-                                  id="js-language-switch-form">{% csrf_token %}
-                                        <input id="js-new-language" type="hidden" name="language" value=""/>
-                                        {% for language in languages %}
-                                                <a style="font-size:11px;" href="javascript:void(0);" onclick="$('#js-new-language').val('{{ language.code }}'); $('#js-language-switch-form').submit();">
-                                                    {{ language.name_local }}
-                                                </a>
-                                            {% if not forloop.last %}
-                                            {% endif %}
-                                        {% endfor %}
-                                </form>
-                            </div>
-                         </div>
-                    </li>
-            </ul>
-            </li>
-          {% if request.user.is_authenticated %}
-          <li>
-              <label>
-                {% if not request.session.items_total %} <a style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} Корзина {% endif %} <i class="fas fa-shopping-cart"></i> 0 </a> {% else %}
-                   <a href="{% url 'carts' %}" style="font-size:11px;"> {% if LANGUAGE_CODE == "tr" %} Sepet {% elif LANGUAGE_CODE == "en" %} cart {% elif LANGUAGE_CODE == "ru" %} тележка {% endif %} <i class="fas fa-shopping-cart"></i> {{request.session.items_total }}</a>
-                   {% endif %}
-              </label>
-            </i>
-          </li>
-          {% endif %}
-          {% if not user.is_authenticated %}
-            <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:11px; {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %} ">{% if LANGUAGE_CODE == "tr" %} GİRİŞ {% elif LANGUAGE_CODE == "en" %} login {% elif LANGUAGE_CODE == "ru" %} Войти {% endif %} </a>
-			<ul id="login-dp" class="dropdown-menu">
-                <!--<li> <a href="{% url 'login' %}" >Giriş yap <i class="fa fa-sign-in"></i></a> </li> -->
-				<li>
-                      <div class="col-md-12">
-                          <form method="POST" action="{% url 'login' %}">
-                                {% csrf_token %}
-
-                             <div class="control-group">
-                                <div class="controls">
-                                    <input class="form-control" type="text" id="username" name="username"  placeholder="
-{% if LANGUAGE_CODE == 'tr' %} Kullanıcı Adı {% elif LANGUAGE_CODE == 'en' %} Account Name {% elif LANGUAGE_CODE == 'ru' %} Имя учетной записи {% endif %}">
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="controls">
-                                    <input class="form-control" type="password" name="password" id="password" placeholder="
-{% if LANGUAGE_CODE == 'tr' %} Şifre {% elif LANGUAGE_CODE == 'en' %} Password {% elif LANGUAGE_CODE == 'ru' %} пароль {% endif %}">
-                                </div>
-                            </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="
-{% if LANGUAGE_CODE == 'tr' %} Giriş {% elif LANGUAGE_CODE == 'en' %} Enter {% elif LANGUAGE_CODE == 'ru' %} Войти {% endif %}">
-                                <input type="hidden" name="next" value="{{ next }}">
-                            </form>
-                                  <div class="help-block text-right"><a style="font-size:11px;" href="{% url 'signup' %}">
-
-                                  {% if LANGUAGE_CODE == 'tr' %} Üye Ol {% elif LANGUAGE_CODE == 'en' %} Sign up {% elif LANGUAGE_CODE == 'ru' %}Новый пользователь{% endif %}
-                                  </a></div>
-					 </div>
-				</li>
-          {% else %}
-
-          <li><a href="{% url 'logout' %}" style="font-size:11px;  {% if LANGUAGE_CODE == 'ru' %} font-size:10px; {% endif %}" > {% if LANGUAGE_CODE == "tr" %} çıkış {% elif LANGUAGE_CODE == "en" %} logout {% elif LANGUAGE_CODE == "ru" %}Выход{% endif %} <i class="fa fa-user"></i>&nbsp;&nbsp;</a> </li>
-
-          {% endif %}
-
+          <li><a href="{% url 'about' %}" style="font-size:11px;">Hakkımızda</a></li>
+          <li><a href="{% url 'products' %}" style="font-size:11px;">Organik Ürünler</a></li>
+          <li><a href="{% url 'contact' %}" style="font-size:11px;">İletişim</a></li>
         </ul>
 
       </nav><!-- .main-nav -->
@@ -1048,6 +969,68 @@ div.sku strong{
 
   <!-- Template Main Javascript File -->
   <script src="{% static 'js/main.js' %}"></script>
+
+  <!-- Floating WhatsApp Button -->
+  <div id="whatsapp-float" style="
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+  ">
+    <a href="https://wa.me/905551234567?text=Merhaba, organik ürünleriniz hakkında bilgi almak istiyorum." target="_blank" style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: pulse-whatsapp 2s infinite;
+    ">
+      <i class="fab fa-whatsapp" style="color: white; font-size: 28px;"></i>
+    </a>
+  </div>
+
+  <style>
+  @keyframes pulse-whatsapp {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+  }
+
+  #whatsapp-float:hover a {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7);
+  }
+
+  /* Responsive - Mobile için küçült */
+  @media (max-width: 768px) {
+    #whatsapp-float {
+      bottom: 20px;
+      right: 20px;
+    }
+    #whatsapp-float a {
+      width: 50px;
+      height: 50px;
+    }
+    #whatsapp-float i {
+      font-size: 24px !important;
+    }
+  }
+  </style>
 
 </body>
 

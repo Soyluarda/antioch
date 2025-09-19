@@ -1,90 +1,167 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}
-{% endblock %}
 
 {% block body %}
-
-
-
-   <style>
-    .carousel-item {
-  height: 100vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-</style>
-
-<section>
-<!-- Page Content -->
-<!-- Navigation -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
-    <ol class="carousel-indicators" style="margin-bottom:100px;">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-       <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-       <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('static/img/1-Galaxy153935Soft-min.jpg')">
-        <div class="carousel-caption d-none d-md-block" style="margin-bottom:100px;">
-            {% if LANGUAGE_CODE == "tr" %}
-            <h2 class="display-4">Özlem Kumaş yenilendi!</h2>
-         <p class="lead">Yenilenen web sitemizle hizmetinizdeyiz.</p>
-            {% endif %}
+<!-- Hero Section -->
+<section class="hero-section" style="
+    height: 100vh;
+    min-height: 600px;
+    background: linear-gradient(rgba(40, 167, 69, 0.7), rgba(40, 167, 69, 0.7)), url('{% static 'img/intro-bg.jpg' %}');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+">
+    <div class="container text-center">
+        <div class="hero-content" style="color: white; max-width: 800px; margin: 0 auto;">
+            <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Doğal ve Organik Ürünler
+            </h1>
+            <p style="font-size: 1.4rem; margin-bottom: 40px; line-height: 1.6; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                Sağlıklı yaşam için doğadan gelen, sertifikalı organik ürünlerimizi keşfedin. 
+                Kimyasal katkı maddeleri olmadan, doğal yöntemlerle üretilen kaliteli ürünler.
+            </p>
+            <div class="hero-buttons">
+                <a href="{% url 'products' %}" class="btn btn-light btn-lg" style="
+                    margin-right: 20px; 
+                    padding: 15px 35px; 
+                    border-radius: 30px; 
+                    font-weight: 600;
+                    border: 3px solid white;
+                    color: #28a745;
+                    transition: all 0.3s ease;
+                ">
+                    <i class="fas fa-leaf"></i> Ürünlerimizi Keşfedin
+                </a>
+                <a href="https://wa.me/905551234567?text=Merhaba, organik ürünleriniz hakkında bilgi almak istiyorum." target="_blank" class="btn btn-success btn-lg" style="
+                    padding: 15px 35px; 
+                    border-radius: 30px; 
+                    font-weight: 600;
+                    border: 3px solid #25D366;
+                    background-color: #25D366;
+                    transition: all 0.3s ease;
+                ">
+                    <i class="fab fa-whatsapp"></i> WhatsApp ile Ulaşın
+                </a>
+            </div>
         </div>
-      </div>
-      <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('static/img/16-Ares195940-min.jpg')">
-        <div class="carousel-caption d-none d-md-block " style="margin-bottom:100px;">
-            {% if LANGUAGE_CODE == "tr" %}
-         <h2 class="display-4">Özlem Kumaş yenilendi!</h2>
-         <p class="lead">Yenilenen web sitemizle hizmetinizdeyiz.</p>
-            {% endif %}
-        </div>
-      </div>
-      <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('static/img/10-Sirius185141-min.jpg')">
-        <div class="carousel-caption d-none d-md-block" style="margin-bottom:100px;">
-            {% if LANGUAGE_CODE == "tr" %}
-          <h2 class="display-4">Özlem Kumaş yenilendi!</h2>
-         <p class="lead">Yenilenen web sitemizle hizmetinizdeyiz.</p>
-            {% endif %}
-        </div>
-      </div>
-        <div class="carousel-item" style="background-image: url('static/img/12-Helen-min.jpg')">
-        <div class="carousel-caption d-none d-md-block" style="margin-bottom:100px;">
-            {% if LANGUAGE_CODE == "tr" %}
-          <h2 class="display-4">Özlem Kumaş yenilendi!</h2>
-         <p class="lead">Yenilenen web sitemizle hizmetinizdeyiz.</p>
-            {% endif %}
-        </div>
-      </div>
-        <div class="carousel-item" style="background-image: url('static/img/3-Venus185180-min.jpg')">
-        <div class="carousel-caption d-none d-md-block" style="margin-bottom:100px;">
-            {% if LANGUAGE_CODE == "tr" %}
-          <h2 class="display-4">Özlem Kumaş yenilendi!</h2>
-         <p class="lead">Yenilenen web sitemizle hizmetinizdeyiz.</p>
-            {% endif %}
-        </div>
-      </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" style="margin-bottom:100px;" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" style="margin-bottom:100px;" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-  </div>
+    
+    <!-- Scroll Down Arrow -->
+    <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: white; animation: bounce 2s infinite;">
+        <i class="fas fa-chevron-down" style="font-size: 24px;"></i>
+    </div>
 </section>
 
+<!-- Features Section -->
+<section style="padding: 80px 0; background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 style="color: #28a745; font-weight: 600; margin-bottom: 20px;">Neden Organik?</h2>
+                <p style="color: #6c757d; font-size: 18px; max-width: 600px; margin: 0 auto;">
+                    Organik ürünler sağlığınız ve doğa için en iyi seçimdir
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card text-center" style="
+                    background: white; 
+                    padding: 40px 30px; 
+                    border-radius: 15px; 
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="color: #28a745; font-size: 48px; margin-bottom: 20px;">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 15px;">100% Doğal</h4>
+                    <p style="color: #6c757d; line-height: 1.6;">
+                        Kimyasal pestisit ve gübre kullanılmadan, tamamen doğal yöntemlerle yetiştirilmiş ürünler.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card text-center" style="
+                    background: white; 
+                    padding: 40px 30px; 
+                    border-radius: 15px; 
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="color: #28a745; font-size: 48px; margin-bottom: 20px;">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 15px;">Sertifikalı</h4>
+                    <p style="color: #6c757d; line-height: 1.6;">
+                        Uluslararası organik standartlara uygun, sertifikalı ve güvenilir ürünler.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card text-center" style="
+                    background: white; 
+                    padding: 40px 30px; 
+                    border-radius: 15px; 
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div style="color: #28a745; font-size: 48px; margin-bottom: 20px;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 style="color: #28a745; margin-bottom: 15px;">Sağlıklı</h4>
+                    <p style="color: #6c757d; line-height: 1.6;">
+                        Daha fazla vitamin, mineral ve antioksidan içeren, sağlıklı beslenme için ideal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<style>
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+.hero-buttons a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem !important;
+    }
+    .hero-section p {
+        font-size: 1.1rem !important;
+    }
+    .hero-buttons a {
+        display: block !important;
+        margin: 10px 0 !important;
+    }
+}
+</style>
 {% endblock %}
