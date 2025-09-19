@@ -1,0 +1,26 @@
+# Django Framework
+Django>=4.2,<5.0
+
+# Image handling and thumbnails
+sorl-thumbnail>=12.10.0
+Pillow>=10.0.0
+
+# Form styling
+django-crispy-forms==1.14.0
+
+# Background task processing
+django-rq==2.8.1
+redis==4.6.0
+rq==1.15.1
+
+# JSON field support (for older Django versions)
+jsonfield==3.1.0
+
+# Email and utilities
+six==1.16.0
+
+# Production server (optional)
+gunicorn==21.2.0
+
+# Development dependencies (optional)
+python-decouple==3.8
