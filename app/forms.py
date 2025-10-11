@@ -7,14 +7,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
-    class Meta:
-        model = ExtendedUser
-        fields = ('ad_soyad','firma_adi','email','password1','password2')
-
-
-
 class ContactForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}),label="İsim")
     email = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}),label="E-mail Adresi")

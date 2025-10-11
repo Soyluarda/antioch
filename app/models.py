@@ -6,14 +6,13 @@ from django.contrib.auth import get_user_model
 
 
 class ExtendedUser(AbstractUser):
-    ad_soyad = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(null=False, unique=True)
-    firma_adi = models.CharField(max_length=100,  null=True, blank=True)
+    username = models.CharField(max_length=100,  null=True, blank=True)
 
     def __str__(self):
         return self.email
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['firma_adi']
+    REQUIRED_FIELDS = ['username']
     class Meta:
         verbose_name_plural = 'Kullanıcılar'
